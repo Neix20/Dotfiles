@@ -6,9 +6,9 @@ require('core/autocmds')
 require('core/tabline')
 
 require('plugins/alpha-nvim')
-require('plugins/nvim-cmp')
-require('plugins/nvim-lspconfig')
-require('plugins/nvim-treesitter')
+-- require('plugins/nvim-cmp')
+-- require('plugins/nvim-lspconfig')
+-- require('plugins/nvim-treesitter')
 require('plugins/nvim-tree')
 require('plugins/feline')
 
@@ -76,5 +76,10 @@ vim.cmd([[
 ]])
 
 -- Load Snippets
-require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load(
+--     {
+-- "C:/Users/txen2/AppData/Roaming/Code/User/snippets"
+--     }
+)
+
 

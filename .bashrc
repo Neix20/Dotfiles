@@ -132,17 +132,15 @@ clear
 alias grep='grep --color'                     # show differences in colour
 #
 # Some shortcuts for different directory listings
-alias ls='ls'
-alias dir='ls'
+alias ls='exa'
+alias dir='exa'
+alias lsd='exa'
 
 alias home='cd ~'
 alias cls="clear"
 
 # Custom Location
 alias nvimHome='cd ~/.config/nvim'
-alias wslHome='cd /mnt/c/Users/txen2'
-alias c='cd /mnt/c'
-alias d='cd /mnt/d'
 
 export USERNAME="Neix19365"
 export NICKNAME="Neix"

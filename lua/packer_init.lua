@@ -37,6 +37,7 @@ return packer.startup(function(use)
     -- Snippets
     --use 'SirVer/ultisnips'
     --use 'honza/vim-snippets'
+    use "rafamadriz/friendly-snippets"
 
     -- Tabulate
     use 'godlygeek/tabular'
@@ -65,7 +66,6 @@ return packer.startup(function(use)
             'saadparwaiz1/cmp_luasnip',
         },
     }
-    use "rafamadriz/friendly-snippets"
 
     -- File explorer
     use 'kyazdani42/nvim-tree.lua'
