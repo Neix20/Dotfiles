@@ -139,6 +139,9 @@ alias lsd='exa'
 alias home='cd ~'
 alias cls="clear"
 
+alias move='mv'
+alias copy='cp'
+
 # Custom Location
 alias nvimHome='cd ~/.config/nvim'
 
