@@ -1,3 +1,4 @@
+[
 { "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.", "", "- Brian Kernighan", },
 { "If you don't finish then you're just busy, not productive." },
 { "Adapting old programs to fit new machines usually means adapting new machines to behave like old ones.", "", "- Alan Perlis", },
@@ -2232,3 +2233,4 @@
 {"There is no material safety data sheet for astatine. If there were, it would just be the word \"NO\" scrawled over and over in charred blood.", "", "- Randall Munroe, \"What If?\""},
 {"Telling a child that everyone dies is the hardest thing about being a party clown.", "", "- James Ferace"},
 {"Last night, I told my kid that the night light only makes it easier for the monsters to find her.", "", "- James Ferace"},
+]

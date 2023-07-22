@@ -132,9 +132,9 @@ clear
 alias grep='grep --color'                     # show differences in colour
 #
 # Some shortcuts for different directory listings
-alias ls='exa'
-alias dir='exa'
-alias lsd='exa'
+alias ls='lsd'
+alias dir='lsd'
+alias lsd='lsd'
 
 alias home='cd ~'
 alias cls="clear"
@@ -145,7 +145,6 @@ alias copy='cp'
 # Custom Location
 alias nvimHome='cd ~/.config/nvim'
 
-export USERNAME="Neix19365"
 export NICKNAME="Neix"
 
 # Enable Snap Store (For WSL)
