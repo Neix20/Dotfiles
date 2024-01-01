@@ -1,4 +1,6 @@
-# VimConfig
-My VimConfig. I have an Epic Gaming Chair Btw.
 
-You don't vim? You must be an emacs user.
+# Dotfile
+
+I Used to vim, until VsCode came up with remote SSH
+
+I'm now a vscode guy. I guess emacs won in the end...
