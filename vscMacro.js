@@ -18,8 +18,12 @@ module.exports.macroCommands = {
         func: MakeIntoJson
     },
     "Surround With Region": {
-        no: 1,
+        no: 5,
         func: SurroundWithRegion
+    },
+    "Get Stored Procedure Source Code": {
+        no: 6,
+        func: getSqlStoredProcedureSource
     }
 };
 
@@ -157,12 +161,36 @@ function formatSqlCsv() {
 
         res = res.slice(1);
 
-        res = res.filter(x => x !== "\"");
+        // Javascript regex match if string starts with " and ends with white string
+        const rgx = /^"\s+$/;
+        res = res.filter(x => !rgx.test(x));
 
         res = res.map(x => x.slice(1));
 
         res = res.join("\n")
 
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, res);
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function getSqlStoredProcedureSource() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        const res = `EXEC sp_helptext ${text}`;
         editor.edit(editBuilder => {
             editBuilder.replace(selection, res);
         });
