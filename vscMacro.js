@@ -16,6 +16,10 @@ module.exports.macroCommands = {
     "Make Into Json": {
         no: 4,
         func: MakeIntoJson
+    },
+    "Format SQL Select Statement": {
+        no: 1,
+        func: formatSqlSelectStmt
     }
 };
 
@@ -128,6 +132,33 @@ function formatSqlCsv() {
         res = res.map(x => x.slice(1));
 
         res = res.join("\n")
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, res);
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function formatSqlSelectStmt() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        let res = text.split(/\s{2,}/g);
+
+        res = res.map(x => `[${x}]`);
+
+        res = res.join(",\n");
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, res);
