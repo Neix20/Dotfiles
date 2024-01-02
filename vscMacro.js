@@ -20,6 +20,18 @@ module.exports.macroCommands = {
     "Format SQL Select Statement": {
         no: 1,
         func: formatSqlSelectStmt
+    },
+    "Indexfy Array": {
+        no: 1,
+        func: ConvertArrToDictWithIndex
+    },
+    "Get Keys only (JSON)": {
+        no: 1,
+        func: GetDictKeys
+    },
+    "Get Values only (JSON)": {
+        no: 1,
+        func: GetDictValues
     }
 };
 
@@ -162,6 +174,85 @@ function formatSqlSelectStmt() {
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, res);
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function ConvertArrToDictWithIndex() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        const arr = JSON.parse(text);
+
+        const res = {};
+
+        for (let ind = 0; ind < arr.length; ind++) {
+            res[ind] = arr[ind];
+        }
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, JSON.stringify(res, null, 4));
+        });
+
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function GetDictKeys() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+
+        const obj = JSON.parse(text);
+        const res = Object.keys(obj);
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, JSON.stringify(res, null, 4));
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function GetDictValues() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        const obj = JSON.parse(text);
+        const res = Object.values(obj);
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, JSON.stringify(res, null, 4));
         });
     } else {
         return " Selection Cannot be Empty!"
