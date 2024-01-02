@@ -16,48 +16,8 @@ module.exports.macroCommands = {
     "Make Into Json": {
         no: 4,
         func: MakeIntoJson
-    },
-    "Surround With Region": {
-        no: 5,
-        func: SurroundWithRegion
-    },
-    "Get Stored Procedure Source Code": {
-        no: 6,
-        func: getSqlStoredProcedureSource
     }
 };
-
-function SurroundWithRegion() {
-
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-        // Return an error message if necessary.
-        return " Editor is not opening.";
-    }
-
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
-
-    if (text.length > 0) {
-
-        // Need to get the current tab length
-
-        const colPos = selection.active.character || 0;
-
-        const res = [
-            "// #region ",
-            " ".repeat(colPos) + text,
-            " ".repeat(colPos) + "// #endregion"
-        ]
-
-        editor.edit(editBuilder => {
-            editBuilder.replace(selection, res.join("\n"));
-        });
-    } else {
-        return " Selection Cannot be Empty!"
-    }
-}
 
 function MakeIntoArr() {
 
@@ -169,28 +129,6 @@ function formatSqlCsv() {
 
         res = res.join("\n")
 
-        editor.edit(editBuilder => {
-            editBuilder.replace(selection, res);
-        });
-    } else {
-        return " Selection Cannot be Empty!"
-    }
-}
-
-function getSqlStoredProcedureSource() {
-
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-        // Return an error message if necessary.
-        return " Editor is not opening.";
-    }
-
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
-
-    if (text.length > 0) {
-        const res = `EXEC sp_helptext ${text}`;
         editor.edit(editBuilder => {
             editBuilder.replace(selection, res);
         });
