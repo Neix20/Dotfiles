@@ -36,6 +36,10 @@ module.exports.macroCommands = {
     "Stringify JSON, Array": {
         no: 9,
         func: StringifyObj
+    },
+    "Convert List of KvP to JSON": {
+        no: 10,
+        func: KvpToJson
     }
 };
 
@@ -280,6 +284,36 @@ function StringifyObj() {
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, JSON.stringify(res));
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function KvpToJson() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        const arr = JSON.parse(text);
+
+        const res = {};
+
+        for (let obj of arr) {
+            const { Key, Value } = obj;
+            res[Key] = Value;
+        };
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, JSON.stringify(res, null, 4));
         });
     } else {
         return " Selection Cannot be Empty!"
