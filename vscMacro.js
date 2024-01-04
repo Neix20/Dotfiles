@@ -18,20 +18,24 @@ module.exports.macroCommands = {
         func: MakeIntoJson
     },
     "Format SQL Select Statement": {
-        no: 1,
+        no: 5,
         func: formatSqlSelectStmt
     },
     "Indexfy Array": {
-        no: 1,
+        no: 6,
         func: ConvertArrToDictWithIndex
     },
     "Get Keys only (JSON)": {
-        no: 1,
+        no: 7,
         func: GetDictKeys
     },
     "Get Values only (JSON)": {
-        no: 1,
+        no: 8,
         func: GetDictValues
+    },
+    "Stringify JSON, Array": {
+        no: 9,
+        func: StringifyObj
     }
 };
 
@@ -253,6 +257,29 @@ function GetDictValues() {
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, JSON.stringify(res, null, 4));
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function StringifyObj() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        const res = JSON.parse(text);
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, JSON.stringify(res));
         });
     } else {
         return " Selection Cannot be Empty!"
