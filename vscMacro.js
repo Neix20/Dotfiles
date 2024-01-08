@@ -40,6 +40,10 @@ module.exports.macroCommands = {
     "Convert List of KvP to JSON": {
         no: 10,
         func: KvpToJson
+    },
+    "ConvertSqlSelectToUpdate": {
+        no: 1,
+        func: ConvertSqlSelectToUpdate
     }
 };
 
@@ -314,6 +318,43 @@ function KvpToJson() {
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, JSON.stringify(res, null, 4));
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function ConvertSqlSelectToUpdate() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+
+        let [selParam, selValue] = JSON.parse(text);
+
+        selParam = selParam.split(/,\s+/);
+        selValue = selValue.split(/,\s+/);
+
+        let len = Math.min(selParam.length, selValue.length);
+
+        let res = [];
+
+        for (let ind = 0; ind < len; ind += 1) {
+            res.push(`${selParam[ind]} = ${selValue[ind]}`);
+        }
+
+        res = res.join(",\n");
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, res);
         });
     } else {
         return " Selection Cannot be Empty!"
