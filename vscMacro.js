@@ -1,50 +1,51 @@
 const vscode = require('vscode');
 
 module.exports.macroCommands = {
+    // SQL Manipulation Special
     "Format SQL": {
         no: 1,
         func: formatSqlCsv
     },
-    "Sort Json Object By Key": {
-        no: 2,
-        func: SortJsonByKey
-    },
+    // Text Manipulation
     "Make Into Array": {
-        no: 3,
+        no: 2,
         func: MakeIntoArr
     },
-    "Make Into Json": {
+    "Join Into One String": {
         no: 4,
+        func: JoinIntoOneString
+    },
+    "Make Into Json": {
+        no: 3,
         func: MakeIntoJson
     },
-    "Format SQL Select Statement": {
+    // Array Manipulation
+    "Convert List of KvP to JSON": {
         no: 5,
-        func: formatSqlSelectStmt
+        func: KvpToJson
     },
     "Indexfy Array": {
         no: 6,
         func: ConvertArrToDictWithIndex
     },
-    "Get Keys only (JSON)": {
+    // Json Manipulation
+    "Get Json Key Or Values": {
         no: 7,
-        func: GetDictKeys
+        func: getJsonKeyValue
     },
-    "Get Values only (JSON)": {
+    "Sort Json Object By Key": {
         no: 8,
-        func: GetDictValues
+        func: SortJsonByKey
     },
-    "Join Into One String": {
+    // SQL Manipulation
+    "Format SQL Select Statement": {
         no: 9,
-        func: JoinIntoOneString
-    },
-    "Convert List of KvP to JSON": {
-        no: 10,
-        func: KvpToJson
+        func: formatSqlSelectStmt
     },
     "Convert SQL Select Statment to Update Statement": {
-        no: 11,
+        no: 10,
         func: ConvertSqlSelectToUpdate
-    },
+    }
 };
 
 function MakeIntoArr() {
@@ -114,11 +115,32 @@ function SortJsonByKey() {
 
     if (text.length > 0) {
         // 1. Convert Selection to json Object
-        const obj = JSON.parse(text);
+        let obj = text;
+
+        let ind = 0;
+        while (typeof obj === "string") {
+            if (ind >= 5) {
+                obj = { "response": "Error! Too many Objects!" };
+                break;
+            }
+            obj = JSON.parse(obj);
+            ind += 1;
+        }
+
+        const { flag = true } = obj;
+
+        if ("flag" in obj) {
+            delete obj["flag"];
+        }
+
+        const res = {};
 
         // 2. Sort JSON Object By Keys
-        const keys = Object.keys(obj).sort();
-        const res = {};
+        let keys = Object.keys(obj);
+
+        if (flag) {
+            keys = keys.sort();
+        }
 
         for (let key of keys) {
             res[key] = obj[key];
@@ -162,7 +184,7 @@ function ConvertArrToDictWithIndex() {
     }
 }
 
-function GetDictKeys() {
+function getJsonKeyValue() {
 
     const editor = vscode.window.activeTextEditor;
 
@@ -177,31 +199,20 @@ function GetDictKeys() {
     if (text.length > 0) {
 
         const obj = JSON.parse(text);
-        const res = Object.keys(obj);
 
-        editor.edit(editBuilder => {
-            editBuilder.replace(selection, JSON.stringify(res, null, 4));
-        });
-    } else {
-        return " Selection Cannot be Empty!"
-    }
-}
+        let res = [];
 
-function GetDictValues() {
+        const { type = "values" } = obj;
 
-    const editor = vscode.window.activeTextEditor;
+        if ("type" in obj) { 
+            delete obj["type"]; 
+        }
 
-    if (!editor) {
-        // Return an error message if necessary.
-        return " Editor is not opening.";
-    }
-
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
-
-    if (text.length > 0) {
-        const obj = JSON.parse(text);
-        const res = Object.values(obj);
+        if (type == "values") {
+            res = Object.values(obj);
+        } else if (type == "keys") {
+            res = Object.keys(obj);
+        }
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, JSON.stringify(res, null, 4));
