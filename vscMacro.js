@@ -317,8 +317,8 @@ function ConvertSqlSelectToUpdate() {
 
         let [selParam, selValue] = JSON.parse(text);
 
-        selParam = selParam.split(/,\s+/);
-        selValue = selValue.split(/,\s+/);
+        selParam = selParam.split(/,\s*/);
+        selValue = selValue.split(/,\s*/);
 
         let len = Math.min(selParam.length, selValue.length);
 
