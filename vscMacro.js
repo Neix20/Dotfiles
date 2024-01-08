@@ -33,18 +33,18 @@ module.exports.macroCommands = {
         no: 8,
         func: GetDictValues
     },
-    "Stringify JSON, Array": {
+    "Join Into One String": {
         no: 9,
-        func: StringifyObj
+        func: JoinIntoOneString
     },
     "Convert List of KvP to JSON": {
         no: 10,
         func: KvpToJson
     },
-    "ConvertSqlSelectToUpdate": {
-        no: 1,
+    "Convert SQL Select Statment to Update Statement": {
+        no: 11,
         func: ConvertSqlSelectToUpdate
-    }
+    },
 };
 
 function MakeIntoArr() {
@@ -132,66 +132,6 @@ function SortJsonByKey() {
     }
 }
 
-function formatSqlCsv() {
-
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-        // Return an error message if necessary.
-        return " Editor is not opening.";
-    }
-
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
-
-    if (text.length > 0) {
-        let res = text.split("\n");
-
-        res = res.slice(1);
-
-        // Javascript regex match if string starts with " and ends with white string
-        const rgx = /^"\s+$/;
-        res = res.filter(x => !rgx.test(x));
-
-        res = res.map(x => x.slice(1));
-
-        res = res.join("\n")
-
-        editor.edit(editBuilder => {
-            editBuilder.replace(selection, res);
-        });
-    } else {
-        return " Selection Cannot be Empty!"
-    }
-}
-
-function formatSqlSelectStmt() {
-
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-        // Return an error message if necessary.
-        return " Editor is not opening.";
-    }
-
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
-
-    if (text.length > 0) {
-        let res = text.split(/\s{2,}/g);
-
-        res = res.map(x => `[${x}]`);
-
-        res = res.join(",\n");
-
-        editor.edit(editBuilder => {
-            editBuilder.replace(selection, res);
-        });
-    } else {
-        return " Selection Cannot be Empty!"
-    }
-}
-
 function ConvertArrToDictWithIndex() {
 
     const editor = vscode.window.activeTextEditor;
@@ -271,7 +211,7 @@ function GetDictValues() {
     }
 }
 
-function StringifyObj() {
+function formatSqlCsv() {
 
     const editor = vscode.window.activeTextEditor;
 
@@ -284,10 +224,47 @@ function StringifyObj() {
     const text = editor.document.getText(selection);
 
     if (text.length > 0) {
-        const res = JSON.parse(text);
+        let res = text.split("\n");
+
+        res = res.slice(1);
+
+        // Javascript regex match if string starts with " and ends with white string
+        const rgx = /^"\s+$/;
+        res = res.filter(x => !rgx.test(x));
+
+        res = res.map(x => x.slice(1));
+
+        res = res.join("\n")
 
         editor.edit(editBuilder => {
-            editBuilder.replace(selection, JSON.stringify(res));
+            editBuilder.replace(selection, res);
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function formatSqlSelectStmt() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        let res = text.split(/\s{2,}/g);
+
+        res = res.map(x => `[${x}]`);
+
+        res = res.join(",\n");
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, res);
         });
     } else {
         return " Selection Cannot be Empty!"
@@ -352,6 +329,34 @@ function ConvertSqlSelectToUpdate() {
         }
 
         res = res.join(",\n");
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, res);
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function JoinIntoOneString() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+
+        let res = text.split("\n");
+
+        res = res.map(x => x.trim());
+
+        res = res.join("");
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, res);
