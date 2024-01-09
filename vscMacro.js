@@ -12,11 +12,11 @@ module.exports.macroCommands = {
         func: MakeIntoArr
     },
     "Join Into One String": {
-        no: 4,
+        no: 3,
         func: JoinIntoOneString
     },
     "Make Into Json": {
-        no: 3,
+        no: 4,
         func: MakeIntoJson
     },
     // Array Manipulation
@@ -45,6 +45,10 @@ module.exports.macroCommands = {
     "Convert SQL Select Statment to Update Statement": {
         no: 10,
         func: ConvertSqlSelectToUpdate
+    },
+    "Parse Store Procedure": {
+        no: 11,
+        func: parseSqlStoreProcedureIntoDict
     }
 };
 
@@ -204,8 +208,8 @@ function getJsonKeyValue() {
 
         const { type = "values" } = obj;
 
-        if ("type" in obj) { 
-            delete obj["type"]; 
+        if ("type" in obj) {
+            delete obj["type"];
         }
 
         if (type == "values") {
@@ -371,6 +375,53 @@ function JoinIntoOneString() {
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, res);
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function parseSqlStoreProcedureIntoDict() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+
+        let arr = JSON.parse(text);
+
+        // 1. Filter out empty Objects
+        arr = arr.filter(x => x.name !== "" || x.data_type !== "");
+
+        const res = {};
+
+        if (arr.length <= 1) {
+            return res;
+        }
+
+        // Add Stop Condition
+        arr.push({ "name": "", "data_type": "" });
+
+        let cur_ind = 0;
+        for (let ind = 1; ind < arr.length; ind += 1) {
+            const { data_type } = arr[ind];
+
+            if (data_type === "") {
+                const { name } = arr[cur_ind];
+                res[name] = arr.slice(cur_ind + 1, ind);
+                cur_ind = ind;
+            }
+        }
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, JSON.stringify(res, null, 4));
         });
     } else {
         return " Selection Cannot be Empty!"

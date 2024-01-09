@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "node: temp/sandbox.js",
+            "type": "shell",
+            "command": "node temp/sandbox.js",
+            "problemMatcher": []
+        }
+    ]
+}
