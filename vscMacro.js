@@ -49,6 +49,10 @@ module.exports.macroCommands = {
     "Parse Store Procedure": {
         no: 11,
         func: parseSqlStoreProcedureIntoDict
+    },
+    "FormatTasks": {
+        no: 1,
+        func: FormatTasks
     }
 };
 
@@ -417,6 +421,63 @@ function parseSqlStoreProcedureIntoDict() {
                 const { name } = arr[cur_ind];
                 res[name] = arr.slice(cur_ind + 1, ind);
                 cur_ind = ind;
+            }
+        }
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, JSON.stringify(res, null, 4));
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function FormatTasks() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        let arr = text.split("\n");
+
+        // Remove Whitespace
+        const rgx = /^\s*$/;
+        arr = arr.filter(x => !rgx.test(x));
+
+        const res = [];
+
+        // Add Stop Condition
+        arr.push("#");
+
+        let obj = { title: "" };
+        let description = [];
+
+        for (let str of arr) {
+
+            // Remove Whitespace at Front
+            str = str.trim();
+
+            if (str.includes("#")) {
+
+                if (description.length > 0) {
+                    obj["description"] = description;
+                    res.push(obj);
+
+                    // Reset to New Array
+                    description = [];
+                }
+
+                const title = str.replace(/#+ /g, "");
+                obj = { title };
+            } else {
+                description.push(str);
             }
         }
 
