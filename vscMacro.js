@@ -53,6 +53,10 @@ module.exports.macroCommands = {
     "FormatTasks": {
         no: 1,
         func: FormatTasks
+    },
+    "ConvertSqlToInsert": {
+        no: 1,
+        func: ConvertSqlToInsert
     }
 };
 
@@ -483,6 +487,43 @@ function FormatTasks() {
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, JSON.stringify(res, null, 4));
+        });
+    } else {
+        return " Selection Cannot be Empty!"
+    }
+}
+
+function ConvertSqlToInsert() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    if (text.length > 0) {
+        const arr = JSON.parse(text);
+
+        let res = []
+
+        for (const obj of arr) {
+            let val = Object.values(obj);
+
+            val = val.map(x => `'${x}'`);
+
+            val = val.join(", ");
+
+            res.push(`INSERT INTO tblName VALUES (${val});`)
+        }
+
+        res = res.join("\n")
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, res);
         });
     } else {
         return " Selection Cannot be Empty!"
