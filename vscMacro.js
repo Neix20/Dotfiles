@@ -6,56 +6,61 @@ module.exports.macroCommands = {
         no: 1,
         func: formatSqlCsv
     },
+    "Show Constant Variables": {
+        no: 2,
+        func: ShowVariables
+    },
     // Text Manipulation
     "Make Into Array": {
-        no: 2,
+        no: 3,
         func: MakeIntoArr
     },
     "Join Into One String": {
-        no: 3,
+        no: 4,
         func: JoinIntoOneString
     },
     "Make Into Json": {
-        no: 4,
+        no: 5,
         func: MakeIntoJson
     },
     // Array Manipulation
     "Convert List of KvP to JSON": {
-        no: 5,
+        no: 6,
         func: KvpToJson
     },
     "Indexfy Array": {
-        no: 6,
+        no: 7,
         func: ConvertArrToDictWithIndex
     },
     // Json Manipulation
     "Get Json Key Or Values": {
-        no: 7,
+        no: 8,
         func: getJsonKeyValue
     },
     "Sort Json Object By Key": {
-        no: 8,
+        no: 9,
         func: SortJsonByKey
     },
     // SQL Manipulation
     "Format SQL Select Statement": {
-        no: 9,
+        no: 10,
         func: formatSqlSelectStmt
     },
     "Convert SQL Select Statment to Update Statement": {
-        no: 10,
+        no: 11,
         func: ConvertSqlSelectToUpdate
     },
     "Parse Store Procedure": {
-        no: 11,
+        no: 12,
         func: parseSqlStoreProcedureIntoDict
     },
-    "FormatTasks": {
-        no: 1,
+    // Format Markdown
+    "Format TaskList": {
+        no: 13,
         func: FormatTasks
     },
-    "ConvertSqlToInsert": {
-        no: 1,
+    "Convert JSON to Insert SQL": {
+        no: 14,
         func: ConvertSqlToInsert
     }
 };
@@ -528,4 +533,24 @@ function ConvertSqlToInsert() {
     } else {
         return " Selection Cannot be Empty!"
     }
+}
+
+function ShowVariables() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    let res = [
+        "@rF!12e45"
+    ]
+
+    res = res.join("\n") 
+
+    editor.edit(editBuilder =>{
+        editBuilder.insert(new vscode.Position(0, 0), res);
+    });
 }
