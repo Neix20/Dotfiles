@@ -1,16 +1,12 @@
 const vscode = require('vscode');
 
 module.exports.macroCommands = {
-    // SQL Manipulation Special
+    // SQL Manipulation Special (Custom SQL)
     "Format SQL": {
         no: 1,
         func: formatSqlCsv
     },
-    "Show Constant Variables": {
-        no: 2,
-        func: ShowVariables
-    },
-    // Text Manipulation
+    // Text Manipulation (No Format)
     "Make Into Array": {
         no: 3,
         func: MakeIntoArr
@@ -19,49 +15,49 @@ module.exports.macroCommands = {
         no: 4,
         func: JoinIntoOneString
     },
-    "Make Into Json": {
-        no: 5,
-        func: MakeIntoJson
-    },
-    // Array Manipulation
+    // Array Manipulation (Array of Json)
     "Convert List of KvP to JSON": {
-        no: 6,
+        no: 5,
         func: KvpToJson
     },
+    // (Array of Json)
     "Indexfy Array": {
-        no: 7,
+        no: 6,
         func: ConvertArrToDictWithIndex
     },
-    // Json Manipulation
+    // Json Manipulation (Json Format)
     "Get Json Key Or Values": {
-        no: 8,
+        no: 7,
         func: getJsonKeyValue
     },
-    "Sort Json Object By Key": {
-        no: 9,
-        func: SortJsonByKey
+    "Make Into Json": {
+        no: 8,
+        func: MakeIntoJson
     },
-    // SQL Manipulation
+    // SQL Manipulation (Custom SQL)
     "Format SQL Select Statement": {
-        no: 10,
+        no: 9,
         func: formatSqlSelectStmt
     },
-    "Convert SQL Select Statment to Update Statement": {
-        no: 11,
-        func: ConvertSqlSelectToUpdate
-    },
+    // Custom SQL
     "Parse Store Procedure": {
-        no: 12,
+        no: 10,
         func: parseSqlStoreProcedureIntoDict
     },
-    // Format Markdown
+    // Custom SQL
+    "Convert JSON to Insert SQL": {
+        no: 11,
+        func: ConvertSqlToInsert
+    },
+    // Format Markdown (Custom Format)
     "Format TaskList": {
-        no: 13,
+        no: 12,
         func: FormatTasks
     },
-    "Convert JSON to Insert SQL": {
-        no: 14,
-        func: ConvertSqlToInsert
+
+    "TestQuickPick": {
+        no: 1,
+        func: TestQuickPick
     }
 };
 
@@ -101,36 +97,6 @@ function MakeIntoJson() {
     const text = editor.document.getText(selection);
 
     if (text.length > 0) {
-        const arr = text.split("\n");
-
-        const res = arr.map(x => {
-            const [key, val] = x.split(": ");
-            return { [key]: val };
-        })
-            // Join Array of Objects into One
-            .reduce((a, b) => ({ ...a, ...b }), {});
-
-        editor.edit(editBuilder => {
-            editBuilder.replace(selection, JSON.stringify(res, null, 4));
-        });
-    } else {
-        return " Selection Cannot be Empty!"
-    }
-}
-
-function SortJsonByKey() {
-
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-        // Return an error message if necessary.
-        return " Editor is not opening.";
-    }
-
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
-
-    if (text.length > 0) {
         // 1. Convert Selection to json Object
         let obj = text;
 
@@ -144,10 +110,10 @@ function SortJsonByKey() {
             ind += 1;
         }
 
-        const { flag = true } = obj;
+        const { sort = true } = obj;
 
-        if ("flag" in obj) {
-            delete obj["flag"];
+        if ("sort" in obj) {
+            delete obj["sort"];
         }
 
         const res = {};
@@ -155,7 +121,7 @@ function SortJsonByKey() {
         // 2. Sort JSON Object By Keys
         let keys = Object.keys(obj);
 
-        if (flag) {
+        if (sort) {
             keys = keys.sort();
         }
 
@@ -329,43 +295,6 @@ function KvpToJson() {
     }
 }
 
-function ConvertSqlSelectToUpdate() {
-
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-        // Return an error message if necessary.
-        return " Editor is not opening.";
-    }
-
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
-
-    if (text.length > 0) {
-
-        let [selParam, selValue] = JSON.parse(text);
-
-        selParam = selParam.split(/,\s*/);
-        selValue = selValue.split(/,\s*/);
-
-        let len = Math.min(selParam.length, selValue.length);
-
-        let res = [];
-
-        for (let ind = 0; ind < len; ind += 1) {
-            res.push(`${selParam[ind]} = ${selValue[ind]}`);
-        }
-
-        res = res.join(",\n");
-
-        editor.edit(editBuilder => {
-            editBuilder.replace(selection, res);
-        });
-    } else {
-        return " Selection Cannot be Empty!"
-    }
-}
-
 function JoinIntoOneString() {
 
     const editor = vscode.window.activeTextEditor;
@@ -384,7 +313,7 @@ function JoinIntoOneString() {
 
         res = res.map(x => x.trim());
 
-        res = res.join("");
+        res = res.join(" ");
 
         editor.edit(editBuilder => {
             editBuilder.replace(selection, res);
@@ -535,7 +464,7 @@ function ConvertSqlToInsert() {
     }
 }
 
-function ShowVariables() {
+function TestQuickPick() {
 
     const editor = vscode.window.activeTextEditor;
 
@@ -544,13 +473,58 @@ function ShowVariables() {
         return " Editor is not opening.";
     }
 
-    let res = [
-        "@rF!12e45"
-    ]
+    let prevUndo = false;
+    let undo = true;
 
-    res = res.join("\n") 
+    const selection = editor.selection;
+    const original = editor.document.getText(selection);
 
-    editor.edit(editBuilder =>{
-        editBuilder.insert(new vscode.Position(0, 0), res);
+    const commands = [
+        {
+            label: 'Join To One String',
+            func: JoinIntoOneString
+        },
+        {
+            label: 'Make Into Array',
+            func: MakeIntoArr
+        },
+    ];
+
+    const quickPick = vscode.window.createQuickPick();
+
+    quickPick.items = commands.map((obj, pos) => ({ ...obj, pos }));
+
+    // quickPick.onDidTriggerButton(items => {
+    //     if (items.length > 0) {
+    //         const { func = () => {}, pos = 0 } = items[0];
+    //         func();
+
+    //         undo = true;
+    //     }
+    // })
+
+    quickPick.onDidChangeActive(items => {
+        // Handle the event when the active items change (hovering over items)
+
+        if (items.length > 0) {
+            const { func = () => {}, pos = 0 } = items[0];
+            func();
+
+            vscode.window.showInformationMessage(JSON.stringify(original));
+        }
     });
+
+    quickPick.onDidAccept(() => {
+        // Handle the event when an item is selected
+        const items = quickPick.selectedItems;
+
+        if (items.length > 0) {
+            const { func = () => {} } = items[0];
+            func();
+        }
+
+        quickPick.hide();
+    });
+
+    quickPick.show();
 }

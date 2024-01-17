@@ -25,7 +25,7 @@ function MakeIntoArr(text) {
         let res = text.split("\n");
         return JSON.stringify(res, null, 4);
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -69,7 +69,7 @@ function MakeIntoJson(text) {
 
         return JSON.stringify(res, null, 4);
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -89,7 +89,7 @@ function ConvertArrToDictWithIndex(text) {
 
         return JSON.stringify(res, null, 4);
     } catch (error) {
-        return "";
+        throw error;
     }
 
 }
@@ -118,7 +118,7 @@ function getJsonKeyValue(text) {
 
         return JSON.stringify(res, null, 4);
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -142,7 +142,7 @@ function formatSqlCsv(text) {
 
         return res;
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -160,7 +160,7 @@ function formatSqlSelectStmt(text) {
 
         return res;
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -181,7 +181,7 @@ function KvpToJson(text) {
 
         return JSON.stringify(res, null, 4);
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -199,7 +199,7 @@ function JoinIntoOneString(text) {
 
         return res;
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -236,7 +236,7 @@ function parseSqlStoreProcedureIntoDict(text) {
 
         return JSON.stringify(res, null, 4);
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -284,7 +284,7 @@ function FormatTasks(text) {
 
         return JSON.stringify(res, null, 4);
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
@@ -312,13 +312,16 @@ function ConvertSqlToInsert(text) {
 
         return res;
     } catch (error) {
-        return "";
+        throw error;
     }
 }
 
-let utils = {
+let utils = {};
+
+utils = {
+    ...utils,
     genDt
-}
+};
 
 utils = {
     ...utils,
@@ -333,6 +336,6 @@ utils = {
     parseSqlStoreProcedureIntoDict,
     FormatTasks,
     ConvertSqlToInsert,
-}
+};
 
 module.exports = utils;
