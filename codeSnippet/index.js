@@ -23,7 +23,7 @@ function Wrapper(onFormat = () => { }) {
             editBuilder.replace(selection, res);
         });
     } else {
-        return " Selection Cannot be Empty!"
+        return " Selection Cannot be Empty!";
     }
 }
 
@@ -38,7 +38,7 @@ const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureInt
 const onConvertSqlToInsert = () => Wrapper(ConvertSqlToInsert);
 const onFormatTasks = () => Wrapper(FormatTasks);
 
-const commands = {
+module.exports.macroCommands = {
     "Format SQL": {
         no: 1,
         func: onFormatSqlCsv
@@ -80,5 +80,3 @@ const commands = {
         func: onFormatTasks
     },
 };
-
-module.exports.macroCommands = commands;
