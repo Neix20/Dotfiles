@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/temp/sandbox.js"
+            "program": "${workspaceFolder}/codeSnippet/sandbox.js"
         }
     ]
 }

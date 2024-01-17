@@ -1,0 +1,10 @@
+{
+  "name": "code-snippet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "index": "node index.js",
+    "sandbox": "node sandbox.js"
+  }
+}
