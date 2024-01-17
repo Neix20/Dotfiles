@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 
-const { clsUtility, clsLogger, clsWriter, clsConst } = require("./utils");
-const { MakeIntoArr, MakeIntoJson, ConvertArrToDictWithIndex, getJsonKeyValue, formatSqlCsv, formatSqlSelectStmt, KvpToJson, JoinIntoOneString, parseSqlStoreProcedureIntoDict, FormatTasks, ConvertSqlToInsert } = clsUtility;
+const { clsUtility } = require("./utils");
+const { MakeIntoArr, MakeIntoJson, ConvertArrToDictWithIndex, GetJsonKeyValue, FormatSqlCsv, KvpToJson, JoinIntoOneString, ParseSqlStoreProcedureIntoDict, FormatTasks, ConvertSqlToInsert } = clsUtility;
 
 function Wrapper(onFormat = () => { }) {
 
@@ -16,6 +16,7 @@ function Wrapper(onFormat = () => { }) {
     const text = editor.document.getText(selection);
 
     if (text.length > 0) {
+        // Execute Code Function
         const res = onFormat(text);
 
         editor.edit(editBuilder => {
@@ -26,70 +27,58 @@ function Wrapper(onFormat = () => { }) {
     }
 }
 
-const onFormatsqlcsv = () => Wrapper(formatSqlCsv);
-const onMakeintoarr = () => Wrapper(MakeIntoArr);
-const onJoinintoonestring = () => Wrapper(JoinIntoOneString);
-const onKvptojson = () => Wrapper(KvpToJson);
-const onConvertarrtodictwithindex = () => Wrapper(ConvertArrToDictWithIndex);
-const onGetjsonkeyvalue = () => Wrapper(getJsonKeyValue);
-const onMakeintojson = () => Wrapper(MakeIntoJson);
-const onFormatsqlselectstmt = () => Wrapper(formatSqlSelectStmt);
-const onParsesqlstoreprocedureintodict = () => Wrapper(parseSqlStoreProcedureIntoDict);
-const onConvertsqltoinsert = () => Wrapper(ConvertSqlToInsert);
-const onFormattasks = () => Wrapper(FormatTasks);
+const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
+const onMakeIntoArr = () => Wrapper(MakeIntoArr);
+const onMakeIntoJson = () => Wrapper(MakeIntoJson);
+const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
+const onKvpToJson = () => Wrapper(KvpToJson);
+const onConvertArrToDictWithIndex = () => Wrapper(ConvertArrToDictWithIndex);
+const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
+const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
+const onConvertSqlToInsert = () => Wrapper(ConvertSqlToInsert);
+const onFormatTasks = () => Wrapper(FormatTasks);
 
-module.exports.macroCommands = {
-    // SQL Manipulation Special (Custom SQL)
+const commands = {
     "Format SQL": {
         no: 1,
-        func: onFormatsqlcsv
+        func: onFormatSqlCsv
     },
-    // Text Manipulation (No Format)
     "Make Into Array": {
         no: 2,
-        func: onMakeintoarr
-    },
-    "Join Into One String": {
-        no: 3,
-        func: onJoinintoonestring
-    },
-    // Array Manipulation (Array of Json)
-    "Convert List of KvP to JSON": {
-        no: 4,
-        func: onKvptojson
-    },
-    // (Array of Json)
-    "Indexfy Array": {
-        no: 5,
-        func: onConvertarrtodictwithindex
-    },
-    // Json Manipulation (Json Format)
-    "Get Json Key Or Values": {
-        no: 6,
-        func: onGetjsonkeyvalue
+        func: onMakeIntoArr
     },
     "Make Into Json": {
         no: 7,
-        func: onMakeintojson
+        func: onMakeIntoJson
     },
-    // SQL Manipulation (Custom SQL)
-    "Format SQL Select Statement": {
-        no: 8,
-        func: onFormatsqlselectstmt
+    "Join Into One String": {
+        no: 3,
+        func: onJoinIntoOneString
     },
-    // Custom SQL
+    "Convert List of KvP to JSON": {
+        no: 4,
+        func: onKvpToJson
+    },
+    "Indexfy Array": {
+        no: 5,
+        func: onConvertArrToDictWithIndex
+    },
+    "Get Json Key Or Values": {
+        no: 6,
+        func: onGetJsonKeyValue
+    },
     "Parse Store Procedure": {
         no: 9,
-        func: onParsesqlstoreprocedureintodict
+        func: onParseSqlStoreProcedureIntoDict
     },
-    // Custom SQL
     "Convert JSON to Insert SQL": {
         no: 10,
-        func: onConvertsqltoinsert
+        func: onConvertSqlToInsert
     },
-    // Format Markdown (Custom Format)
     "Format TaskList": {
         no: 11,
-        func: onFormattasks
+        func: onFormatTasks
     },
 };
+
+module.exports.macroCommands = commands;

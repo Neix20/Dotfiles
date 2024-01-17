@@ -16,7 +16,7 @@ function genDt() {
     return `${t}T${t2}`;
 }
 
-function MakeIntoArr(text) {
+function MakeIntoArr(text = "") {
     if (text.length <= 0) {
         return "";
     }
@@ -29,7 +29,7 @@ function MakeIntoArr(text) {
     }
 }
 
-function MakeIntoJson(text) {
+function MakeIntoJson(text = "{}") {
     if (text.length <= 0) {
         return "";
     }
@@ -48,7 +48,7 @@ function MakeIntoJson(text) {
             ind += 1;
         }
 
-        const { sort = true } = obj;
+        const { sort = false } = obj;
 
         if ("sort" in obj) {
             delete obj["sort"];
@@ -73,7 +73,7 @@ function MakeIntoJson(text) {
     }
 }
 
-function ConvertArrToDictWithIndex(text) {
+function ConvertArrToDictWithIndex(text = "[]") {
     if (text.length <= 0) {
         return "";
     }
@@ -91,10 +91,9 @@ function ConvertArrToDictWithIndex(text) {
     } catch (error) {
         throw error;
     }
-
 }
 
-function getJsonKeyValue(text) {
+function GetJsonKeyValue(text = "[]") {
     if (text.length <= 0) {
         return "";
     }
@@ -122,7 +121,7 @@ function getJsonKeyValue(text) {
     }
 }
 
-function formatSqlCsv(text) {
+function FormatSqlCsv(text = "") {
     if (text.length <= 0) {
         return "";
     }
@@ -146,25 +145,7 @@ function formatSqlCsv(text) {
     }
 }
 
-function formatSqlSelectStmt(text) {
-    if (text.length <= 0) {
-        return "";
-    }
-
-    try {
-        let res = text.split(/\s{2,}/g);
-
-        res = res.map(x => `[${x}]`);
-
-        res = res.join(",\n");
-
-        return res;
-    } catch (error) {
-        throw error;
-    }
-}
-
-function KvpToJson(text) {
+function KvpToJson(text = "[]") {
     if (text.length <= 0) {
         return "";
     }
@@ -185,7 +166,7 @@ function KvpToJson(text) {
     }
 }
 
-function JoinIntoOneString(text) {
+function JoinIntoOneString(text = "") {
     if (text.length <= 0) {
         return "";
     }
@@ -203,7 +184,7 @@ function JoinIntoOneString(text) {
     }
 }
 
-function parseSqlStoreProcedureIntoDict(text) {
+function ParseSqlStoreProcedureIntoDict(text = "[]") {
     if (text.length <= 0) {
         return "";
     }
@@ -240,7 +221,7 @@ function parseSqlStoreProcedureIntoDict(text) {
     }
 }
 
-function FormatTasks(text) {
+function FormatTasks(text = "") {
     if (text.length <= 0) {
         return "";
     }
@@ -288,7 +269,7 @@ function FormatTasks(text) {
     }
 }
 
-function ConvertSqlToInsert(text) {
+function ConvertSqlToInsert(text = "[]") {
     if (text.length <= 0) {
         return "";
     }
@@ -328,12 +309,11 @@ utils = {
     MakeIntoArr,
     MakeIntoJson,
     ConvertArrToDictWithIndex,
-    getJsonKeyValue,
-    formatSqlCsv,
-    formatSqlSelectStmt,
+    GetJsonKeyValue,
+    FormatSqlCsv,
     KvpToJson,
     JoinIntoOneString,
-    parseSqlStoreProcedureIntoDict,
+    ParseSqlStoreProcedureIntoDict,
     FormatTasks,
     ConvertSqlToInsert,
 };
