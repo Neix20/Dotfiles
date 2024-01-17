@@ -1,43 +1,5 @@
-function apply(text) {
-
-    let arr = text.split("\n");
-
-    // Remove Whitespace
-    let rgx = /^\s*$/;
-    arr = arr.filter(x => !rgx.test(x));
-
-    const res = [];
-
-    // Add Stop Condition
-    arr.push("#");
-
-    let obj = {};
-    let description = [];
-
-    for (let str of arr) {
-
-        // Remove Whitespace at Front
-        str = str.trim();
-
-        if (str.includes("#")) {
-
-            if (description.length > 0) {
-                obj["description"] = description;
-                res.push(obj);
-
-                // Reset to New Array
-                description = [];
-            }
-
-            const title = str.replace(/#+ /g, "");
-            obj = { title };
-        } else {
-            description.push(str);
-        }
-    }
-
-    return res;
-}
+const { clsUtility, clsLogger, clsWriter, clsConst } = require("./utils");
+const { MakeIntoArr, MakeIntoJson, ConvertArrToDictWithIndex, getJsonKeyValue, formatSqlCsv, formatSqlSelectStmt, KvpToJson, JoinIntoOneString, parseSqlStoreProcedureIntoDict, FormatTasks, ConvertSqlToInsert } = clsUtility;
 
 function main() {
     let arr = `
@@ -62,8 +24,73 @@ function main() {
     ### Yatu Data Alert
     
     Update Function to handle live alerts from Smartlife / Tuya App (Update Tuya Room)`;
-    arr = apply(arr);
+    arr = FormatTasks(arr);
     console.log(arr);
 }
 
 main();
+
+function TestQuickPick() {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    let prevUndo = false;
+    let undo = true;
+
+    const selection = editor.selection;
+    const original = editor.document.getText(selection);
+
+    const commands = [
+        {
+            label: 'Join To One String',
+            func: JoinIntoOneString
+        },
+        {
+            label: 'Make Into Array',
+            func: MakeIntoArr
+        },
+    ];
+
+    const quickPick = vscode.window.createQuickPick();
+
+    quickPick.items = commands.map((obj, pos) => ({ ...obj, pos }));
+
+    // quickPick.onDidTriggerButton(items => {
+    //     if (items.length > 0) {
+    //         const { func = () => {}, pos = 0 } = items[0];
+    //         func();
+
+    //         undo = true;
+    //     }
+    // })
+
+    quickPick.onDidChangeActive(items => {
+        // Handle the event when the active items change (hovering over items)
+
+        if (items.length > 0) {
+            const { func = () => {}, pos = 0 } = items[0];
+            func();
+
+            vscode.window.showInformationMessage(JSON.stringify(original));
+        }
+    });
+
+    quickPick.onDidAccept(() => {
+        // Handle the event when an item is selected
+        const items = quickPick.selectedItems;
+
+        if (items.length > 0) {
+            const { func = () => {} } = items[0];
+            func();
+        }
+
+        quickPick.hide();
+    });
+
+    quickPick.show();
+}
