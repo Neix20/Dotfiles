@@ -48,35 +48,35 @@ module.exports.macroCommands = {
         func: onMakeIntoArr
     },
     "Make Into Json": {
-        no: 7,
+        no: 3,
         func: onMakeIntoJson
     },
     "Join Into One String": {
-        no: 3,
+        no: 4,
         func: onJoinIntoOneString
     },
     "Convert List of KvP to JSON": {
-        no: 4,
+        no: 5,
         func: onKvpToJson
     },
     "Indexfy Array": {
-        no: 5,
+        no: 6,
         func: onConvertArrToDictWithIndex
     },
     "Get Json Key Or Values": {
-        no: 6,
+        no: 7,
         func: onGetJsonKeyValue
     },
     "Parse Store Procedure": {
-        no: 9,
+        no: 8,
         func: onParseSqlStoreProcedureIntoDict
     },
     "Convert JSON to Insert SQL": {
-        no: 10,
+        no: 9,
         func: onConvertSqlToInsert
     },
     "Format TaskList": {
-        no: 11,
+        no: 10,
         func: onFormatTasks
     },
 };
