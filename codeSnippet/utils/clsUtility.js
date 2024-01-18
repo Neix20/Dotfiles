@@ -393,7 +393,10 @@ function ConvertJsonToUpdateSql(text = "[]") {
 
             // [User_Id] = 12
 
-            for (const key in obj) {
+            const keys = Object.keys(obj);
+            const p_key = keys[0];
+
+            for (const key of keys.slice(1)) {
                 const val = obj[key];
                 sql_values.push(`[${key}] = '${val}'`);
             }
@@ -401,11 +404,14 @@ function ConvertJsonToUpdateSql(text = "[]") {
             sql_values[0] = "\t" + sql_values[0];
             sql_values = sql_values.join(",\n\t");
 
+            const where_cond = `AND ${p_key} = '${obj[p_key]}';`;
+
             let t_res = [
                 "UPDATE tblName",
                 "SET",
                 sql_values,
-                "WHERE 1=1;",
+                "WHERE 1=1",
+                where_cond
             ];
             t_res = t_res.join("\n");
         
