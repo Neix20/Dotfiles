@@ -1,5 +1,5 @@
 const { clsUtility, clsLogger, clsWriter, clsConst } = require("./utils");
-const { MakeIntoArr, JsonHelper, ConvertArrToDictWithIndex, GetJsonKeyValue, FormatSqlCsv, MakeIntoJson, JoinIntoOneString, ParseSqlStoreProcedureIntoDict, FormatTasks, ConvertSqlToInsert } = clsUtility;
+const { MakeIntoArr, JsonHelper, ConvertArrToDictWithIndex, GetJsonKeyValue, FormatSqlCsv, MakeIntoJson, JoinIntoOneString, ParseSqlStoreProcedureIntoDict, FormatTasks, ConvertJsonToInsertSql } = clsUtility;
 
 function main() {
     let arr;

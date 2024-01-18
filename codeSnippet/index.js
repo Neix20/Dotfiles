@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 
 const { clsUtility } = require("./utils");
-const { MakeIntoArr, JsonHelper, ConvertArrToDictWithIndex, GetJsonKeyValue, FormatSqlCsv, MakeIntoJson, JoinIntoOneString, ParseSqlStoreProcedureIntoDict, FormatTasks, ConvertSqlToInsert } = clsUtility;
+const { FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ConvertArrToDictWithIndex, ParseSqlStoreProcedureIntoDict, ConvertJsonToInsertSql, ConvertJsonToUpdateSql, FormatTasks } = clsUtility;
 
 function Wrapper(onFormat = () => { }) {
 
@@ -35,7 +35,8 @@ const OnJsonHelper = () => Wrapper(JsonHelper);
 const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
 const onConvertArrToDictWithIndex = () => Wrapper(ConvertArrToDictWithIndex);
 const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
-const onConvertSqlToInsert = () => Wrapper(ConvertSqlToInsert);
+const onConvertJsonToInsertSql = () => Wrapper(ConvertJsonToInsertSql);
+const onConvertJsonToUpdateSql = () => Wrapper(ConvertJsonToUpdateSql);
 const onFormatTasks = () => Wrapper(FormatTasks);
 
 // Stringify Json
@@ -75,10 +76,14 @@ module.exports.macroCommands = {
     },
     "Convert JSON to Insert SQL": {
         no: 9,
-        func: onConvertSqlToInsert
+        func: onConvertJsonToInsertSql
+    },
+    "Convert JSON to Update SQL": {
+        no: 10,
+        func: onConvertJsonToUpdateSql
     },
     "Format TaskList": {
-        no: 10,
+        no: 11,
         func: onFormatTasks
     },
 };

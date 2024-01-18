@@ -331,17 +331,7 @@ function FormatTasks(text = "") {
     }
 }
 
-
-/**
- * Converts a JSON string to a series of SQL INSERT statements.
- * Each object in the input array is converted into an INSERT statement.
- * The values of each object are inserted into the 'tblName' table.
- *
- * @param {string} text - The JSON string to convert.
- * @returns {string} - The SQL INSERT statements.
- * @throws {Error} - If there is an error parsing the JSON string.
- */
-function ConvertSqlToInsert(text = "[]") {
+function ConvertJsonToInsertSql(text = "[]") {
     if (text.length <= 0) {
         return "";
     }
@@ -356,17 +346,73 @@ function ConvertSqlToInsert(text = "[]") {
             let key = Object.keys(obj);
 
             key = key.map(x => x);
-            key = key.join(", ")
+
+            key[0] = "\t" + key[0];
+            key = key.join(",\n\t");
 
             let value = Object.values(obj);
 
             value = value.map(x => `'${x}'`);
-            value = value.join(", ");
 
-            res.push(`INSERT INTO tblName (${key}) VALUES (${value});`)
+            value[0] = "\t" + value[0];
+            value = value.join(",\n\t");
+
+            let t_res = [
+                "INSERT INTO tblName (",
+                key,
+                ") VALUES (",
+                value,
+                ");",
+            ];
+            t_res = t_res.join("\n");
+
+            res.push(t_res)
         }
 
-        res = res.join("\n");
+        res = res.join("\n\n");
+
+        return res;
+    } catch (error) {
+        throw error;
+    }
+}
+
+function ConvertJsonToUpdateSql(text = "[]") {
+    if (text.length <= 0) {
+        return "";
+    }
+
+    try {
+        const arr = JSON.parse(text);
+
+        let res = [];
+
+        for (const obj of arr) {
+
+            let sql_values = [];
+
+            // [User_Id] = 12
+
+            for (const key in obj) {
+                const val = obj[key];
+                sql_values.push(`[${key}] = '${val}'`);
+            }
+
+            sql_values[0] = "\t" + sql_values[0];
+            sql_values = sql_values.join(",\n\t");
+
+            let t_res = [
+                "UPDATE tblName",
+                "SET",
+                sql_values,
+                "WHERE 1=1;",
+            ];
+            t_res = t_res.join("\n");
+        
+            res.push(t_res);
+        }
+
+        res = res.join("\n\n");
 
         return res;
     } catch (error) {
@@ -384,16 +430,17 @@ utils = {
 
 utils = {
     ...utils,
-    MakeIntoArr,
-    JsonHelper,
-    ConvertArrToDictWithIndex,
-    GetJsonKeyValue,
     FormatSqlCsv,
+    MakeIntoArr,
     MakeIntoJson,
     JoinIntoOneString,
+    JsonHelper,
+    GetJsonKeyValue,
+    ConvertArrToDictWithIndex,
     ParseSqlStoreProcedureIntoDict,
+    ConvertJsonToInsertSql,
+    ConvertJsonToUpdateSql,
     FormatTasks,
-    ConvertSqlToInsert,
 };
 
 module.exports = utils;
