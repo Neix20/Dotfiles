@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 
 const { clsUtility } = require("./utils");
-const { MakeIntoArr, MakeIntoJson, ConvertArrToDictWithIndex, GetJsonKeyValue, FormatSqlCsv, KvpToJson, JoinIntoOneString, ParseSqlStoreProcedureIntoDict, FormatTasks, ConvertSqlToInsert } = clsUtility;
+const { MakeIntoArr, JsonHelper, ConvertArrToDictWithIndex, GetJsonKeyValue, FormatSqlCsv, MakeIntoJson, JoinIntoOneString, ParseSqlStoreProcedureIntoDict, FormatTasks, ConvertSqlToInsert } = clsUtility;
 
 function Wrapper(onFormat = () => { }) {
 
@@ -28,44 +28,46 @@ function Wrapper(onFormat = () => { }) {
 }
 
 const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
+const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
 const onMakeIntoArr = () => Wrapper(MakeIntoArr);
 const onMakeIntoJson = () => Wrapper(MakeIntoJson);
-const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
-const onKvpToJson = () => Wrapper(KvpToJson);
-const onConvertArrToDictWithIndex = () => Wrapper(ConvertArrToDictWithIndex);
+const OnJsonHelper = () => Wrapper(JsonHelper);
 const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
+const onConvertArrToDictWithIndex = () => Wrapper(ConvertArrToDictWithIndex);
 const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
 const onConvertSqlToInsert = () => Wrapper(ConvertSqlToInsert);
 const onFormatTasks = () => Wrapper(FormatTasks);
+
+// Stringify Json
 
 module.exports.macroCommands = {
     "Format SQL": {
         no: 1,
         func: onFormatSqlCsv
     },
-    "Make Into Array": {
+    "Join Into One String": {
         no: 2,
+        func: onJoinIntoOneString
+    },
+    "Make Into Array": {
+        no: 3,
         func: onMakeIntoArr
     },
     "Make Into Json": {
-        no: 3,
+        no: 4,
         func: onMakeIntoJson
     },
-    "Join Into One String": {
-        no: 4,
-        func: onJoinIntoOneString
-    },
-    "Convert List of KvP to JSON": {
+    "Handle Json Object": {
         no: 5,
-        func: onKvpToJson
-    },
-    "Indexfy Array": {
-        no: 6,
-        func: onConvertArrToDictWithIndex
+        func: OnJsonHelper
     },
     "Get Json Key Or Values": {
-        no: 7,
+        no: 6,
         func: onGetJsonKeyValue
+    },
+    "Indexfy Array": {
+        no: 7,
+        func: onConvertArrToDictWithIndex
     },
     "Parse Store Procedure": {
         no: 8,

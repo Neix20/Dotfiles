@@ -16,6 +16,7 @@ function genDt() {
     return `${t}T${t2}`;
 }
 
+// #region Core Functions
 function MakeIntoArr(text = "") {
     if (text.length <= 0) {
         return "";
@@ -23,13 +24,19 @@ function MakeIntoArr(text = "") {
 
     try {
         let res = text.split("\n");
+
+        if (res.length == 1) {
+            return JSON.stringify(res[0]);
+        }
+
         return JSON.stringify(res, null, 4);
     } catch (error) {
         throw error;
     }
 }
 
-function MakeIntoJson(text = "{}") {
+// Check If It Contains JSON Object Node
+function JsonHelper(text = "{}") {
     if (text.length <= 0) {
         return "";
     }
@@ -44,14 +51,40 @@ function MakeIntoJson(text = "{}") {
                 obj = { "response": "Error! Too many Objects!" };
                 break;
             }
+
+            if (ind == 0) {
+                obj = obj
+                    .replace(/\\"/g, `"`)
+                    .replace(/"\{/g, "{")
+                    .replace(/\}"/g, "}");
+            }
+
             obj = JSON.parse(obj);
             ind += 1;
         }
 
-        const { sort = false } = obj;
+        const { sort = false, type = "json", pairSwitch = false } = obj;
 
         if ("sort" in obj) {
             delete obj["sort"];
+        }
+
+        if ("type" in obj) {
+            delete obj["type"];
+        }
+
+        if ("pairSwitch" in obj) {
+            delete obj["pairSwitch"];
+        }
+
+        if (type === "string") {
+            const res = JSON.stringify(obj)
+                .replace(/"/g, '\\"')
+                .replace(/\\{2,}/g, '\\')
+            // .replace(/\{/g, '\\{')
+            // .replace(/\}/g, '\\}')
+
+            return `\"${res}\"`;
         }
 
         let res = {};
@@ -64,7 +97,13 @@ function MakeIntoJson(text = "{}") {
         }
 
         for (let key of keys) {
-            res[key] = obj[key];
+            const val = obj[key];
+
+            if (pairSwitch) {
+                res[val] = key;
+            } else {
+                res[key] = val;
+            }
         }
 
         return JSON.stringify(res, null, 4);
@@ -129,6 +168,7 @@ function FormatSqlCsv(text = "") {
     try {
         let res = text.split("\n");
 
+        // Remove FirstLine
         res = res.slice(1);
 
         // Javascript regex match if string starts with " and ends with white string
@@ -136,7 +176,6 @@ function FormatSqlCsv(text = "") {
         res = res.filter(x => !rgx.test(x));
 
         res = res.map(x => x.slice(1));
-
         res = res.join("\n");
 
         return res;
@@ -145,19 +184,43 @@ function FormatSqlCsv(text = "") {
     }
 }
 
-function KvpToJson(text = "[]") {
+function MakeIntoJson(text = "[]") {
+
     if (text.length <= 0) {
         return "";
     }
 
     try {
-        const arr = JSON.parse(text);
+        let rgx;
+        let arr = text.split("\n");
+
+        // Remove Whitespace
+        arr = arr.map(x => x.trim());
+
+        rgx = /^\s*$/;
+        arr = arr.filter(x => !rgx.test(x));
 
         let res = {};
 
-        for (let obj of arr) {
-            const { Key, Value } = obj;
-            res[Key] = Value;
+        for (let str of arr) {
+            rgx = /, |; |\| |,|;|\|/;
+            let t_arr = str.split(rgx);
+
+            if (t_arr.length >= 2) {
+
+                // Join Remaining String
+                t_arr = [
+                    t_arr[0],
+                    t_arr.slice(1).join(", ")
+                ]
+
+                // Remove Quotes
+                rgx = /"?(.*?)"?/g
+                t_arr = t_arr.map(x => x.replace(rgx, "$1"));
+
+                const [key, val] = t_arr;
+                res[key] = val;
+            }
         };
 
         return JSON.stringify(res, null, 4);
@@ -175,7 +238,6 @@ function JoinIntoOneString(text = "") {
         let res = text.split("\n");
 
         res = res.map(x => x.trim());
-
         res = res.join(" ");
 
         return res;
@@ -269,6 +331,16 @@ function FormatTasks(text = "") {
     }
 }
 
+
+/**
+ * Converts a JSON string to a series of SQL INSERT statements.
+ * Each object in the input array is converted into an INSERT statement.
+ * The values of each object are inserted into the 'tblName' table.
+ *
+ * @param {string} text - The JSON string to convert.
+ * @returns {string} - The SQL INSERT statements.
+ * @throws {Error} - If there is an error parsing the JSON string.
+ */
 function ConvertSqlToInsert(text = "[]") {
     if (text.length <= 0) {
         return "";
@@ -277,16 +349,21 @@ function ConvertSqlToInsert(text = "[]") {
     try {
         const arr = JSON.parse(text);
 
-        let res = []
+        let res = [];
 
         for (const obj of arr) {
-            let val = Object.values(obj);
 
-            val = val.map(x => `'${x}'`);
+            let key = Object.keys(obj);
 
-            val = val.join(", ");
+            key = key.map(x => x);
+            key = key.join(", ")
 
-            res.push(`INSERT INTO tblName VALUES (${val});`)
+            let value = Object.values(obj);
+
+            value = value.map(x => `'${x}'`);
+            value = value.join(", ");
+
+            res.push(`INSERT INTO tblName (${key}) VALUES (${value});`)
         }
 
         res = res.join("\n");
@@ -296,6 +373,7 @@ function ConvertSqlToInsert(text = "[]") {
         throw error;
     }
 }
+// #endregion
 
 let utils = {};
 
@@ -307,11 +385,11 @@ utils = {
 utils = {
     ...utils,
     MakeIntoArr,
-    MakeIntoJson,
+    JsonHelper,
     ConvertArrToDictWithIndex,
     GetJsonKeyValue,
     FormatSqlCsv,
-    KvpToJson,
+    MakeIntoJson,
     JoinIntoOneString,
     ParseSqlStoreProcedureIntoDict,
     FormatTasks,
