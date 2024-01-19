@@ -2,13 +2,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "node: codeSnippet/sandbox.js",
+            "label": "node: sandbox",
             "type": "shell",
             "command": "node codeSnippet/sandbox.js",
             "problemMatcher": []
         },
         {
-            "label": "node: codeSnippet",
+            "label": "node: index",
             "type": "shell",
             "command": "node codeSnippet/index.js",
             "problemMatcher": []

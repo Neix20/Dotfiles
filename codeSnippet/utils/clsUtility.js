@@ -36,6 +36,7 @@ function MakeIntoArr(text = "") {
 }
 
 // Check If It Contains JSON Object Node
+// This Does Indexy As Well I dk how
 function JsonHelper(text = "{}") {
     if (text.length <= 0) {
         return "";
@@ -90,6 +91,7 @@ function JsonHelper(text = "{}") {
         let res = {};
 
         // 2. Sort JSON Object By Keys
+        // Object.keys on Array return Index
         let keys = Object.keys(obj);
 
         if (sort) {
@@ -104,26 +106,6 @@ function JsonHelper(text = "{}") {
             } else {
                 res[key] = val;
             }
-        }
-
-        return JSON.stringify(res, null, 4);
-    } catch (error) {
-        throw error;
-    }
-}
-
-function ConvertArrToDictWithIndex(text = "[]") {
-    if (text.length <= 0) {
-        return "";
-    }
-
-    try {
-        const arr = JSON.parse(text);
-
-        let res = {};
-
-        for (let ind = 0; ind < arr.length; ind++) {
-            res[ind] = arr[ind];
         }
 
         return JSON.stringify(res, null, 4);
@@ -184,6 +166,7 @@ function FormatSqlCsv(text = "") {
     }
 }
 
+// [ ] Make Into List of JSON if Same Key
 function MakeIntoJson(text = "[]") {
 
     if (text.length <= 0) {
@@ -202,6 +185,8 @@ function MakeIntoJson(text = "[]") {
 
         let res = {};
 
+        let res_ls = []
+
         for (let str of arr) {
             rgx = /, |; |\| |,|;|\|/;
             let t_arr = str.split(rgx);
@@ -219,9 +204,21 @@ function MakeIntoJson(text = "[]") {
                 t_arr = t_arr.map(x => x.replace(rgx, "$1"));
 
                 const [key, val] = t_arr;
+
+                if (key in res) {
+                    res_ls.push({...res});
+                    res = {};
+                } 
+
                 res[key] = val;
             }
         };
+
+        // Return List
+        if (res_ls.length > 0) {
+            res_ls.push(res);
+            res = res_ls;
+        }
 
         return JSON.stringify(res, null, 4);
     } catch (error) {
@@ -442,7 +439,6 @@ utils = {
     JoinIntoOneString,
     JsonHelper,
     GetJsonKeyValue,
-    ConvertArrToDictWithIndex,
     ParseSqlStoreProcedureIntoDict,
     ConvertJsonToInsertSql,
     ConvertJsonToUpdateSql,
