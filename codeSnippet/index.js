@@ -66,19 +66,19 @@ module.exports.macroCommands = {
         func: onGetJsonKeyValue
     },
     "Parse Store Procedure": {
-        no: 8,
+        no: 7,
         func: onParseSqlStoreProcedureIntoDict
     },
     "Convert JSON to Insert SQL": {
-        no: 9,
+        no: 8,
         func: onConvertJsonToInsertSql
     },
     "Convert JSON to Update SQL": {
-        no: 10,
+        no: 9,
         func: onConvertJsonToUpdateSql
     },
     "Format TaskList": {
-        no: 11,
+        no: 10,
         func: onFormatTasks
     },
 };
