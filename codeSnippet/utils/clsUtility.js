@@ -35,8 +35,6 @@ function MakeIntoArr(text = "") {
     }
 }
 
-// Check If It Contains JSON Object Node
-// This Does Indexy As Well I dk how
 function JsonHelper(text = "{}") {
     if (text.length <= 0) {
         return "";
@@ -64,28 +62,14 @@ function JsonHelper(text = "{}") {
             ind += 1;
         }
 
-        const { sort = false, type = "json", pairSwitch = false } = obj;
+        const { sort = false, pairSwitch = false } = obj;
 
         if ("sort" in obj) {
             delete obj["sort"];
         }
 
-        if ("type" in obj) {
-            delete obj["type"];
-        }
-
         if ("pairSwitch" in obj) {
             delete obj["pairSwitch"];
-        }
-
-        if (type === "string") {
-            const res = JSON.stringify(obj)
-                .replace(/"/g, '\\"')
-                .replace(/\\{2,}/g, '\\')
-            // .replace(/\{/g, '\\{')
-            // .replace(/\}/g, '\\}')
-
-            return `\"${res}\"`;
         }
 
         let res = {};
@@ -166,7 +150,7 @@ function FormatSqlCsv(text = "") {
     }
 }
 
-// [ ] Make Into List of JSON if Same Key
+// [x] Make Into List of JSON if Same Key
 function MakeIntoJson(text = "[]") {
 
     if (text.length <= 0) {
@@ -206,9 +190,9 @@ function MakeIntoJson(text = "[]") {
                 const [key, val] = t_arr;
 
                 if (key in res) {
-                    res_ls.push({...res});
+                    res_ls.push({ ...res });
                     res = {};
-                } 
+                }
 
                 res[key] = val;
             }
@@ -327,46 +311,28 @@ function FormatTasks(text = "") {
         throw error;
     }
 }
+// #endregion
 
-function ConvertJsonToInsertSql(text = "[]") {
+// #region Convert To SQL Helper
+function ConvertJsonToSql(text = "{}") {
     if (text.length <= 0) {
         return "";
     }
 
     try {
-        const arr = JSON.parse(text);
+        let res = "";
 
-        let res = [];
+        const jObj = JSON.parse(text);
 
-        for (const obj of arr) {
+        const { type = "insert", data = [] } = jObj;
 
-            let key = Object.keys(obj);
-
-            key = key.map(x => x);
-
-            key[0] = "\t" + key[0];
-            key = key.join(",\n\t");
-
-            let value = Object.values(obj);
-
-            value = value.map(x => `'${x}'`);
-
-            value[0] = "\t" + value[0];
-            value = value.join(",\n\t");
-
-            let t_res = [
-                "INSERT INTO tblName (",
-                key,
-                ") VALUES (",
-                value,
-                ");",
-            ];
-            t_res = t_res.join("\n");
-
-            res.push(t_res)
+        if (type === "insert") {
+            res = InsertSql(data);
+        } else if (type === "update") {
+            res = UpdateSql(data);
+        } else if (type === "select") {
+            res = SelectSql(data);
         }
-
-        res = res.join("\n\n");
 
         return res;
     } catch (error) {
@@ -374,32 +340,73 @@ function ConvertJsonToInsertSql(text = "[]") {
     }
 }
 
-function ConvertJsonToUpdateSql(text = "[]") {
-    if (text.length <= 0) {
-        return "";
+function InsertSql(data = []) {
+    let res = [];
+
+    if (Array.isArray(data)) {
+        for (const obj of data) {
+
+            const keys = Object.keys(obj)
+                .map(x => `\t${x}`)
+                .join(",\n");
+
+            const values = Object.values(obj)
+                .map(x => `\t'${x}'`)
+                .join(",\n");
+
+            let t_res = [
+                "INSERT INTO tblName (",
+                keys,
+                ") VALUES (",
+                values,
+                ");"
+            ];
+
+            t_res = t_res.join("\n");
+
+            res.push(t_res);
+        }
+
+        res = res.join("\n\n");
+    }
+    // If Its Object
+    else {
+        const keys = Object.keys(data)
+            .map(x => `\t${x}`)
+            .join(",\n");
+
+        const values = Object.values(data)
+            .map(x => `\t'${x}'`)
+            .join(",\n");
+
+        res = [
+            "INSERT INTO tblName (",
+            keys,
+            ") VALUES (",
+            values,
+            ");"
+        ];
+
+        res = res.join("\n");
     }
 
-    try {
-        const arr = JSON.parse(text);
+    return res;
+}
 
-        let res = [];
+function UpdateSql(data = []) {
+    let res = [];
 
-        for (const obj of arr) {
-
-            let sql_values = [];
-
-            // [User_Id] = 12
+    if (Array.isArray(data)) {
+        for (const obj of data) {
 
             const keys = Object.keys(obj);
-            const p_key = keys[0];
+            const p_key = keys.at(0);
 
-            for (const key of keys.slice(1)) {
-                const val = obj[key];
-                sql_values.push(`[${key}] = '${val}'`);
-            }
-
-            sql_values[0] = "\t" + sql_values[0];
-            sql_values = sql_values.join(",\n\t");
+            const sql_values = keys
+                .slice(1)
+                .map(key => `[${key}] = '${obj[key]}'`)
+                .map(x => `\t${x}`)
+                .join(",\n");
 
             const where_cond = `AND ${p_key} = '${obj[p_key]}';`;
 
@@ -410,17 +417,97 @@ function ConvertJsonToUpdateSql(text = "[]") {
                 "WHERE 1=1",
                 where_cond
             ];
+
             t_res = t_res.join("\n");
-        
+
             res.push(t_res);
         }
 
         res = res.join("\n\n");
-
-        return res;
-    } catch (error) {
-        throw error;
     }
+    // If Its Object
+    else {
+        const keys = Object.keys(data);
+        const p_key = keys.at(0);
+
+        const sql_values = keys
+            .slice(1)
+            .map(key => `[${key}] = '${data[key]}'`)
+            .map(x => `\t${x}`)
+            .join(",\n");
+
+        const where_cond = `AND ${p_key} = '${data[p_key]}';`;
+
+        res = [
+            "UPDATE tblName",
+            "SET",
+            sql_values,
+            "WHERE 1=1",
+            where_cond
+        ];
+
+        res = res.join("\n");
+    }
+
+    return res;
+}
+
+function SelectSql(data = []) {
+
+    let res = [];
+
+    if (Array.isArray(data)) {
+        for (const obj of data) {
+
+            const keys = Object.keys(obj)
+            const p_key = keys.at(0);
+
+            const sql_values = keys
+                .slice(1)
+                .map(x => `\t${x}`)
+                .join(",\n");
+
+            const values = Object.values(obj);
+
+            let t_res = [
+                "SELECT",
+                sql_values,
+                "FROM tblName",
+                "WHERE 1=1",
+                `AND ${p_key} = '${values[0]}';`
+            ];
+
+            t_res = t_res.join("\n");
+
+            res.push(t_res);
+        }
+
+        res = res.join("\n\n");
+    }
+    // If Its Object
+    else {
+        const keys = Object.keys(data)
+        const p_key = keys.at(0);
+
+        const sql_values = keys
+            .slice(1)
+            .map(x => `\t${x}`)
+            .join(",\n");
+
+        const values = Object.values(data);
+
+        res = [
+            "SELECT",
+            sql_values,
+            "FROM tblName",
+            "WHERE 1=1",
+            `AND ${p_key} = '${values[0]}';`
+        ];
+
+        res = res.join("\n");
+    }
+
+    return res;
 }
 // #endregion
 
@@ -440,8 +527,7 @@ utils = {
     JsonHelper,
     GetJsonKeyValue,
     ParseSqlStoreProcedureIntoDict,
-    ConvertJsonToInsertSql,
-    ConvertJsonToUpdateSql,
+    ConvertJsonToSql,
     FormatTasks,
 };
 

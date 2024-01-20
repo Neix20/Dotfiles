@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 
 const { clsUtility } = require("./utils");
-const { FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ParseSqlStoreProcedureIntoDict, ConvertJsonToInsertSql, ConvertJsonToUpdateSql, FormatTasks } = clsUtility;
+const {FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ParseSqlStoreProcedureIntoDict, ConvertJsonToSql, FormatTasks,} = clsUtility;
 
 function Wrapper(onFormat = () => { }) {
 
@@ -34,8 +34,7 @@ const onMakeIntoJson = () => Wrapper(MakeIntoJson);
 const OnJsonHelper = () => Wrapper(JsonHelper);
 const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
 const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
-const onConvertJsonToInsertSql = () => Wrapper(ConvertJsonToInsertSql);
-const onConvertJsonToUpdateSql = () => Wrapper(ConvertJsonToUpdateSql);
+const onConvertJsonToSql = () => Wrapper(ConvertJsonToSql);
 const onFormatTasks = () => Wrapper(FormatTasks);
 
 // Stringify Json
@@ -61,7 +60,8 @@ module.exports.macroCommands = {
         no: 5,
         func: OnJsonHelper
     },
-    "Get Json Key Or Values": {
+    // [ ] Modify This to Cater for List of JSON
+    "Get Json Key And Values": {
         no: 6,
         func: onGetJsonKeyValue
     },
@@ -69,13 +69,9 @@ module.exports.macroCommands = {
         no: 7,
         func: onParseSqlStoreProcedureIntoDict
     },
-    "Convert JSON to Insert SQL": {
+    "Convert JSON to SQL": {
         no: 8,
-        func: onConvertJsonToInsertSql
-    },
-    "Convert JSON to Update SQL": {
-        no: 9,
-        func: onConvertJsonToUpdateSql
+        func: onConvertJsonToSql
     },
     "Format TaskList": {
         no: 10,
