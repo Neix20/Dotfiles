@@ -104,23 +104,46 @@ function GetJsonKeyValue(text = "[]") {
     }
 
     try {
-        const obj = JSON.parse(text);
 
-        let res = [];
+        const data = JSON.parse(text);
 
-        const { type = "values" } = obj;
+        if (Array.isArray(data)) {
 
-        if ("type" in obj) {
-            delete obj["type"];
+            let res = [];
+
+            for (const obj of data) {
+                const t_res = Object.entries(obj)
+                    .map(([key, value]) => `${key}; ${value}`)
+                    .join("\n");
+                res.push(t_res);
+            }
+
+            res = res.join("\n");
+
+            return res;
+        } else {
+            let res = [];
+
+            const { type = "" } = data;
+
+            if ("type" in data) {
+                delete data["type"];
+            }
+    
+            if (type == "values") {
+                res = Object.values(data);
+            } else if (type == "keys") {
+                res = Object.keys(data);
+            } else {
+                res = Object.entries(data).map(([key, value]) => `${key}; ${value}`);
+            }
+
+            res = res.join("\n");
+
+            return res;
         }
 
-        if (type == "values") {
-            res = Object.values(obj);
-        } else if (type == "keys") {
-            res = Object.keys(obj);
-        }
-
-        return JSON.stringify(res, null, 4);
+        return "";
     } catch (error) {
         throw error;
     }
@@ -408,7 +431,7 @@ function UpdateSql(data = []) {
                 .map(x => `\t${x}`)
                 .join(",\n");
 
-            const where_cond = `AND ${p_key} = '${obj[p_key]}';`;
+            const where_cond = `AND [${p_key}] = '${obj[p_key]}';`;
 
             let t_res = [
                 "UPDATE tblName",
@@ -436,7 +459,7 @@ function UpdateSql(data = []) {
             .map(x => `\t${x}`)
             .join(",\n");
 
-        const where_cond = `AND ${p_key} = '${data[p_key]}';`;
+        const where_cond = `AND [${p_key}] = '${data[p_key]}';`;
 
         res = [
             "UPDATE tblName",
@@ -464,17 +487,19 @@ function SelectSql(data = []) {
 
             const sql_values = keys
                 .slice(1)
-                .map(x => `\t${x}`)
+                .map(x => `\t[${x}]`)
                 .join(",\n");
 
             const values = Object.values(obj);
+
+            const where_cond = `AND [${p_key}] = '${values[0]}';`
 
             let t_res = [
                 "SELECT",
                 sql_values,
                 "FROM tblName",
                 "WHERE 1=1",
-                `AND ${p_key} = '${values[0]}';`
+                where_cond
             ];
 
             t_res = t_res.join("\n");
@@ -491,17 +516,19 @@ function SelectSql(data = []) {
 
         const sql_values = keys
             .slice(1)
-            .map(x => `\t${x}`)
+            .map(x => `\t[${x}]`)
             .join(",\n");
 
         const values = Object.values(data);
+
+        const where_cond = `AND [${p_key}] = '${values[0]}';`
 
         res = [
             "SELECT",
             sql_values,
             "FROM tblName",
             "WHERE 1=1",
-            `AND ${p_key} = '${values[0]}';`
+            where_cond
         ];
 
         res = res.join("\n");
