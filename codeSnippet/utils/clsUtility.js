@@ -61,7 +61,6 @@ function parseNestedJson(txt) {
     }
 }
 
-
 function JsonHelper(text = "{}") {
     if (text.length <= 0) {
         return "";
@@ -71,6 +70,7 @@ function JsonHelper(text = "{}") {
         // 1. Convert Selection to json Object
         let obj = text;
 
+        // Convert all Child Object of 1 Level to Object
         obj = parseNestedJson(obj);
 
         const { sort = false, pairSwitch = false } = obj;
