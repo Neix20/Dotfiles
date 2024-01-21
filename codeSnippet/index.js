@@ -12,28 +12,16 @@ function Wrapper(onFormat = () => { }) {
         return " Editor is not opening.";
     }
 
-    const selection = editor.selection;
-    const text = editor.document.getText(selection);
+    editor.edit(editBuilder => {
+        editor.selections.forEach(selection => {
 
-    if (text.length > 0) {
-        // Execute Code Function
-        const res = onFormat(text);
+            const text = editor.document.getText(selection);
+            const res = onFormat(text);
 
-        editor.edit(editBuilder => {
-            editor.selections.forEach(selection => {
-                const range = new vscode.Range(selection.start, selection.end);
-                editBuilder.replace(selection, res);
-            });
+            editBuilder.replace(selection, res);
         });
-    } else {
-        return " Selection Cannot be Empty!";
-    }
+    });
 }
-
-function Test(text = "[]") {
-    return "Fuck You"
-}
-
 
 const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
 const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
@@ -44,9 +32,6 @@ const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
 const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
 const onConvertJsonToSql = () => Wrapper(ConvertJsonToSql);
 const onFormatTasks = () => Wrapper(FormatTasks);
-const onTest = () => Wrapper(Test);
-
-// Stringify Json
 
 module.exports.macroCommands = {
     "Format SQL": {
