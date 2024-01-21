@@ -27,8 +27,8 @@ function MakeIntoArr(text = "") {
 
         if (res.length == 1) {
             res[0] = res[0].replace(/\\{2,}/g, `\\`);
-            res[0] = JSON.stringify(res[0]);
-            res[0] = res[0].replace(/\\{2,}/g, `\\`);
+            res[0] = JSON.stringify(res[0])
+                .replace(/\\{2,}/g, `\\`);
             return res[0];
         }
 
@@ -243,8 +243,12 @@ function MakeIntoJson(text = "[]") {
                 // Check If "[", "]", "{", "}" is in val
                 rgx = /[{\[\]}]/g;
                 if (rgx.test(val)) {
-                    val = `"${val}"`;
-                    val = JSON.parse(val);
+                    try {
+                        val = `"${val}"`;
+                        val = JSON.parse(val);
+                    } catch (err) {
+
+                    }
                 }
 
                 // Check if Duplicates
@@ -265,7 +269,13 @@ function MakeIntoJson(text = "[]") {
 
         // Output I: { "Name": "Ivan Holloway" }
         // Output II: [{ "Name": "Ivan Holloway" }, { "Name": "Lora Garcia" }]
-        return JSON.stringify(res, null, 4);
+        res = JSON.stringify(res, null, 4)
+            .replace(/\\{2,}/g, `\\`)
+            .replace(/\\"\{/g, "{")
+            .replace(/\}\\"/g, "}")
+            .replace(/\\"\[/g, "[")
+            .replace(/\]\\"/g, "]");
+        return res;
     } catch (error) {
         throw error;
     }

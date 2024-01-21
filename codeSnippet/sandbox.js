@@ -21,9 +21,7 @@ function main() {
         // 7. Json String With Json String of Array
         "{ \"data\": \"[ \"asdf\", \"asdf\" ]\" }",
         // 8. Hard One
-        {
-            "data": "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }"
-        },
+        { "data": "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }" },
         "{ \"data\": \"{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }\" }"
     ];
 
