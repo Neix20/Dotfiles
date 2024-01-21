@@ -26,7 +26,10 @@ function MakeIntoArr(text = "") {
         let res = text.split("\n");
 
         if (res.length == 1) {
-            return JSON.stringify(res[0]);
+            res[0] = res[0].replace(/\\{2,}/g, `\\`);
+            res[0] = JSON.stringify(res[0]);
+            res[0] = res[0].replace(/\\{2,}/g, `\\`);
+            return res[0];
         }
 
         return JSON.stringify(res, null, 4);
@@ -51,16 +54,18 @@ function JsonHelper(text = "{}") {
                 break;
             }
 
-            if (ind == 0) {
-                obj = obj
-                    .replace(/\\"/g, `"`)
-                    .replace(/"\{/g, "{")
-                    .replace(/\}"/g, "}");
-            }
+            obj = obj
+                .replace(/\\"/g, `"`)
+                .replace(/"\{/g, "{")
+                .replace(/\}"/g, "}")
+                .replace(/"\[/g, "[")
+                .replace(/\]"/g, "]");
 
             obj = JSON.parse(obj);
             ind += 1;
         }
+
+        // Convert all Child Object of 1 Level to Object
 
         const { sort = false, pairSwitch = false } = obj;
 
@@ -159,8 +164,6 @@ function GetJsonKeyValue(text = "[]") {
 
             return res;
         }
-
-        return "";
     } catch (error) {
         throw error;
     }
@@ -223,13 +226,20 @@ function MakeIntoJson(text = "[]") {
                 t_arr = [
                     t_arr[0],
                     t_arr.slice(1).join(", ")
-                ]
+                ];
 
                 // Remove Quotes
                 rgx = /^"?(.*?)"?$/g
                 t_arr = t_arr.map(x => x.replace(rgx, "$1"));
 
                 let [key, val] = t_arr;
+
+                // Check If "[", "]", "{", "}" is in val
+                rgx = /[{\[\]}]/g;
+                if (rgx.test(val)) {
+                    val = `"${val}"`;
+                    val = JSON.parse(val);
+                }
 
                 // Check if Duplicates
                 if (key in res) {   

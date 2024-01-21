@@ -1,18 +1,101 @@
 
 
 const { clsUtility } = require("./../utils");
-const { FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ParseSqlStoreProcedureIntoDict, ConvertJsonToSql, FormatTasks,} = clsUtility;// math.test.js
-const add = require('./math');
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(add(1, 2)).toBe(3);
+const { JsonHelper } = clsUtility;
+
+test("Json Object", () => {
+
+    const obj = {
+        "Name": "Brent Luna"
+    }
+    const rObj = JSON.stringify(obj, null, 4);
+
+    const res = JsonHelper(obj);
+
+    expect(res).toBe(rObj);
 });
 
-test('adds -1 + 1 to equal 0', () => {
-  expect(add(-1, 1)).toBe(0);
+// Json Object With String
+test("Json String", () => {
+
+    const obj = {
+        "Name": "Brent Luna"
+    }
+    const rObj = JSON.stringify(obj, null, 4);
+
+    const txt = "{ \"Name\": \"Brent Luna\" }";
+    const res = JsonHelper(txt);
+
+    expect(res).toBe(rObj);
+})
+
+// Json Obj With Json String
+test("Json Obj With Json String", () => {
+
+    const obj = {
+        "data": "{ \"Name\": \"Brent Luna\" }"
+    }
+    const rObj = JSON.stringify(obj, null, 4);
+
+    const res = JsonHelper(obj);
+
+    expect(res).toBe(rObj);
 });
 
-test('adds 0.1 + 0.2 to equal 0.3 (floating point precision issue)', () => {
-  // Use toBeCloseTo for floating-point comparisons
-  expect(add(0.1, 0.2)).toBeCloseTo(0.3);
+// Json String With Json String
+test("Json String With Json String", () => {
+
+    const obj = {
+        "data": {
+            "Name": "Brent Luna"
+        }
+    }
+    const rObj = JSON.stringify(obj, null, 4);
+
+    const txt = "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }";
+    const res = JsonHelper(txt);
+
+    expect(res).toBe(rObj);
 });
+
+test("Json With Array Inside", () => {
+
+    const obj = {
+        "data": [ "asdf", "asdf" ]
+    }
+    const rObj = JSON.stringify(obj, null, 4);
+
+    const res = JsonHelper(obj);
+
+    expect(res).toBe(rObj);
+})
+
+test("Json With Json String of Array", () => {
+
+    const obj = {
+        "data": [ "asdf", "asdf" ]
+    }
+    const rObj = JSON.stringify(obj, null, 4);
+
+    const tObj = {
+        "data": "[ \"asdf\", \"asdf\" ]"
+    }
+    const res = JsonHelper(tObj);
+
+    expect(res).toBe(rObj);
+});
+
+test("Json String With Json String of Array", () => {
+
+    const obj = {
+        "data": [ "asdf", "asdf" ]
+    }
+    const rObj = JSON.stringify(obj, null, 4);
+
+    const tObj = "{ \"data\": \"[ \"asdf\", \"asdf\" ]\" }"
+    const res = JsonHelper(tObj);
+
+    expect(res).toBe(rObj);
+});
+

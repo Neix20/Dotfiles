@@ -5,6 +5,10 @@
   "license": "MIT",
   "scripts": {
     "index": "node index.js",
-    "sandbox": "node sandbox.js"
+    "sandbox": "node sandbox.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^29.7.0"
   }
 }

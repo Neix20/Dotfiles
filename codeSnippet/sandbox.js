@@ -5,37 +5,46 @@ function main() {
     let arr;
 
     // GetJsonKeyValue
-    arr = `
-    [
+    arr = [
+        // 1. Normal Json
+        { "Name": "Brent Luna" },
+        // 2. Json String
+        "{ \"Name\": \"Brent Luna\" }",
+        // 3. Json Object With Json String
+        { "data": "{ \"Name\": \"Brent Luna\" }" },
+        // 4. Json String With Json String
+        "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }",
+        // 5. Json Object With Json Array
+        { "data": [ "asdf", "asdf" ] },
+        // 6. Json With Json String of Array
+        { "data": "[ \"asdf\", \"asdf\" ]" },
+        // 7. Json String With Json String of Array
+        "{ \"data\": \"[ \"asdf\", \"asdf\" ]\" }",
+        // 8. Hard One
         {
-            "Email": "hihekiz@bijisogav.co",
-            "Name": "Josie Nichols",
-            "Age": "24"
+            "data": "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }"
         },
-        {
-            "Email": "ub@badude.tf",
-            "Name": "Hester Pratt",
-            "Age": "3"
-        },
-        {
-            "Email": "gowi@voecik.vc",
-            "Name": "Calvin Hall",
-            "Age": "22"
-        },
-        {
-            "Email": "afduz@dupejom.bt",
-            "Name": "Samuel Bowen",
-            "Age": "28"
-        }
-    ]
-`;
+        "{ \"data\": \"{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }\" }"
+    ];
+
+    // for ( const obj of arr) {
+    //     try {
+    //         const res = JsonHelper(obj);
+    //         console.log(`Output: ${res}`);
+    //     } catch (err) {
+    //         console.error(`Error: ${obj}`)
+    //     }
+    // }
+
+    arr = "data; \"{ \"data\": [ { \"Name\": \"Edwin Sutton\" }, { \"Name\": \"Addie Little\" }, { \"Name\": \"Etta Wise\" }, { \"Name\": \"Troy Stevenson\" }, { \"Name\": \"Clarence Ballard\" } ] }\""
 
     try {
-        arr = GetJsonKeyValue(arr);
-        console.log(arr);
+        const res = MakeIntoJson(arr);
+        console.log(`Output: ${res}`);
     } catch (err) {
-        console.error(err)
+        console.error(`Error: ${arr}`)
     }
+
 }
 
 main();

@@ -18,6 +18,8 @@ function Wrapper(onFormat = () => { }) {
             const text = editor.document.getText(selection);
             const res = onFormat(text);
 
+            // vscode.window.showInformationMessage(res);
+
             editBuilder.replace(selection, res);
         });
     });
@@ -54,7 +56,6 @@ module.exports.macroCommands = {
         no: 5,
         func: OnJsonHelper
     },
-    // [ ] Modify This to Cater for List of JSON
     "Get Json Key And Values": {
         no: 6,
         func: onGetJsonKeyValue
@@ -68,7 +69,7 @@ module.exports.macroCommands = {
         func: onConvertJsonToSql
     },
     "Format TaskList": {
-        no: 10,
+        no: 9,
         func: onFormatTasks
     },
 };
