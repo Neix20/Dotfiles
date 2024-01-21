@@ -38,6 +38,30 @@ function MakeIntoArr(text = "") {
     }
 }
 
+function parseNestedJson(txt) {
+
+    if (typeof txt !== "string") {
+        return txt;
+    }
+
+    try {
+        txt = txt
+            .replace(/\\"/g, `"`)
+            .replace(/"\{/g, "{")
+            .replace(/\}"/g, "}")
+            .replace(/"\[/g, "[")
+            .replace(/\]"/g, "]");
+
+        const obj = JSON.parse(txt);
+
+        return obj;
+    } catch (err) {
+        const obj = JSON.parse(txt);
+        return obj;
+    }
+}
+
+
 function JsonHelper(text = "{}") {
     if (text.length <= 0) {
         return "";
@@ -47,25 +71,7 @@ function JsonHelper(text = "{}") {
         // 1. Convert Selection to json Object
         let obj = text;
 
-        let ind = 0;
-        while (typeof obj === "string") {
-            if (ind >= 5) {
-                obj = { "response": "Error! Too many Objects!" };
-                break;
-            }
-
-            obj = obj
-                .replace(/\\"/g, `"`)
-                .replace(/"\{/g, "{")
-                .replace(/\}"/g, "}")
-                .replace(/"\[/g, "[")
-                .replace(/\]"/g, "]");
-
-            obj = JSON.parse(obj);
-            ind += 1;
-        }
-
-        // Convert all Child Object of 1 Level to Object
+        obj = parseNestedJson(obj);
 
         const { sort = false, pairSwitch = false } = obj;
 
@@ -139,7 +145,7 @@ function GetJsonKeyValue(text = "[]") {
             if ("type" in data) {
                 delete data["type"];
             }
-    
+
             if (type == "values") {
                 res = Object.values(data)
                     .map(x => {
@@ -242,7 +248,7 @@ function MakeIntoJson(text = "[]") {
                 }
 
                 // Check if Duplicates
-                if (key in res) {   
+                if (key in res) {
                     res_ls.push({ ...res });
                     res = {};
                 }

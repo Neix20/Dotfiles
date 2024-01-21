@@ -12,6 +12,12 @@
             "type": "shell",
             "command": "node codeSnippet/index.js",
             "problemMatcher": []
+        },
+        {
+            "label": "yarn: test",
+            "type": "shell",
+            "command": "cd codeSnippet && yarn test",
+            "problemMatcher": []
         }
     ]
 }

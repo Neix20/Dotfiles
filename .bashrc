@@ -39,6 +39,8 @@ alias copy='cp'
 alias nvimHome='cd ~/.config/nvim'
 alias gitCC='git-conventional-commits'
 
+alias clip='xclip -sel clip'
+
 export NICKNAME="Neix"
 
 # Enable Snap Store (For WSL)

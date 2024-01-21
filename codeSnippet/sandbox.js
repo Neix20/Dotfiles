@@ -13,7 +13,7 @@ function main() {
         // 3. Json Object With Json String
         { "data": "{ \"Name\": \"Brent Luna\" }" },
         // 4. Json String With Json String
-        "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }",
+        { "data": "{ \"Name\": \"Brent Luna\" }" },
         // 5. Json Object With Json Array
         { "data": [ "asdf", "asdf" ] },
         // 6. Json With Json String of Array
@@ -27,23 +27,23 @@ function main() {
         "{ \"data\": \"{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }\" }"
     ];
 
-    // for ( const obj of arr) {
-    //     try {
-    //         const res = JsonHelper(obj);
-    //         console.log(`Output: ${res}`);
-    //     } catch (err) {
-    //         console.error(`Error: ${obj}`)
-    //     }
-    // }
+    arr = arr.slice(0, 4);
 
-    arr = "data; \"{ \"data\": [ { \"Name\": \"Edwin Sutton\" }, { \"Name\": \"Addie Little\" }, { \"Name\": \"Etta Wise\" }, { \"Name\": \"Troy Stevenson\" }, { \"Name\": \"Clarence Ballard\" } ] }\""
-
-    try {
-        const res = MakeIntoJson(arr);
-        console.log(`Output: ${res}`);
-    } catch (err) {
-        console.error(`Error: ${arr}`)
+    for ( const obj of arr) {
+        try {
+            const res = JsonHelper(obj);
+            console.log(`Output: ${res}`);
+        } catch (err) {
+            console.error(`Error: ${obj}, ${err}`)
+        }
     }
+
+    // try {
+    //     const res = JsonHelper(arr);
+    //     console.log(`Output: ${res}`);
+    // } catch (err) {
+    //     console.error(`Error: ${arr}`)
+    // }
 
 }
 
