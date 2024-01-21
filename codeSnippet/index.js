@@ -20,12 +20,20 @@ function Wrapper(onFormat = () => { }) {
         const res = onFormat(text);
 
         editor.edit(editBuilder => {
-            editBuilder.replace(selection, res);
+            editor.selections.forEach(selection => {
+                const range = new vscode.Range(selection.start, selection.end);
+                editBuilder.replace(selection, res);
+            });
         });
     } else {
         return " Selection Cannot be Empty!";
     }
 }
+
+function Test(text = "[]") {
+    return "Fuck You"
+}
+
 
 const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
 const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
@@ -36,6 +44,7 @@ const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
 const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
 const onConvertJsonToSql = () => Wrapper(ConvertJsonToSql);
 const onFormatTasks = () => Wrapper(FormatTasks);
+const onTest = () => Wrapper(Test);
 
 // Stringify Json
 
