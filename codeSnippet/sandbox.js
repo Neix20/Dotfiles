@@ -30,16 +30,12 @@ function main() {
     ]
 `;
 
-    // try {
-    //     arr = GetJsonKeyValue(arr);
-    //     console.log(arr);
-    // } catch (err) {
-    //     console.error(err)
-    // }
-
-    let res = [];
-
-    console.log(Array.isArray(res))
+    try {
+        arr = GetJsonKeyValue(arr);
+        console.log(arr);
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 main();

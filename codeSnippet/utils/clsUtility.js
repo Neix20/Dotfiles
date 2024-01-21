@@ -85,6 +85,7 @@ function JsonHelper(text = "{}") {
         for (let key of keys) {
             const val = obj[key];
 
+            // 3. Pair Switch
             if (pairSwitch) {
                 res[val] = key;
             } else {
@@ -104,7 +105,6 @@ function GetJsonKeyValue(text = "[]") {
     }
 
     try {
-
         const data = JSON.parse(text);
 
         if (Array.isArray(data)) {
@@ -113,7 +113,12 @@ function GetJsonKeyValue(text = "[]") {
 
             for (const obj of data) {
                 const t_res = Object.entries(obj)
-                    .map(([key, value]) => `${key}; ${value}`)
+                    .map(([key, value]) => {
+                        if (typeof value === "object") {
+                            return `${key}; ${JSON.stringify(value)}`
+                        }
+                        return `${key}; ${value}`
+                    })
                     .join("\n");
                 res.push(t_res);
             }
@@ -131,11 +136,23 @@ function GetJsonKeyValue(text = "[]") {
             }
     
             if (type == "values") {
-                res = Object.values(data);
+                res = Object.values(data)
+                    .map(x => {
+                        if (typeof x === "object") {
+                            return JSON.stringify(x);
+                        }
+                        return x;
+                    });
             } else if (type == "keys") {
                 res = Object.keys(data);
             } else {
-                res = Object.entries(data).map(([key, value]) => `${key}; ${value}`);
+                res = Object.entries(data)
+                    .map(([key, value]) => {
+                        if (typeof value === "object") {
+                            return `${key}; ${JSON.stringify(value)}`
+                        }
+                        return `${key}; ${value}`
+                    });
             }
 
             res = res.join("\n");
@@ -149,6 +166,7 @@ function GetJsonKeyValue(text = "[]") {
     }
 }
 
+// SQL
 function FormatSqlCsv(text = "") {
     if (text.length <= 0) {
         return "";
@@ -173,13 +191,14 @@ function FormatSqlCsv(text = "") {
     }
 }
 
-// [x] Make Into List of JSON if Same Key
 function MakeIntoJson(text = "[]") {
 
     if (text.length <= 0) {
         return "";
     }
 
+    // Input I: Name; Ivan Holloway
+    // Input II: Name; Ivan Holloway\\nName; Lora Garcia
     try {
         let rgx;
         let arr = text.split("\n");
@@ -192,7 +211,7 @@ function MakeIntoJson(text = "[]") {
 
         let res = {};
 
-        let res_ls = []
+        let res_ls = [];
 
         for (let str of arr) {
             rgx = /, |; |\| |,|;|\|/;
@@ -207,12 +226,13 @@ function MakeIntoJson(text = "[]") {
                 ]
 
                 // Remove Quotes
-                rgx = /"?(.*?)"?/g
+                rgx = /^"?(.*?)"?$/g
                 t_arr = t_arr.map(x => x.replace(rgx, "$1"));
 
-                const [key, val] = t_arr;
+                let [key, val] = t_arr;
 
-                if (key in res) {
+                // Check if Duplicates
+                if (key in res) {   
                     res_ls.push({ ...res });
                     res = {};
                 }
@@ -221,12 +241,14 @@ function MakeIntoJson(text = "[]") {
             }
         };
 
-        // Return List
+        // Return List If Have Similar Key
         if (res_ls.length > 0) {
             res_ls.push(res);
             res = res_ls;
         }
 
+        // Output I: { "Name": "Ivan Holloway" }
+        // Output II: [{ "Name": "Ivan Holloway" }, { "Name": "Lora Garcia" }]
         return JSON.stringify(res, null, 4);
     } catch (error) {
         throw error;
@@ -250,6 +272,7 @@ function JoinIntoOneString(text = "") {
     }
 }
 
+// SQL
 function ParseSqlStoreProcedureIntoDict(text = "[]") {
     if (text.length <= 0) {
         return "";
@@ -287,6 +310,7 @@ function ParseSqlStoreProcedureIntoDict(text = "[]") {
     }
 }
 
+// Markdown
 function FormatTasks(text = "") {
     if (text.length <= 0) {
         return "";
