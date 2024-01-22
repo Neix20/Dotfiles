@@ -38,6 +38,7 @@ function MakeIntoArr(text = "") {
     }
 }
 
+// This Functino took me 2 hours
 function parseNestedJson(txt) {
 
     if (typeof txt === "object") {
@@ -66,6 +67,7 @@ function JsonHelper(text = "{}") {
     }
 
     try {
+
         // 1. Convert Selection to json Object
         let obj = text;
 
@@ -115,9 +117,13 @@ function GetJsonKeyValue(text = "[]") {
     }
 
     try {
+
+        rgx = /,$/g;
+        text = text.replace(rgx, "").trim();
+
         const data = JSON.parse(text);
 
-        if (Array.isArray(data)) {
+        if (Array.isArray(data) && data.length > 0 && typeof data[0] === "object") {
 
             let res = [];
 
@@ -134,7 +140,6 @@ function GetJsonKeyValue(text = "[]") {
             }
 
             res = res.join("\n");
-
             return res;
         } else {
             let res = [];
