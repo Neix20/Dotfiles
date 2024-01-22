@@ -147,13 +147,7 @@ function GetJsonKeyValue(text = "[]") {
             }
 
             if (type == "values") {
-                res = Object.values(data)
-                    .map(x => {
-                        if (typeof x === "object") {
-                            return JSON.stringify(x);
-                        }
-                        return x;
-                    });
+                res = Object.values(data);
             } else if (type == "keys") {
                 res = Object.keys(data);
             } else {
@@ -166,8 +160,11 @@ function GetJsonKeyValue(text = "[]") {
                     });
             }
 
-            res = res.join("\n");
+            if (res.length >= 1 && typeof res[0] === "object") {
+                return JSON.stringify(res, null, 4);
+            }
 
+            res = res.join("\n");
             return res;
         }
     } catch (error) {
