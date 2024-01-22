@@ -27,21 +27,29 @@ function main() {
 
     arr = arr.slice(0, 4);
 
-    for ( const obj of arr) {
+    // for ( const obj of arr) {
+    //     try {
+    //         const res = JsonHelper(obj);
+    //         console.log(`Output: ${res}`);
+    //     } catch (err) {
+    //         console.error(`Error: ${obj}, ${err}`)
+    //     }
+    // }
+
+    let obj = { "Name": "Brent Luna" };
+
+    let end = 5;
+    for(let start = 0; start < end; start += 1) {
         try {
-            const res = JsonHelper(obj);
-            console.log(`Output: ${res}`);
+            obj = {
+                "data": JSON.stringify(obj)
+            }
         } catch (err) {
-            console.error(`Error: ${obj}, ${err}`)
+            console.error(`Error: ${arr}`)
         }
     }
 
-    // try {
-    //     const res = JsonHelper(arr);
-    //     console.log(`Output: ${res}`);
-    // } catch (err) {
-    //     console.error(`Error: ${arr}`)
-    // }
+    clsLogger.info(obj);
 
 }
 

@@ -26,7 +26,7 @@ function MakeIntoArr(text = "") {
         let res = text.split("\n");
 
         if (res.length == 1) {
-            res[0] = res[0].replace(/\\{2,}/g, `\\`);
+            // Replace all Double quotation into Single Quotes
             res[0] = JSON.stringify(res[0])
                 .replace(/\\{2,}/g, `\\`);
             return res[0];
@@ -40,20 +40,19 @@ function MakeIntoArr(text = "") {
 
 function parseNestedJson(txt) {
 
-    if (typeof txt !== "string") {
+    if (typeof txt === "object") {
         return txt;
     }
 
     try {
         txt = txt
+            .replace(/\\{2,}/g, `\\`)
             .replace(/\\"/g, `"`)
             .replace(/"\{/g, "{")
             .replace(/\}"/g, "}")
             .replace(/"\[/g, "[")
             .replace(/\]"/g, "]");
-
         const obj = JSON.parse(txt);
-
         return obj;
     } catch (err) {
         const obj = JSON.parse(txt);
