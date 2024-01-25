@@ -20,7 +20,6 @@ function Wrapper(onFormat = () => { }) {
             const res = onFormat(text);
 
             // vscode.window.showInformationMessage(res);
-
             editBuilder.replace(selection, res);
         });
     });

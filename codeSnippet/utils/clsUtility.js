@@ -601,13 +601,17 @@ function ConvertIsoToEpoch(txt) {
 
     // Input: 2024-03-28T19:34:26+08:00
     // Input: 2024-03-28T11:34:26.000Z
-    let res = 0;
+    let res = "0";
 
     try {
-        res = new Date(txt).getTime();
+        // const rgx = /(.*?)[+.].*/g;
+        // res = txt.replace(rgx, "$1");
 
-        // Convert To Seconds Format
-        res = Math.floor(res / 1000);
+        // Convert To Timestamp
+        res = new Date(txt).getTime();
+      
+        // Convert To Seconds
+        res = Math.floor(res / 1000) + "";
     } catch (error) {
         throw error;
     }
@@ -627,23 +631,16 @@ function ConvertEpochToIso(txt) {
     let res = "";
 
     try {
-        // If String is DateTime
-        if (isNaN(txt)) {
-            try {
-                const dt = new Date(txt).toISOString();
-                return dt.split(".").at(0);
-            } catch (err2) {
-                throw err2
-            }
+
+        // If String is Integer
+        if (!isNaN(txt)) {
+            res = +txt;
+
+            if (res < 1000000000000) {
+                res = res * 1000;
+            }   
         }
-
-        // Convert To Integer
-        res = +txt;
-
-        if (res < 1000000000000) {
-            res = res * 1000;
-        }
-
+        
         // Output: 2024-03-28T11:34:26.000Z
         const dt = new Date(res).toISOString();
         res = dt.split(".").at(0);

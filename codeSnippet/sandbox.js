@@ -4,6 +4,7 @@ const { ConvertEpochToIso, ConvertIsoToEpoch } = clsUtility;
 
 function main() {
     let arr;
+    let rgx;
 
     // GetJsonKeyValue
     arr = [];
@@ -32,29 +33,29 @@ function main() {
     // console.log(rgx.test(str));
 
     arr = [
-        "2024-11-27T21:28:40+08:00",
-        "2024-08-30T16:44:29+08:00",
-        "2024-07-28T01:08:44+08:00",
-        "2024-11-02T11:13:35+08:00"
+        "2024-03-01T00:00:00",
+        "2024-05-01T00:00:00+08:00",
+        "2024-07-01T00:00:00.000z",
     ]
 
     for (let val of arr) {
         val = ConvertIsoToEpoch(val);
+
         console.log(val);
     }
 
-    arr = [
-        "1713490888",
-        "1712775551",
-        "1727024526",
-        "1730895613",
-        "1725372561"
-    ]
+    // arr = [
+    //     "1713490888",
+    //     "1712775551",
+    //     "1727024526",
+    //     "1730895613",
+    //     "1725372561"
+    // ]
 
-    for (let val of arr) {
-        val = ConvertEpochToIso(val);
-        console.log(val);
-    }
+    // for (let val of arr) {
+    //     val = ConvertEpochToIso(val);
+    //     console.log(val);
+    // }
 
 }
 
