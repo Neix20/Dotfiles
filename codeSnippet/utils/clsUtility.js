@@ -589,6 +589,74 @@ function SelectSql(data = []) {
 }
 // #endregion
 
+// #region Timestamp
+function ConvertIsoToEpoch(txt) {
+
+    if (txt.length <= 0) {
+        return "";
+    }
+
+    // Input: 2024-03-28T19:34:26
+    // Format: yyyy-MM-ddTHH:mm:ss
+
+    // Input: 2024-03-28T19:34:26+08:00
+    // Input: 2024-03-28T11:34:26.000Z
+    let res = 0;
+
+    try {
+        res = new Date(txt).getTime();
+
+        // Convert To Seconds Format
+        res = Math.floor(res / 1000);
+    } catch (error) {
+        throw error;
+    }
+
+    return res;
+}
+
+function ConvertEpochToIso(txt) {
+
+    // Input: 1711625666 (s)
+    // Input: 1711625666000 (ms)
+
+    if (txt.length <= 0) {
+        return "";
+    }
+
+    let res = "";
+
+    try {
+        // If String is DateTime
+        if (isNaN(txt)) {
+            try {
+                const dt = new Date(txt).toISOString();
+                return dt.split(".").at(0);
+            } catch (err2) {
+                throw err2
+            }
+        }
+
+        // Convert To Integer
+        res = +txt;
+
+        if (res < 1000000000000) {
+            res = res * 1000;
+        }
+
+        // Output: 2024-03-28T11:34:26.000Z
+        const dt = new Date(res).toISOString();
+        res = dt.split(".").at(0);
+    } catch (error) {
+        throw error;
+    }
+
+    return res;
+}
+
+
+// #endregion
+
 let utils = {};
 
 utils = {
@@ -608,5 +676,11 @@ utils = {
     ConvertJsonToSql,
     FormatTasks,
 };
+
+utils = {
+    ...utils,
+    ConvertEpochToIso,
+    ConvertIsoToEpoch,
+}
 
 module.exports = utils;

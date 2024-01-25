@@ -1,7 +1,8 @@
 const vscode = require('vscode');
 
 const { clsUtility } = require("./utils");
-const {FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ParseSqlStoreProcedureIntoDict, ConvertJsonToSql, FormatTasks,} = clsUtility;
+const { FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ParseSqlStoreProcedureIntoDict, ConvertJsonToSql, FormatTasks } = clsUtility;
+const { ConvertEpochToIso, ConvertIsoToEpoch } = clsUtility;
 
 function Wrapper(onFormat = () => { }) {
 
@@ -34,6 +35,8 @@ const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
 const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
 const onConvertJsonToSql = () => Wrapper(ConvertJsonToSql);
 const onFormatTasks = () => Wrapper(FormatTasks);
+const onConvertEpochToIso = () => Wrapper(ConvertEpochToIso);
+const onConvertIsoToEpoch = () => Wrapper(ConvertIsoToEpoch);
 
 module.exports.macroCommands = {
     "Format SQL": {
@@ -72,4 +75,12 @@ module.exports.macroCommands = {
         no: 9,
         func: onFormatTasks
     },
+    "Convert DateTime to Seconds": {
+        no: 10,
+        func: onConvertIsoToEpoch
+    },
+    "Convert Seconds To DateTime": {
+        no: 11,
+        func: onConvertEpochToIso
+    }
 };
