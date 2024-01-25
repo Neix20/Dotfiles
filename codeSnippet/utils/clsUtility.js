@@ -639,6 +639,8 @@ function ConvertEpochToIso(txt) {
             if (res < 1000000000000) {
                 res = res * 1000;
             }   
+        } else {
+            res = txt;
         }
         
         // Output: 2024-03-28T11:34:26.000Z
