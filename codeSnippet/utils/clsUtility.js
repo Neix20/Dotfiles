@@ -607,6 +607,13 @@ function ConvertIsoToEpoch(txt) {
         // const rgx = /(.*?)[+.].*/g;
         // res = txt.replace(rgx, "$1");
 
+        // Convert All String to String
+        try {
+            txt = JSON.parse(txt);
+        } catch (ex2) {
+            
+        }
+
         // Convert To Timestamp
         res = new Date(txt).getTime();
       
@@ -640,7 +647,11 @@ function ConvertEpochToIso(txt) {
                 res = res * 1000;
             }   
         } else {
-            res = txt;
+            try {
+                res = JSON.parse(txt);
+            } catch (ex2) {
+                res = txt;
+            }
         }
         
         // Output: 2024-03-28T11:34:26.000Z
