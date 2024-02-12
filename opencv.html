@@ -56,8 +56,8 @@ else if (typeof define === 'function' && define['amd'])
 </head>
 
 <body style="margin: 0px;">
-    <img id="input" class="hide" />
-    <canvas id="warpPerspec"></canvas>
+    <img id="input" />
+    <canvas id="warpPerspec" style="position: absolute; z-index: 4;"></canvas>
     <canvas id="cropImg" class="hide"></canvas>
     <canvas id="imgContrast" class="hide"></canvas>
     <canvas id="imgThresh" class="hide"></canvas>
