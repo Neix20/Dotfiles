@@ -269,6 +269,13 @@ else if (typeof define === 'function' && define['amd'])
         function loadImage(base64, coor) {
             imgElem.src = "data:image/png;base64," + base64;
             pt_coor = JSON.parse(coor);
+
+            let res = {
+                data: base64,
+                coor: coor,
+            }
+
+            window.ReactNativeWebView.postMessage(JSON.stringify(res));
         }
 
         imgElem.onload = function () {
@@ -332,7 +339,6 @@ else if (typeof define === 'function' && define['amd'])
                         "ResponseCode": "99",
                         "ResponseMessage": "Fail"
                     },
-                    error: err
                 };
                 window.ReactNativeWebView.postMessage(JSON.stringify(res));
             }
