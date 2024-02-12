@@ -57,7 +57,7 @@ else if (typeof define === 'function' && define['amd'])
 
 <body style="margin: 0px;">
     <img id="input" />
-    <canvas id="warpPerspec" class="hide"></canvas>
+    <canvas id="warpPerspec"></canvas>
     <canvas id="cropImg" class="hide"></canvas>
     <canvas id="imgContrast" class="hide"></canvas>
     <canvas id="imgThresh" class="hide"></canvas>
@@ -317,7 +317,7 @@ else if (typeof define === 'function' && define['amd'])
                     const coor = updatePoints(pt_coor, iWidth, iHeight, ori_wt, ori_ht);
                     pt_coor = coor;
 
-                    div.innerText = JSON.stringify(coor);
+                    document.querySelector("#result").innerText = JSON.stringify(coor);
                 }
 
                 const { top_left, top_right, bottom_left, bottom_right } = pt_coor;
