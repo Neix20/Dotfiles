@@ -271,8 +271,9 @@ else if (typeof define === 'function' && define['amd'])
             pt_coor = JSON.parse(coor);
 
             let res = {
-                data: base64,
-                coor: coor,
+                data {
+                    "coor": coor
+                }
             }
 
             window.ReactNativeWebView.postMessage(JSON.stringify(res));
@@ -329,7 +330,7 @@ else if (typeof define === 'function' && define['amd'])
                 warp_persp.delete();
                 roi_img.delete();
 
-                window.ReactNativeWebView.postMessage(JSON.stringify(res));
+                // window.ReactNativeWebView.postMessage(JSON.stringify(res));
             } catch (err) {
                 const res = {
                     type: "windowMeasure",
@@ -340,7 +341,7 @@ else if (typeof define === 'function' && define['amd'])
                         "ResponseMessage": "Fail"
                     },
                 };
-                window.ReactNativeWebView.postMessage(JSON.stringify(res));
+                // window.ReactNativeWebView.postMessage(JSON.stringify(res));
             }
         }
 
