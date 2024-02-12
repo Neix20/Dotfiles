@@ -57,11 +57,12 @@ else if (typeof define === 'function' && define['amd'])
 
 <body style="margin: 0px;">
     <img id="input" />
-    <canvas id="warpPerspec" style="position: absolute; z-index: 4;"></canvas>
+    <canvas id="warpPerspec" class="hide"></canvas>
     <canvas id="cropImg" class="hide"></canvas>
     <canvas id="imgContrast" class="hide"></canvas>
     <canvas id="imgThresh" class="hide"></canvas>
     <canvas id="output" class="hide"></canvas>
+    <div id="result"></div>
 
     <script type="text/javascript">
         const BORDER_WT = 12;
@@ -257,27 +258,27 @@ else if (typeof define === 'function' && define['amd'])
         }
 
         function updatePointHelper(points, wscf, hscf) {
-    const [x, y] = points;
-    return [x * wscf, y * hscf];
-}
+            const [x, y] = points;
+            return [x * wscf, y * hscf];
+        }
 
-function updatePoints(points, oWt, oHt, nWt, nHt) {
-    // Calculate scaling factors
-    const wscf = nWt / oWt;
-    const hscf = nHt / oHt;
+        function updatePoints(points, oWt, oHt, nWt, nHt) {
+            // Calculate scaling factors
+            const wscf = nWt / oWt;
+            const hscf = nHt / oHt;
 
-    let { top_left, top_right, bottom_left, bottom_right } = points;
+            let { top_left, top_right, bottom_left, bottom_right } = points;
 
-    top_left = updatePointHelper(top_left, wscf, hscf);
-    top_right = updatePointHelper(top_right, wscf, hscf);
-    bottom_left = updatePointHelper(bottom_left, wscf, hscf);
-    bottom_right = updatePointHelper(bottom_right, wscf, hscf);
+            top_left = updatePointHelper(top_left, wscf, hscf);
+            top_right = updatePointHelper(top_right, wscf, hscf);
+            bottom_left = updatePointHelper(bottom_left, wscf, hscf);
+            bottom_right = updatePointHelper(bottom_right, wscf, hscf);
 
-    // Update each point
-    const updatedPoints = { top_left, top_right, bottom_left, bottom_right };
+            // Update each point
+            const updatedPoints = { top_left, top_right, bottom_left, bottom_right };
 
-    return updatedPoints;
-}
+            return updatedPoints;
+        }
     </script>
     <script type="text/javascript">
         let pt_coor = {
@@ -308,15 +309,18 @@ function updatePoints(points, oWt, oHt, nWt, nHt) {
                 const ori_img = cv.imread(imgElem);
 
                 // Warp Perspective
-                const { top_left, top_right, bottom_left, bottom_right, width: iWidth = 0, height: iHeight = 0 } = pt_coor;
+                const { width: iWidth = 0, height: iHeight = 0 } = pt_coor;
 
                 if (iWidth > 0 && iHeight > 0) {
                     const [ori_ht, ori_wt] = ori_img.matSize;
                     
                     const coor = updatePoints(pt_coor, iWidth, iHeight, ori_wt, ori_ht);
                     pt_coor = coor;
+
+                    div.innerText = JSON.stringify(coor);
                 }
 
+                const { top_left, top_right, bottom_left, bottom_right } = pt_coor;
                 const warp_persp = warp_perspective(ori_img, top_left, top_right, bottom_left, bottom_right);
 
                 // Crop Bottom Left Corner
