@@ -331,7 +331,8 @@ else if (typeof define === 'function' && define['amd'])
                         "height": -1,
                         "ResponseCode": "99",
                         "ResponseMessage": "Fail"
-                    }
+                    },
+                    error: err
                 };
                 window.ReactNativeWebView.postMessage(JSON.stringify(res));
             }
