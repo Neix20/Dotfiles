@@ -276,7 +276,8 @@ else if (typeof define === 'function' && define['amd'])
             window.ReactNativeWebView.postMessage(JSON.stringify(res));
 
             imgElem.src = "data:image/png;base64," + base64;
-            pt_coor = JSON.parse(coor);
+            // pt_coor = JSON.parse(coor);
+            pt_coor = coor;
         }
 
         imgElem.onload = function () {
