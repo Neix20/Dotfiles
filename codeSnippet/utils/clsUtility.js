@@ -291,7 +291,7 @@ function JoinIntoOneString(text = "") {
         let res = text.split("\n");
 
         res = res.map(x => x.trim());
-        res = res.join(" ");
+        res = res.join("");
 
         return res;
     } catch (error) {
