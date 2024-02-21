@@ -1,0 +1,186 @@
+{
+    "languages": {
+        "java": [
+            "vscjava.vscode-java-debug",
+            "vscjava.vscode-java-dependency",
+            "vscjava.vscode-java-pack",
+            "vscjava.vscode-java-test",
+            "vscjava.vscode-maven",
+            "redhat.java",
+            "naco-siren.gradle-language"
+        ],
+        "python": [
+            "ms-python.black-formatter",
+            "kevinrose.vsc-python-indent",
+            "ms-python.debugpy",
+            "ms-python.isort",
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-toolsai.jupyter",
+            "ms-toolsai.jupyter-keymap",
+            "ms-toolsai.jupyter-renderers",
+            "ms-toolsai.vscode-jupyter-cell-tags",
+            "ms-toolsai.vscode-jupyter-slideshow"
+        ],
+        "javascript": [
+            "rvest.vs-code-prettier-eslint",
+            "christian-kohler.npm-intellisense",
+            "dbaeumer.vscode-eslint",
+            "digitalbrainstem.javascript-ejs-support",
+            "mgmcdermott.vscode-language-babel",
+            "ms-vscode.js-debug",
+            "ms-vscode.js-debug-companion",
+            "ms-vscode.vscode-js-profile-table",
+            "orta.vscode-jest"
+        ],
+        "react": [
+            "msjsdiag.vscode-react-native"
+        ],
+        "cpp": [
+            "twxs.cmake",
+            "danielpinto8zz6.c-cpp-compile-run",
+            "jeff-hykin.better-cpp-syntax",
+            "ms-vscode.cmake-tools",
+            "ms-vscode.cpptools",
+            "ms-vscode.cpptools-extension-pack",
+            "ms-vscode.cpptools-themes"
+        ],
+        "csharp": [
+            "csharpier.csharpier-vscode",
+            "ms-dotnettools.csdevkit",
+            "ms-dotnettools.csharp",
+            "ms-dotnettools.vscode-dotnet-runtime",
+            "ms-dotnettools.vscodeintellicode-csharp"
+        ],
+        "nginx": [
+            "ahmadalli.vscode-nginx-conf",
+            "raynigon.nginx-formatter"
+        ],
+        "html-css": [
+            "anderseandersen.html-class-suggestions",
+            "formulahendry.auto-rename-tag"
+        ],
+        "markdown": [
+            "yzhang.markdown-all-in-one",
+            "tchayen.markdown-links",
+            "shd101wyy.markdown-preview-enhanced",
+            "tomoyukim.vscode-mermaid-editor",
+            "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+            "davidanson.vscode-markdownlint"
+        ],
+        "xml": [
+            "redhat.vscode-xml",
+            "dotjoshjohnson.xml"
+        ],
+        "csv": [
+            "janisdd.vscode-edit-csv",
+            "mechatroner.rainbow-csv"
+        ],
+        "json": [
+            "khaeransori.json2csv",
+            "quicktype.quicktype"
+        ],
+        "bash": [
+            "shakram02.bash-beautify",
+            "mads-hartmann.bash-ide-vscode"
+        ],
+        "sql": [
+            "mtxr.sqltools",
+            "mtxr.sqltools-driver-mssql"
+        ]
+    },
+    "tools": {
+        "viewer": [
+            "tomoki1207.pdf",
+            "jock.svg",
+            "pdconsec.vscode-print",
+            "grapecity.gc-excelviewer",
+            "shahilkumar.docxreader",
+            "johnpapa.vscode-peacock"
+        ],
+        "time": [
+            "haaleo.timing"
+        ],
+        "git": [
+            "arturock.gitstash",
+            "github.codespaces",
+            "github.remotehub",
+            "github.vscode-pull-request-github",
+            "mhutchie.git-graph"
+        ],
+        "must-have": [
+            "wware.snippet-creator",
+            "bladnman.auto-align",
+            "chunsen.bracket-select",
+            "edgardmessias.clipboard-manager",
+            "exceedsystem.vscode-macros",
+            "ms-vscode.references-view",
+            "ms-vscode.test-adapter-converter"
+        ],
+        "liveServer": [
+            "ritwickdey.liveserver",
+            "ms-vscode.live-server",
+            "ms-vsliveshare.vsliveshare"
+        ],
+        "intellicode": [
+            "visualstudioexptteam.intellicode-api-usage-examples",
+            "visualstudioexptteam.vscodeintellicode",
+            "codeium.codeium"
+        ],
+        "project": [
+            "alefragnani.bookmarks",
+            "alefragnani.project-manager",
+            "gruntfuggly.todo-tree",
+            "hediet.vscode-drawio",
+            "mikestead.dotenv",
+            "ms-azuretools.vscode-docker",
+            "postman.postman-for-vscode"
+        ],
+        "comments": [
+            "njpwerner.autodocstring",
+            "cschlosser.doxdocgen"
+        ],
+        "formatter": [
+            "esbenp.prettier-vscode"
+        ],
+        "codelens": [
+            "wayou.vscode-todo-highlight",
+            "aaron-bond.better-comments",
+            "naumovs.color-highlight",
+            "ibm.output-colorizer",
+            "usernamehw.errorlens",
+            "kisstkondoros.vscode-gutter-preview"
+        ],
+        "generator": [
+            "jrebocho.vscode-random",
+            "neptunedesign.vs-sequential-number",
+            "tyriar.lorem-ipsum"
+        ],
+        "misc": [
+            "wakatime.vscode-wakatime",
+            "tonybaloney.vscode-pets",
+            "jeusto.warm-up-typing-test",
+            "jirkavrba.subway-surfers",
+            "mkxml.vscode-filesize",
+            "burkeholland.simple-timer",
+            "mutantdino.resourcemonitor"
+        ],
+        "remote": [
+            "ms-vscode-remote.remote-containers",
+            "ms-vscode-remote.remote-ssh",
+            "ms-vscode-remote.remote-ssh-edit",
+            "ms-vscode-remote.remote-wsl",
+            "ms-vscode-remote.vscode-remote-extensionpack",
+            "ms-vscode.remote-explorer",
+            "ms-vscode.remote-repositories",
+            "ms-vscode.remote-server"
+        ]
+    },
+    "ui-kit": [
+        "wassimdev.windows-nt-vscode-theme",
+        "vscode-icons-team.vscode-icons",
+        "drcika.apc-extension",
+        "miguelsolorio.fluent-icons",
+        "pkief.material-icon-theme"
+    ]
+}
