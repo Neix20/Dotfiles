@@ -9,6 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "js-yaml": "^4.1.0",
+    "json-2-csv": "^5.2.0"
   }
 }

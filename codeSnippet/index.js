@@ -3,6 +3,7 @@ const vscode = require('vscode');
 const { clsUtility } = require("./utils");
 const { FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ParseSqlStoreProcedureIntoDict, ConvertJsonToSql, FormatTasks } = clsUtility;
 const { ConvertEpochToIso, ConvertIsoToEpoch } = clsUtility;
+const { YamlJsonFormatter, CsvJsonFormatter } = clsUtility;
 
 function Wrapper(onFormat = () => { }) {
 
@@ -17,9 +18,9 @@ function Wrapper(onFormat = () => { }) {
         editor.selections.forEach(selection => {
 
             const text = editor.document.getText(selection);
-            const res = onFormat(text);
+            // vscode.window.showInformationMessage(text);
 
-            // vscode.window.showInformationMessage(res);
+            const res = onFormat(text);
             editBuilder.replace(selection, res);
         });
     });
@@ -36,6 +37,8 @@ const onConvertJsonToSql = () => Wrapper(ConvertJsonToSql);
 const onFormatTasks = () => Wrapper(FormatTasks);
 const onConvertEpochToIso = () => Wrapper(ConvertEpochToIso);
 const onConvertIsoToEpoch = () => Wrapper(ConvertIsoToEpoch);
+const onConvertJsonToCsv = () => Wrapper(CsvJsonFormatter);
+const onConvertJsonToYaml = () => Wrapper(YamlJsonFormatter);
 
 module.exports.macroCommands = {
     "Format SQL": {
@@ -81,5 +84,14 @@ module.exports.macroCommands = {
     "Convert Seconds To DateTime": {
         no: 11,
         func: onConvertEpochToIso
+    },
+
+    "onConvertJsonToCsv": {
+        no: 12,
+        func: onConvertJsonToCsv
+    },
+    "onConvertJsonToYaml": {
+        no: 13,
+        func: onConvertJsonToYaml
     }
 };

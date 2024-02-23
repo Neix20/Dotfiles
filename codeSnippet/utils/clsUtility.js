@@ -611,12 +611,12 @@ function ConvertIsoToEpoch(txt) {
         try {
             txt = JSON.parse(txt);
         } catch (ex2) {
-            
+
         }
 
         // Convert To Timestamp
         res = new Date(txt).getTime();
-      
+
         // Convert To Seconds
         res = Math.floor(res / 1000) + "";
     } catch (error) {
@@ -645,7 +645,7 @@ function ConvertEpochToIso(txt) {
 
             if (res < 1000000000000) {
                 res = res * 1000;
-            }   
+            }
         } else {
             try {
                 res = JSON.parse(txt);
@@ -653,7 +653,7 @@ function ConvertEpochToIso(txt) {
                 res = txt;
             }
         }
-        
+
         // Output: 2024-03-28T11:34:26.000Z
         const dt = new Date(res).toISOString();
         res = dt.split(".").at(0);
@@ -662,6 +662,152 @@ function ConvertEpochToIso(txt) {
     }
 
     return res;
+}
+// #endregion
+
+// #region YAML
+const yaml = require('js-yaml');
+
+function jsonToYaml(txt) {
+    try {
+        let jsonData = txt;
+        if (typeof jsonData === "string") {
+            jsonData = JSON.parse(jsonData); // Here Must be Txt
+        }
+        const res = yaml.dump(jsonData, { indent: 4 });
+        return res;
+    } catch (error) {
+        throw error;
+    }
+}
+
+function yamlToJson(txt) {
+    try {
+        const res = yaml.load(txt, { schema: yaml.JSON_SCHEMA });
+        return res;
+    } catch (error) {
+        throw error;
+    }
+}
+
+function detectYamlJson(data) {
+
+    if (typeof data === "object") {
+        return 'json';
+    }
+
+    try {
+        // Try parsing as JSON
+        JSON.parse(data);
+        return 'json';
+    } catch (jsonError) {
+        try {
+            // Try parsing as YAML
+            yaml.load(data);
+            return 'yaml';
+        } catch (yamlError) {
+            // If it fails to parse as both JSON and YAML, it's neither
+            return "";
+        }
+    }
+}
+
+function YamlJsonFormatter(text = "") {
+    if (text.length <= 0) {
+        return "";
+    }
+
+    try {
+        const dataType = detectYamlJson(text);
+
+        if (dataType === "json") {
+            const res = jsonToYaml(text);
+            return res;
+        }
+
+        if (dataType === "yaml") {
+            const res = yamlToJson(text);
+            return JSON.stringify(res, null, 4);
+        }
+
+        return "";
+    } catch (error) {
+        throw error;
+    }
+}
+
+// #endregion
+
+// #region CSV
+const csvConverter = require("json-2-csv");
+
+function jsonToCsv(txt) {
+    try {
+        let json = txt;
+
+        if (typeof json === "string") {
+            json = JSON.parse(json); // Here Must be Txt
+        }
+
+        const res = csvConverter.json2csv(json);
+        return res;
+    } catch (error) {
+        throw error;
+    }
+}
+
+function csvToJson(txt) {
+    try {
+        const res = csvConverter.csv2json(txt);
+        return res;
+    } catch (error) {
+        throw error;
+    }
+}
+
+function detectCsvJson(data) {
+
+    try {
+        // Try parsing as JSON
+        JSON.parse(data);
+        return 'json';
+    } catch (error) {
+        try {
+            csvConverter.csv2json(data);
+            return "csv";
+        } catch (error_2) {
+            throw error_2;
+        }
+
+        throw error;
+
+    }
+
+    return null;
+}
+
+function CsvJsonFormatter(text = "[]") {
+    if (text.length <= 0) {
+        return "";
+    }
+
+    try {
+        const dataType = detectCsvJson(text);
+
+        if (dataType === "json") {
+            const res = jsonToCsv(text);
+            return res;
+        }
+
+        if (dataType === "csv") {
+            const res = csvToJson(text);
+            return JSON.stringify(res, null, 4);
+        }
+
+        return "";
+    } catch (error) {
+        throw error;
+    }
 }
 // #endregion
 
@@ -689,6 +835,12 @@ utils = {
     ...utils,
     ConvertEpochToIso,
     ConvertIsoToEpoch,
+}
+
+utils = {
+    ...utils,
+    YamlJsonFormatter,
+    CsvJsonFormatter
 }
 
 module.exports = utils;

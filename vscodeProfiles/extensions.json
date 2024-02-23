@@ -15,7 +15,9 @@
             "ms-python.debugpy",
             "ms-python.isort",
             "ms-python.python",
-            "ms-python.vscode-pylance",
+            "ms-python.vscode-pylance"
+        ],
+        "jupyter": [
             "ms-toolsai.jupyter",
             "ms-toolsai.jupyter-keymap",
             "ms-toolsai.jupyter-renderers",
@@ -23,14 +25,12 @@
             "ms-toolsai.vscode-jupyter-slideshow"
         ],
         "javascript": [
+            "esbenp.prettier-vscode",
             "rvest.vs-code-prettier-eslint",
-            "christian-kohler.npm-intellisense",
             "dbaeumer.vscode-eslint",
+            "christian-kohler.npm-intellisense",
             "digitalbrainstem.javascript-ejs-support",
             "mgmcdermott.vscode-language-babel",
-            "ms-vscode.js-debug",
-            "ms-vscode.js-debug-companion",
-            "ms-vscode.vscode-js-profile-table",
             "orta.vscode-jest"
         ],
         "react": [
@@ -42,8 +42,7 @@
             "jeff-hykin.better-cpp-syntax",
             "ms-vscode.cmake-tools",
             "ms-vscode.cpptools",
-            "ms-vscode.cpptools-extension-pack",
-            "ms-vscode.cpptools-themes"
+            "ms-vscode.cpptools-extension-pack"
         ],
         "csharp": [
             "csharpier.csharpier-vscode",
@@ -56,17 +55,14 @@
             "ahmadalli.vscode-nginx-conf",
             "raynigon.nginx-formatter"
         ],
-        "html-css": [
-            "anderseandersen.html-class-suggestions",
-            "formulahendry.auto-rename-tag"
-        ],
         "markdown": [
             "yzhang.markdown-all-in-one",
-            "tchayen.markdown-links",
             "shd101wyy.markdown-preview-enhanced",
-            "tomoyukim.vscode-mermaid-editor",
+            "davidanson.vscode-markdownlint",
             "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
-            "davidanson.vscode-markdownlint"
+            
+            "tchayen.markdown-links",
+            "tomoyukim.vscode-mermaid-editor"
         ],
         "xml": [
             "redhat.vscode-xml",
@@ -77,6 +73,7 @@
             "mechatroner.rainbow-csv"
         ],
         "json": [
+            // Include Into Macros
             "khaeransori.json2csv",
             "quicktype.quicktype"
         ],
@@ -84,43 +81,44 @@
             "shakram02.bash-beautify",
             "mads-hartmann.bash-ide-vscode"
         ],
-        "sql": [
-            "mtxr.sqltools",
-            "mtxr.sqltools-driver-mssql"
+        "dotenv": [
+            "mikestead.dotenv"
         ]
     },
     "tools": {
+        "sql": [
+            "mtxr.sqltools",
+            "mtxr.sqltools-driver-mssql"
+        ],
         "viewer": [
             "tomoki1207.pdf",
             "jock.svg",
-            "pdconsec.vscode-print",
+            "johnpapa.vscode-peacock",
+            
             "grapecity.gc-excelviewer",
             "shahilkumar.docxreader",
-            "johnpapa.vscode-peacock"
-        ],
-        "time": [
-            "haaleo.timing"
+            "pdconsec.vscode-print"
         ],
         "git": [
             "arturock.gitstash",
-            "github.codespaces",
             "github.remotehub",
             "github.vscode-pull-request-github",
-            "mhutchie.git-graph"
+            "mhutchie.git-graph",
+
+            "github.codespaces"
         ],
         "must-have": [
+            "formulahendry.auto-rename-tag",
             "wware.snippet-creator",
             "bladnman.auto-align",
             "chunsen.bracket-select",
             "edgardmessias.clipboard-manager",
             "exceedsystem.vscode-macros",
+            "ritwickdey.liveserver"
+        ],
+        "important": [
             "ms-vscode.references-view",
             "ms-vscode.test-adapter-converter"
-        ],
-        "liveServer": [
-            "ritwickdey.liveserver",
-            "ms-vscode.live-server",
-            "ms-vsliveshare.vsliveshare"
         ],
         "intellicode": [
             "visualstudioexptteam.intellicode-api-usage-examples",
@@ -129,58 +127,69 @@
         ],
         "project": [
             "alefragnani.bookmarks",
-            "alefragnani.project-manager",
             "gruntfuggly.todo-tree",
-            "hediet.vscode-drawio",
-            "mikestead.dotenv",
-            "ms-azuretools.vscode-docker",
-            "postman.postman-for-vscode"
+            "postman.postman-for-vscode",
+            
+            "alefragnani.project-manager",
+            "ms-azuretools.vscode-docker"
         ],
         "comments": [
-            "njpwerner.autodocstring",
+            "aaron-bond.better-comments",
+
             "cschlosser.doxdocgen"
         ],
-        "formatter": [
-            "esbenp.prettier-vscode"
-        ],
         "codelens": [
-            "wayou.vscode-todo-highlight",
-            "aaron-bond.better-comments",
+            "haaleo.timing",
             "naumovs.color-highlight",
-            "ibm.output-colorizer",
             "usernamehw.errorlens",
-            "kisstkondoros.vscode-gutter-preview"
+            "kisstkondoros.vscode-gutter-preview",
+
+            "ibm.output-colorizer"
         ],
         "generator": [
             "jrebocho.vscode-random",
             "neptunedesign.vs-sequential-number",
+
             "tyriar.lorem-ipsum"
         ],
         "misc": [
             "wakatime.vscode-wakatime",
-            "tonybaloney.vscode-pets",
-            "jeusto.warm-up-typing-test",
-            "jirkavrba.subway-surfers",
-            "mkxml.vscode-filesize",
+            "mutantdino.resourcemonitor",
+            
             "burkeholland.simple-timer",
-            "mutantdino.resourcemonitor"
+            "mkxml.vscode-filesize",
+            "jeusto.warm-up-typing-test"
         ],
         "remote": [
             "ms-vscode-remote.remote-containers",
             "ms-vscode-remote.remote-ssh",
             "ms-vscode-remote.remote-ssh-edit",
-            "ms-vscode-remote.remote-wsl",
             "ms-vscode-remote.vscode-remote-extensionpack",
             "ms-vscode.remote-explorer",
             "ms-vscode.remote-repositories",
-            "ms-vscode.remote-server"
+            "ms-vscode.remote-server",
+
+            "ms-vsliveshare.vsliveshare",
+            "ms-vscode-remote.remote-wsl"
         ]
     },
     "ui-kit": [
+        "pkief.material-icon-theme",
+
         "wassimdev.windows-nt-vscode-theme",
         "vscode-icons-team.vscode-icons",
-        "drcika.apc-extension",
         "miguelsolorio.fluent-icons",
-        "pkief.material-icon-theme"
+        "ms-vscode.cpptools-themes"
+    ],
+    "removed": [
+        "drcika.apc-extension",
+        "ms-vsliveshare.vsliveshare",
+        "hediet.vscode-drawio",
+        "wayou.vscode-todo-highlight",
+        "jirkavrba.subway-surfers",
+        "tonybaloney.vscode-pets",
+        "njpwerner.autodocstring",
+        "anderseandersen.html-class-suggestions",
+        "visualstudioexptteam.intellicode-api-usage-examples"
     ]
 }

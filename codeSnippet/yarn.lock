@@ -685,6 +685,11 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+argparse@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
+  integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
+
 babel-jest@^29.7.0:
   version "29.7.0"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-29.7.0.tgz#f4369919225b684c56085998ac63dbd05be020d5"
@@ -926,6 +931,11 @@ dedent@^1.0.0:
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-1.5.1.tgz#4f3fc94c8b711e9bb2800d185cd6ad20f2a90aff"
   integrity sha512-+LxW+KLWxu3HW3M2w2ympwtqPrqYRzU8fqi6Fhd18fBALe15blJPI/I4+UHveMVG6lJqB4JNd4UG0S5cnVHwIg==
 
+deeks@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/deeks/-/deeks-3.0.2.tgz#49d908fb2b797554a139aede17176b11679eb89f"
+  integrity sha512-c6OmjIygIB/avwXwEQOiODS+nw6fEX4cvOdDMqdL7dt3dicV/xykAJ9AeVc/8/JTVQDuacjRc9KCMmXafL1Y4A==
+
 deepmerge@^4.2.2:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.3.1.tgz#44b5f2147cd3b00d4b56137685966f26fd25dd4a"
@@ -940,6 +950,11 @@ diff-sequences@^29.6.3:
   version "29.6.3"
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-29.6.3.tgz#4deaf894d11407c51efc8418012f9e70b84ea921"
   integrity sha512-EjePK1srD3P08o2j4f0ExnylqRs5B9tJjcp9t1krH2qRi8CCdsYfwe9JgSLurFBWwq4uOlipzfk5fHNvwFKr8Q==
+
+doc-path@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/doc-path/-/doc-path-4.0.2.tgz#157ddd33b86282bdf58cf4b9979bf9483cf9a95f"
+  integrity sha512-OqZEk7EM1aP3JpO+mq0pv1msEJWrzZVXu4q3YjEYJKc+Wt3/chac4KJdaGueK5IGemOwfptrLctG9I8xkb59qQ==
 
 electron-to-chromium@^1.4.601:
   version "1.4.640"
@@ -1612,10 +1627,25 @@ js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js-yaml@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
+  integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
+  dependencies:
+    argparse "^2.0.1"
+
 jsesc@^2.5.1:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
+
+json-2-csv@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/json-2-csv/-/json-2-csv-5.2.0.tgz#20249f346b2ae3a58b30cd067d93e95ebcbe2e5b"
+  integrity sha512-C+XmSKRCS7zSTENm7Ha/lhLkO2ZE+fcSNC2kLiWSEGKy6ZwRCG2KakMJj0bvyfy2U8oZY+KFoU8F1isCgpUBYg==
+  dependencies:
+    deeks "3.0.2"
+    doc-path "4.0.2"
 
 json-parse-even-better-errors@^2.3.0:
   version "2.3.1"
