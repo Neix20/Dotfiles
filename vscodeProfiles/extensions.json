@@ -11,11 +11,12 @@
         ],
         "python": [
             "ms-python.black-formatter",
-            "kevinrose.vsc-python-indent",
             "ms-python.debugpy",
             "ms-python.isort",
             "ms-python.python",
-            "ms-python.vscode-pylance"
+            "ms-python.vscode-pylance",
+
+            "kevinrose.vsc-python-indent"
         ],
         "jupyter": [
             "ms-toolsai.jupyter",
