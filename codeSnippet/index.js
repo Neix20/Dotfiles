@@ -1,18 +1,10 @@
 const vscode = require('vscode');
 
 const { clsUtility } = require("./utils");
-const { FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue, ParseSqlStoreProcedureIntoDict, ConvertJsonToSql, FormatTasks } = clsUtility;
-const { EpochIsoConverter } = clsUtility;
-const { YamlJsonFormatter, CsvJsonFormatter } = clsUtility;
+const { MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue } = clsUtility;
+const { FormatSqlCsv, ParseSqlStoreProcedureIntoDict, FormatTasks } = clsUtility;
+const { ConvertJsonToSql, EpochIsoConverter, YamlJsonFormatter, CsvJsonFormatter, GenerateDocStr } = clsUtility;
 
-/**
- * 
- * @param {number} num 
- * @param {string} str 
- * @param {Array} ls 
- * @param {Dictionary} dict 
- * @returns {number}
- */
 function Wrapper(onFormat = () => { }) {
 
     const editor = vscode.window.activeTextEditor;
@@ -44,14 +36,15 @@ function WrapperSnippet(onFormat = () => { }) {
     }
 
     const selection = editor.selection;
-
+    
     const text = editor.document.getText(selection);
     const position = selection.active;
 
-    const snippetText = new vscode.SnippetString('console.log(${1:"Hello, world!"});');
+    // Generate Snippet
+    const res = onFormat(text);
 
-    editor.insertSnippet(snippetText, position);
-
+    const snippetText = new vscode.SnippetString(res);
+    editor.insertSnippet(snippetText, position);   
 }
 
 const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
@@ -63,13 +56,11 @@ const onGetJsonKeyValue = () => Wrapper(GetJsonKeyValue);
 const onParseSqlStoreProcedureIntoDict = () => Wrapper(ParseSqlStoreProcedureIntoDict);
 const onConvertJsonToSql = () => Wrapper(ConvertJsonToSql);
 const onFormatTasks = () => Wrapper(FormatTasks);
-// const onConvertEpochToIso = () => Wrapper(ConvertEpochToIso);
-// const onConvertIsoToEpoch = () => Wrapper(ConvertIsoToEpoch);
 const onEpochIsoConverter = () => Wrapper(EpochIsoConverter);
 const onConvertJsonToCsv = () => Wrapper(CsvJsonFormatter);
 const onConvertJsonToYaml = () => Wrapper(YamlJsonFormatter);
 
-const TestSnippet = () => WrapperSnippet();
+const OnGenerateDocStr = () => Wrapper(GenerateDocStr);
 
 module.exports.macroCommands = {
     "Format SQL": {
@@ -109,19 +100,19 @@ module.exports.macroCommands = {
         func: onFormatTasks
     },
     "Epoch Iso Converter": {
-        no: 110,
+        no: 10,
         func: onEpochIsoConverter
     },
     "CSV Json Converter": {
-        no: 111,
+        no: 11,
         func: onConvertJsonToCsv
     },
     "YAML Json Converter": {
-        no: 112,
+        no: 12,
         func: onConvertJsonToYaml
     },
-    "TestSnippet": {
-        no: 1,
-        func: TestSnippet
+    "Generate Documentation": {
+        no: 13,
+        func: OnGenerateDocStr
     }
 };
