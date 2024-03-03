@@ -79,7 +79,7 @@ test("Json With Json String of Array", () => {
     const rObj = JSON.stringify(obj, null, 4);
 
     const tObj = {
-        "data": "[ \"asdf\", \"asdf\" ]"
+        "data": "\"[ \"asdf\", \"asdf\" ]\""
     }
     const res = JsonHelper(tObj);
 

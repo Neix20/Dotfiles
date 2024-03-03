@@ -44,9 +44,13 @@ function parseNestedJson(txt) {
     if (typeof txt === "object") {
         return txt;
     }
+    
 
     try {
         txt = txt
+            .replace(/^"|"$/g, "")
+            .replace(/\\n/g, "")
+            .replace(/\s{2,}/g, "")
             .replace(/\\{2,}/g, `\\`)
             .replace(/\\"/g, `"`)
             .replace(/"\{/g, "{")
