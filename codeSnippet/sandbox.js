@@ -5,14 +5,7 @@ const { MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValu
 const { FormatSqlCsv, ParseSqlStoreProcedureIntoDict, FormatTasks } = clsUtility;
 const { ConvertJsonToSql, EpochIsoConverter, YamlJsonFormatter, CsvJsonFormatter, GenerateDocStr } = clsUtility;
 
-/**
- * @name 
- * @param {number} num 
- * @param {string} str 
- * @param {Array} ls 
- * @param {Dictionary} dict 
- * @returns {number}
- */
+
 function main() {
     
     let arr = [];

@@ -1,0 +1,13 @@
+[
+    "const format = (num, str, ls, dict) => {",
+    "def format(num, str, ls, dict):",
+    "def format(num: int = 0, data: str = \"\", ls: list = [], dt: dict = {}) -> int:",
+    "function format(num, str, ls, dict) {",
+    "function format(num: number, str: string, ls: number[], dict: { [key: string]: number }): int {",
+    "static int format(int num, String str, List<Integer> ls, Map<String, Integer> dict) {",
+    "public static int format(int num, String str, List<Integer> ls, Map<String, Integer> dict) {",
+    "int format(int num, string str, vector<int> ls, map<string, int> dict) {",
+    "int format(int num, std::string str, std::vector<int> ls, std::map<std::string, int> dict) {",
+    "static int format(int num, string str, List<int> ls, Dictionary<string, int> dict) {",
+    "function format($num, $str, $ls, $dict) {"
+]
