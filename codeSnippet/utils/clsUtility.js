@@ -118,7 +118,7 @@ function GetJsonKeyValue(text = "[]") {
 
     try {
 
-        rgx = /,$/g;
+        const rgx = /,$/g;
         text = text.replace(rgx, "").trim();
 
         const data = JSON.parse(text);
@@ -607,13 +607,6 @@ function ConvertIsoToEpoch(txt) {
         // const rgx = /(.*?)[+.].*/g;
         // res = txt.replace(rgx, "$1");
 
-        // Convert All String to String
-        try {
-            txt = JSON.parse(txt);
-        } catch (ex2) {
-
-        }
-
         // Convert To Timestamp
         res = new Date(txt).getTime();
 
@@ -640,18 +633,10 @@ function ConvertEpochToIso(txt) {
     try {
 
         // If String is Integer
-        if (!isNaN(txt)) {
-            res = +txt;
+        res = +txt;
 
-            if (res < 1000000000000) {
-                res = res * 1000;
-            }
-        } else {
-            try {
-                res = JSON.parse(txt);
-            } catch (ex2) {
-                res = txt;
-            }
+        if (res < 1000000000000) {
+            res = res * 1000;
         }
 
         // Output: 2024-03-28T11:34:26.000Z
@@ -662,6 +647,27 @@ function ConvertEpochToIso(txt) {
     }
 
     return res;
+}
+
+function EpochIsoConverter(data) {
+
+    let dataType = "string";
+
+    try {
+        data = JSON.parse(data)
+    } catch (err_2) {
+        
+    }
+
+    // Check If String is integer
+    if (!isNaN(data)) {
+        dataType = "number";
+    }
+
+    if (dataType === "number") {
+        return ConvertEpochToIso(data);
+    }
+    return ConvertIsoToEpoch(data);
 }
 // #endregion
 
@@ -778,12 +784,7 @@ function detectCsvJson(data) {
         } catch (error_2) {
             throw error_2;
         }
-
-        throw error;
-
     }
-
-    return null;
 }
 
 function CsvJsonFormatter(text = "[]") {
@@ -833,8 +834,7 @@ utils = {
 
 utils = {
     ...utils,
-    ConvertEpochToIso,
-    ConvertIsoToEpoch,
+    EpochIsoConverter
 }
 
 utils = {
