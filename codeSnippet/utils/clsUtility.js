@@ -38,17 +38,20 @@ function MakeIntoArr(text = "") {
     }
 }
 
-// This Functino took me 2 hours
+/**
+ * This function took me 2 hours
+ * @author Neix20
+ * @param {*} txt 
+ * @returns 
+ */
 function parseNestedJson(txt) {
 
     if (typeof txt === "object") {
         return txt;
     }
     
-
     try {
         txt = txt
-            .replace(/^"|"$/g, "")
             .replace(/\\n/g, "")
             .replace(/\s{2,}/g, "")
             .replace(/\\{2,}/g, `\\`)
@@ -65,6 +68,11 @@ function parseNestedJson(txt) {
     }
 }
 
+/**
+ * 
+ * @param 
+ * @returns 
+ */
 function JsonHelper(text = "{}") {
     if (text.length <= 0) {
         return "";

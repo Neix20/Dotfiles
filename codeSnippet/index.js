@@ -5,6 +5,14 @@ const { FormatSqlCsv, MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, 
 const { EpochIsoConverter } = clsUtility;
 const { YamlJsonFormatter, CsvJsonFormatter } = clsUtility;
 
+/**
+ * 
+ * @param {number} num 
+ * @param {string} str 
+ * @param {Array} ls 
+ * @param {Dictionary} dict 
+ * @returns {number}
+ */
 function Wrapper(onFormat = () => { }) {
 
     const editor = vscode.window.activeTextEditor;
@@ -26,6 +34,26 @@ function Wrapper(onFormat = () => { }) {
     });
 }
 
+function WrapperSnippet(onFormat = () => { }) {
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    const selection = editor.selection;
+
+    const text = editor.document.getText(selection);
+    const position = selection.active;
+
+    const snippetText = new vscode.SnippetString('console.log(${1:"Hello, world!"});');
+
+    editor.insertSnippet(snippetText, position);
+
+}
+
 const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
 const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
 const onMakeIntoArr = () => Wrapper(MakeIntoArr);
@@ -40,6 +68,8 @@ const onFormatTasks = () => Wrapper(FormatTasks);
 const onEpochIsoConverter = () => Wrapper(EpochIsoConverter);
 const onConvertJsonToCsv = () => Wrapper(CsvJsonFormatter);
 const onConvertJsonToYaml = () => Wrapper(YamlJsonFormatter);
+
+const TestSnippet = () => WrapperSnippet();
 
 module.exports.macroCommands = {
     "Format SQL": {
@@ -79,15 +109,19 @@ module.exports.macroCommands = {
         func: onFormatTasks
     },
     "Epoch Iso Converter": {
-        no: 10,
+        no: 110,
         func: onEpochIsoConverter
     },
     "CSV Json Converter": {
-        no: 12,
+        no: 111,
         func: onConvertJsonToCsv
     },
     "YAML Json Converter": {
-        no: 13,
+        no: 112,
         func: onConvertJsonToYaml
+    },
+    "TestSnippet": {
+        no: 1,
+        func: TestSnippet
     }
 };
