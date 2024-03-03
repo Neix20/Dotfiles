@@ -1103,36 +1103,17 @@ function GenerateDocStr(text = "[]") {
 }
 // #endregion
 
-let utils = {};
-
-utils = {
-    ...utils,
-    genDt
-};
-
-utils = {
-    ...utils,
-    MakeIntoArr,
-    MakeIntoJson,
-    JoinIntoOneString,
-    JsonHelper,
-    GetJsonKeyValue,
-}
-
-utils = {
-    ...utils,
-    FormatSqlCsv,
-    ParseSqlStoreProcedureIntoDict,
-    FormatTasks,
-};
-
-utils = {
-    ...utils,
-    ConvertJsonToSql,
-    EpochIsoConverter,
-    YamlJsonFormatter,
-    CsvJsonFormatter,
-    GenerateDocStr
-}
-
-module.exports = utils;
+module.exports.genDt = genDt;
+module.exports.MakeIntoArr = MakeIntoArr;
+module.exports.MakeIntoJson = MakeIntoJson;
+module.exports.JoinIntoOneString = JoinIntoOneString;
+module.exports.JsonHelper = JsonHelper;
+module.exports.GetJsonKeyValue = GetJsonKeyValue;
+module.exports.FormatSqlCsv = FormatSqlCsv;
+module.exports.ParseSqlStoreProcedureIntoDict = ParseSqlStoreProcedureIntoDict;
+module.exports.FormatTasks = FormatTasks;
+module.exports.ConvertJsonToSql = ConvertJsonToSql;
+module.exports.EpochIsoConverter = EpochIsoConverter;
+module.exports.YamlJsonFormatter = YamlJsonFormatter;
+module.exports.CsvJsonFormatter = CsvJsonFormatter;
+module.exports.GenerateDocStr = GenerateDocStr;
