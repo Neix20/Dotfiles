@@ -5,6 +5,7 @@ const { MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValu
 const { FormatSqlCsv, ParseSqlStoreProcedureIntoDict, FormatTasks } = clsUtility;
 const { ConvertJsonToSql, EpochIsoConverter, YamlJsonFormatter, CsvJsonFormatter, GenerateDocStr } = clsUtility;
 
+// #region VsCode Utils
 function Wrapper(onFormat = () => { }) {
 
     const editor = vscode.window.activeTextEditor;
@@ -47,6 +48,58 @@ function WrapperSnippet(onFormat = () => { }) {
     editor.insertSnippet(snippetText, position);   
 }
 
+function GetNextRegion() {
+    const editor = vscode.window.activeTextEditor;
+
+    if (!editor) {
+        // Return an error message if necessary.
+        return " Editor is not opening.";
+    }
+
+    let selectionArr = []
+
+    editor.edit(editBuilder => {
+        editor.selections.forEach(selection => {
+
+            const text = editor.document.getText(selection);
+            const position = selection.active;
+            // vscode.window.showInformationMessage(text);
+
+            const [a, a1, b, b1] = findRegion(editor, position);
+
+            const res = new vscode.Selection(a, a1, b, b1)
+            selectionArr.push(res);
+        });
+    });
+
+    editor.selections = selectionArr;
+}
+
+function findRegion(editor, position) {
+    const document = editor.document;
+
+    let lineIndex = position.line;
+
+    const start = lineIndex + 1;
+    const startLen = 0;
+
+    while (lineIndex < document.lineCount) {
+        const line = document.lineAt(lineIndex);
+
+        // Check if the line contains '#region'
+        if (line.text.includes('#endregion')) {
+            const end = lineIndex - 1;
+            const endLen = document.lineAt(end).text.length;
+            return [start, startLen, end, endLen];
+        }
+
+        lineIndex++;
+    }
+
+    return [];
+}
+// #endregion
+
 const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
 const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
 const onMakeIntoArr = () => Wrapper(MakeIntoArr);
@@ -59,8 +112,8 @@ const onFormatTasks = () => Wrapper(FormatTasks);
 const onEpochIsoConverter = () => Wrapper(EpochIsoConverter);
 const onConvertJsonToCsv = () => Wrapper(CsvJsonFormatter);
 const onConvertJsonToYaml = () => Wrapper(YamlJsonFormatter);
-
 const OnGenerateDocStr = () => Wrapper(GenerateDocStr);
+
 
 module.exports.macroCommands = {
     "Format SQL": {
@@ -114,5 +167,9 @@ module.exports.macroCommands = {
     "Generate Documentation": {
         no: 13,
         func: OnGenerateDocStr
-    }
+    },
+    "Select In Region": {
+        no: 14,
+        func: GetNextRegion
+    },
 };
