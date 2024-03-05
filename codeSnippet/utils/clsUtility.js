@@ -48,6 +48,29 @@ function MakeIntoArr(text = "") {
     }
 }
 
+function ParseWhitespace(txt = "[]") {
+    if (txt.length <= 0) {
+        return "";
+    }
+
+    try {
+        txt = JSON.stringify(txt)
+            .replace(/\\[abfnrtv]/g, "")
+            .replace(/\\{2,}/g, "\\")
+            .replace(/\\(.)/g, "$1")
+            .replace(/"\{/g, "{")
+            .replace(/\}"/g, "}")
+            .replace(/"\[/g, "[")
+            .replace(/\]"/g, "]")
+            .replace(/^"(.*?)"$/g, "$1");
+
+    } catch (error) {
+        throw error;
+    }
+
+    return txt;
+}
+
 /**
  * @name parseNestedJson
  * @param txt
@@ -60,15 +83,7 @@ function parseNestedJson(txt) {
     }
     
     try {
-        txt = txt
-            .replace(/\\n/g, "")
-            .replace(/\s{2,}/g, "")
-            .replace(/\\{2,}/g, `\\`)
-            .replace(/\\"/g, `"`)
-            .replace(/"\{/g, "{")
-            .replace(/\}"/g, "}")
-            .replace(/"\[/g, "[")
-            .replace(/\]"/g, "]");
+        txt = ParseWhitespace(txt);
         const obj = JSON.parse(txt);
         return obj;
     } catch (err) {
@@ -1107,6 +1122,7 @@ module.exports.genDt = genDt;
 module.exports.MakeIntoArr = MakeIntoArr;
 module.exports.MakeIntoJson = MakeIntoJson;
 module.exports.JoinIntoOneString = JoinIntoOneString;
+module.exports.ParseWhitespace = ParseWhitespace;
 module.exports.JsonHelper = JsonHelper;
 module.exports.GetJsonKeyValue = GetJsonKeyValue;
 module.exports.FormatSqlCsv = FormatSqlCsv;

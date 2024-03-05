@@ -1,7 +1,7 @@
 const { compute_v1 } = require("googleapis");
 const { clsUtility, clsLogger, clsWriter, clsConst } = require("./utils");
 
-const { MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue } = clsUtility;
+const { MakeIntoArr, MakeIntoJson, JoinIntoOneString, ParseWhitespace, JsonHelper, GetJsonKeyValue } = clsUtility;
 const { FormatSqlCsv, ParseSqlStoreProcedureIntoDict, FormatTasks } = clsUtility;
 const { ConvertJsonToSql, EpochIsoConverter, YamlJsonFormatter, CsvJsonFormatter, GenerateDocStr } = clsUtility;
 
@@ -16,34 +16,46 @@ function main() {
     // console.log(arr);
 
     arr = [
-        "const format = (num, str, ls, dict) => {",
-        "def format(num, str, ls, dict):",
-        "def format(num: int = 0, data: str = \"\", ls: list = [], dt: dict = {}) -> int:",
-        "function format(num, str, ls, dict) {",
-        "function format(num: number, str: string, ls: number[], dict: { [key: string]: number }): int {",
-        "static int format(int num, String str, List<Integer> ls, Map<String, Integer> dict) {",
-        "public static int format(int num, String str, List<Integer> ls, Map<String, Integer> dict) {",
-        "int format(int num, string str, vector<int> ls, map<string, int> dict) {",
-        "int format(int num, std::string str, std::vector<int> ls, std::map<std::string, int> dict) {",
-        "static int format(int num, string str, List<int> ls, Dictionary<string, int> dict) {",
-        "function format($num, $str, $ls, $dict) {"
+        "[ \"Sierra Leone\n\", \"Ukraine\n\", \"Solomon Islands\n\", \"French Southern Territories\n\", \"U.S. Virgin Islands\n\", \"Brazil\" ]",
+        "\"{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }\"",
+        "[ { \"Name\": \"Somalia\", \"Age\": \"22\", \"Data\": \"{ \"Name\": \"Dominican Republic\", \"Age\": \"18\" }\" }, { \"Name\": \"Lithuania\", \"Age\": \"15\", \"Data\": \"{ \"Name\": \"Dominican Republic\", \"Age\": \"18\" }\" }, { \"Name\": \"Northern Mariana Islands\", \"Age\": \"25\", \"Data\": \"{ \"Name\": \"Dominican Republic\", \"Age\": \"18\" }\" }, { \"Name\": \"Solomon Islands\", \"Age\": \"29\", \"Data\": \"{ \"Name\": \"Dominican Republic\", \"Age\": \"18\" }\" }, { \"Name\": \"Togo\", \"Age\": \"20\", \"Data\": \"{ \"Name\": \"Dominican Republic\", \"Age\": \"18\" }\" } ]"
     ];
 
     arr = [
-        "def format(num, str, ls, dict):",
-        "def format(num: int = 0, data: str = \"\", ls: list = [], dt: dict = {}) -> int:",
-        "function format(num, str, ls, dict)",
-        "function format(num: number, str: string, ls: number[], dict: { [key: string]: number }): int {",
-        "int format(int num, std::string str, std::vector<int> ls, std::map<std::string, int> dict) {"
-    ]
-
-    arr = [
-        "\"function format(num, str, ls, dict)\""
+        ...arr,
+        // 1. Normal Json
+        { "Name": "Brent Luna" },
+        // 2. Json String
+        "{ \"Name\": \"Brent Luna\" }",
+        // 3. Json Object With Json String
+        { "data": "{ \"Name\": \"Brent Luna\" }" },
+        // 4. Json String With Json String
+        "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }",
+        // 5. Json Object With Json Array
+        { "data": [ "asdf", "asdf" ] },
+        // 6. Json With Json String of Array
+        { "data": "[ \"asdf\", \"asdf\" ]" },
+        // 7. Json String With Json String of Array
+        "{ \"data\": \"[ \"asdf\", \"asdf\" ]\" }",
+        // 8. Hard One
+        { "data": "{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }" },
+        // 9. Convert
+        "{ \"data\": \"{ \"data\": \"{ \"Name\": \"Brent Luna\" }\" }\" }",
+        // 10.
+        { "data": [ { "Name": "Edwin Sutton" }, { "Name": "Addie Little" }, { "Name": "Etta Wise" }, { "Name": "Troy Stevenson" }, { "Name": "Clarence Ballard" } ] },
+        // 11. 
+        { "data": [ "{ \"Name\": \"Edwin Sutton\" }", "{ \"Name\": \"Addie Little\" }", "{ \"Name\": \"Etta Wise\" }", "{ \"Name\": \"Troy Stevenson\" }", "{ \"Name\": \"Clarence Ballard\" }" ] },
+        // 12.
+        { "data": "{ \"data\": [ { \"Name\": \"Edwin Sutton\" }, { \"Name\": \"Addie Little\" }, { \"Name\": \"Etta Wise\" }, { \"Name\": \"Troy Stevenson\" }, { \"Name\": \"Clarence Ballard\" } ] }" },
+        // 13.
+        {"data":"{\"data\":\"{\\\"data\\\":\\\"{\\\\\\\"data\\\\\\\":\\\\\\\"{\\\\\\\\\\\\\\\"data\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"{\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Name\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Brent Luna\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"}\\\\\\\\\\\\\\\"}\\\\\\\"}\\\"}\"}"}
     ]
 
     for (let val of arr) {
-        const res = GenerateDocStr(val);
-        console.log(res);
+        val = ParseWhitespace(val);
+        val = JSON.parse(val);
+        console.log(val);
+        // console.log(typeof val);
     }
 }
 

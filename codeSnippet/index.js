@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 
 const { clsUtility } = require("./utils");
-const { MakeIntoArr, MakeIntoJson, JoinIntoOneString, JsonHelper, GetJsonKeyValue } = clsUtility;
+const { MakeIntoArr, MakeIntoJson, JoinIntoOneString, ParseWhitespace, JsonHelper, GetJsonKeyValue } = clsUtility;
 const { FormatSqlCsv, ParseSqlStoreProcedureIntoDict, FormatTasks } = clsUtility;
 const { ConvertJsonToSql, EpochIsoConverter, YamlJsonFormatter, CsvJsonFormatter, GenerateDocStr } = clsUtility;
 
@@ -113,7 +113,6 @@ const onEpochIsoConverter = () => Wrapper(EpochIsoConverter);
 const onConvertJsonToCsv = () => Wrapper(CsvJsonFormatter);
 const onConvertJsonToYaml = () => Wrapper(YamlJsonFormatter);
 const OnGenerateDocStr = () => Wrapper(GenerateDocStr);
-
 
 module.exports.macroCommands = {
     "Format SQL": {
