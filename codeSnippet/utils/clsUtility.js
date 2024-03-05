@@ -62,7 +62,8 @@ function ParseWhitespace(txt = "[]") {
             .replace(/\}"/g, "}")
             .replace(/"\[/g, "[")
             .replace(/\]"/g, "]")
-            .replace(/^"(.*?)"$/g, "$1");
+            .replace(/^"(.*?)"$/g, "$1")
+            .trim();
 
     } catch (error) {
         throw error;
@@ -321,12 +322,8 @@ function MakeIntoJson(text = "[]") {
 
         // Output I: { "Name": "Ivan Holloway" }
         // Output II: [{ "Name": "Ivan Holloway" }, { "Name": "Lora Garcia" }]
-        res = JSON.stringify(res, null, 4)
-            .replace(/\\{2,}/g, `\\`)
-            .replace(/\\"\{/g, "{")
-            .replace(/\}\\"/g, "}")
-            .replace(/\\"\[/g, "[")
-            .replace(/\]\\"/g, "]");
+        res = ParseWhitespace(res);
+        res = JSON.stringify(res, null, 4);
         return res;
     } catch (error) {
         throw error;
@@ -346,7 +343,7 @@ function JoinIntoOneString(text = "") {
     try {
         let res = text.split("\n");
 
-        res = res.map(x => x.trim());
+        res = res.map(x => ParseWhitespace(x));
         res = res.join("");
 
         return res;
