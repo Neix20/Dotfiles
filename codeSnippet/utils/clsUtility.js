@@ -343,7 +343,7 @@ function JoinIntoOneString(text = "") {
     try {
         let res = text.split("\n");
 
-        res = res.map(x => ParseWhitespace(x));
+        res = res.map(x => x.trim());
         res = res.join("");
 
         return res;

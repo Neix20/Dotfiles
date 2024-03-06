@@ -102,6 +102,7 @@ function findRegion(editor, position) {
 
 const onFormatSqlCsv = () => Wrapper(FormatSqlCsv);
 const onJoinIntoOneString = () => Wrapper(JoinIntoOneString);
+const onParseWhitespace = () => Wrapper(ParseWhitespace);
 const onMakeIntoArr = () => Wrapper(MakeIntoArr);
 const onMakeIntoJson = () => Wrapper(MakeIntoJson);
 const OnJsonHelper = () => Wrapper(JsonHelper);
@@ -123,52 +124,56 @@ module.exports.macroCommands = {
         no: 2,
         func: onJoinIntoOneString
     },
-    "Make Into Array": {
+    "Parse Whitespace": {
         no: 3,
+        func: onParseWhitespace
+    },
+    "Make Into Array": {
+        no: 4,
         func: onMakeIntoArr
     },
     "Make Into Json": {
-        no: 4,
+        no: 5,
         func: onMakeIntoJson
     },
     "Handle Json Object": {
-        no: 5,
+        no: 6,
         func: OnJsonHelper
     },
     "Get Json Key And Values": {
-        no: 6,
+        no: 7,
         func: onGetJsonKeyValue
     },
     "Parse Store Procedure": {
-        no: 7,
+        no: 8,
         func: onParseSqlStoreProcedureIntoDict
     },
     "Convert JSON to SQL": {
-        no: 8,
+        no: 9,
         func: onConvertJsonToSql
     },
     "Format TaskList": {
-        no: 9,
+        no: 10,
         func: onFormatTasks
     },
     "Epoch Iso Converter": {
-        no: 10,
+        no: 11,
         func: onEpochIsoConverter
     },
     "CSV Json Converter": {
-        no: 11,
+        no: 12,
         func: onConvertJsonToCsv
     },
     "YAML Json Converter": {
-        no: 12,
+        no: 13,
         func: onConvertJsonToYaml
     },
     "Generate Documentation": {
-        no: 13,
+        no: 14,
         func: OnGenerateDocStr
     },
     "Select In Region": {
-        no: 14,
+        no: 15,
         func: GetNextRegion
     },
 };
