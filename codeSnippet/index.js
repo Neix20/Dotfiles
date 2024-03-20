@@ -168,6 +168,7 @@ module.exports.macroCommands = {
         no: 13,
         func: onConvertJsonToYaml
     },
+    // Curl Json Converter
     "Generate Documentation": {
         no: 14,
         func: OnGenerateDocStr

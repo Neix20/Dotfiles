@@ -323,6 +323,7 @@ function MakeIntoJson(text = "[]") {
         // Output I: { "Name": "Ivan Holloway" }
         // Output II: [{ "Name": "Ivan Holloway" }, { "Name": "Lora Garcia" }]
         res = ParseWhitespace(res);
+        res = JSON.parse(res);
         res = JSON.stringify(res, null, 4);
         return res;
     } catch (error) {
