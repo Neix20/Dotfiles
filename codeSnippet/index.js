@@ -116,65 +116,63 @@ const onConvertJsonToYaml = () => Wrapper(YamlJsonFormatter);
 const OnGenerateDocStr = () => Wrapper(GenerateDocStr);
 
 module.exports.macroCommands = {
+    // Unique to Neix Use Case
     "Format SQL": {
         no: 1,
         func: onFormatSqlCsv
     },
-    "Join Into One String": {
+    "Parse Store Procedure": {
         no: 2,
+        func: onParseSqlStoreProcedureIntoDict
+    },
+    "Format TaskList": {
+        no: 3,
+        func: onFormatTasks
+    },
+    // Global For All
+    "Join Into One String": {
+        no: 4,
         func: onJoinIntoOneString
     },
-    "Parse Whitespace": {
-        no: 3,
-        func: onParseWhitespace
-    },
     "Make Into Array": {
-        no: 4,
+        no: 5,
         func: onMakeIntoArr
     },
     "Make Into Json": {
-        no: 5,
+        no: 6,
         func: onMakeIntoJson
     },
     "Handle Json Object": {
-        no: 6,
+        no: 7,
         func: OnJsonHelper
     },
     "Get Json Key And Values": {
-        no: 7,
-        func: onGetJsonKeyValue
-    },
-    "Parse Store Procedure": {
         no: 8,
-        func: onParseSqlStoreProcedureIntoDict
+        func: onGetJsonKeyValue
     },
     "Convert JSON to SQL": {
         no: 9,
         func: onConvertJsonToSql
     },
-    "Format TaskList": {
-        no: 10,
-        func: onFormatTasks
-    },
     "Epoch Iso Converter": {
-        no: 11,
+        no: 10,
         func: onEpochIsoConverter
     },
     "CSV Json Converter": {
-        no: 12,
+        no: 11,
         func: onConvertJsonToCsv
     },
     "YAML Json Converter": {
-        no: 13,
+        no: 12,
         func: onConvertJsonToYaml
     },
     // Curl Json Converter
     "Generate Documentation": {
-        no: 14,
+        no: 13,
         func: OnGenerateDocStr
     },
     "Select In Region": {
-        no: 15,
+        no: 14,
         func: GetNextRegion
     },
 };

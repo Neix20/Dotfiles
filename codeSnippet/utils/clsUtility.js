@@ -79,10 +79,10 @@ function ParseWhitespace(txt = "[]") {
  */
 function parseNestedJson(txt) {
 
-    if (typeof txt === "object") {
-        return txt;
-    }
-    
+    // if (typeof txt === "object") {
+    //     return txt;
+    // }
+
     try {
         txt = ParseWhitespace(txt);
         const obj = JSON.parse(txt);
@@ -104,41 +104,44 @@ function JsonHelper(text = "{}") {
     }
 
     try {
-
         // 1. Convert Selection to json Object
         let obj = text;
 
         // Convert all Child Object of 1 Level to Object
         obj = parseNestedJson(obj);
 
-        const { sort = false, pairSwitch = false } = obj;
+        const { sort_keys = false, pairSwitch = false } = obj;
 
-        if ("sort" in obj) {
-            delete obj["sort"];
+        if ("sort_keys" in obj) {
+            delete obj["sort_keys"];
         }
 
         if ("pairSwitch" in obj) {
             delete obj["pairSwitch"];
         }
 
-        let res = {};
+        let res = obj;
 
         // 2. Sort JSON Object By Keys
         // Object.keys on Array return Index
-        let keys = Object.keys(obj);
+        if (sort_keys || pairSwitch) {
+            res = {};
 
-        if (sort) {
-            keys = keys.sort();
-        }
+            let keys = Object.keys(obj);
 
-        for (let key of keys) {
-            const val = obj[key];
+            if (sort_keys) {
+                keys = keys.sort();
+            }
 
-            // 3. Pair Switch
-            if (pairSwitch) {
-                res[val] = key;
-            } else {
-                res[key] = val;
+            for (let key of keys) {
+                const val = obj[key];
+
+                // 3. Pair Switch
+                if (pairSwitch) {
+                    res[val] = key;
+                } else {
+                    res[key] = val;
+                }
             }
         }
 
@@ -755,7 +758,7 @@ function EpochIsoConverter(data) {
     try {
         data = JSON.parse(data)
     } catch (err_2) {
-        
+
     }
 
     // Check If String is integer
