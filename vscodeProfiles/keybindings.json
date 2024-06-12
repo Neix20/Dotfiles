@@ -1,0 +1,203 @@
+// Place your key bindings in this file to override the defaults
+[
+    { 
+      "key": "cmd+n",
+      "command": "explorer.newFile",
+      "when": "explorerViewletFocus" 
+    },
+    { 
+      "key": "cmd+shift+n",
+      "command": "explorer.newFolder",
+      "when": "explorerViewletFocus" 
+    },
+    {
+      "key": "cmd+shift+1",
+      "command": "workbench.action.openEditorAtIndex1",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+2",
+      "command": "workbench.action.openEditorAtIndex2",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+3",
+      "command": "workbench.action.openEditorAtIndex3",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+4",
+      "command": "workbench.action.openEditorAtIndex4",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+5",
+      "command": "workbench.action.openEditorAtIndex5",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+6",
+      "command": "workbench.action.openEditorAtIndex6",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+7",
+      "command": "workbench.action.openEditorAtIndex7",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+8",
+      "command": "workbench.action.openEditorAtIndex8",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+9",
+      "command": "workbench.action.lastEditorInGroup",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+alt+cmd+2",
+      "command": "autoDocstring.generateDocstring",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+cmd+2",
+      "command": "-autoDocstring.generateDocstring",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+cmd+g",
+      "command": "-editor.action.previousMatchFindAction",
+      "when": "editorFocus"
+    },
+    {
+      "key": "shift+cmd+g",
+      "command": "workbench.view.scm",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+shift+b",
+      "command": "workbench.view.extension.bookmarks",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+shift+c",
+      "command": "workbench.view.extension.codeium",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+shift+s",
+      "command": "workbench.view.extension.sqltoolsActivityBarContainer",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+shift+a",
+      "command": "postman-for-vscode.sidebar-panel.focus",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+shift+t",
+      "command": "workbench.view.extension.todo-tree-container",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+shift+l",
+      "command": "workbench.view.extension.SonarLint",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+shift+d",
+      "command": "docsView.documentation.focus",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+b cmd+v",
+      "command": "workbench.view.extension.clipboard-manager"
+    },
+    {
+      "key": "cmd+shift+b shift+cmd+r",
+      "command": "workbench.view.remote"
+    },
+    {
+      "key": "cmd+b",
+      "command": "workbench.action.toggleSidebarVisibility",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "cmd+shift+n",
+      "command": "workbench.action.terminal.new",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "cmd+shift+d",
+      "command": "workbench.action.terminal.detachSession",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "cmd+shift+a",
+      "command": "workbench.action.terminal.attachToSession",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "cmd+shift+ctrl+b",
+      "command": "workbench.action.tasks.runTask"
+    },
+    {
+      "key": "cmd+shift+b",
+      "command": "-workbench.action.tasks.build",
+      "when": "taskCommandsRegistered"
+    },
+    {
+      "key": "ctrl+shift+m",
+      "command": "workbench.action.toggleMaximizedPanel",
+    },
+    {
+      "key": "ctrl+cmd+a",
+      "command": "codeium.diffActionAccept",
+      "when": "editorTextFocus && !inlineSuggestionsVisible"
+    },
+    {
+      "key": "alt+a",
+      "command": "-codeium.diffActionAccept",
+      "when": "editorTextFocus && !inlineSuggestionsVisible"
+    },
+    {
+      "key": "cmd+shift+b shift+cmd+\\",
+      "command": "terminal.focus"
+    },
+    {
+      "key": "alt+c",
+      "command": "markdown.extension.checkTaskList",
+      "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown' || editorTextFocus && !editorReadonly && editorLangId == 'rmd'"
+    },
+    {
+      "key": "alt+s",
+      "command": "markdown.extension.editing.toggleStrikethrough",
+      "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown' || editorTextFocus && !editorReadonly && editorLangId == 'rmd'"
+    },
+    {
+      "key": "ctrl+shift+pageup",
+      "command": "workbench.action.moveEditorLeftInGroup"
+    },
+    {
+      "key": "cmd+k shift+cmd+left",
+      "command": "-workbench.action.moveEditorLeftInGroup"
+    },
+    {
+      "key": "ctrl+shift+pagedown",
+      "command": "workbench.action.moveEditorRightInGroup"
+    },
+    {
+      "key": "cmd+k shift+cmd+right",
+      "command": "-workbench.action.moveEditorRightInGroup"
+    },
+    {
+      "key": "cmd+k cmd+o",
+      "command": "workbench.action.files.openFolder"
+    }
+    // {
+    //   "key": "shift+alt+f",
+    //   "command": "prettier.forceFormatDocument",
+    //   "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    // }
+]

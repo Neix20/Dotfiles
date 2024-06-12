@@ -1,0 +1,538 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "files.associations": {
+        "*.js": "javascript",
+        "*.ascx": "html"
+    },
+    "remote.SSH.remotePlatform": {
+        "47.250.49.228": "linux",
+        "100.83.36.84": "linux",
+        "100.118.18.111": "windows",
+        "100.121.10.84": "linux"
+    },
+    "editor.linkedEditing": true,
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "Windgrab",
+            "connectString": "data source=47.254.229.107;initial catalog=Windgrab;user id=sa; password=Nomoneynotalk88!"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "XiongDB",
+            "connectString": "data source=47.254.229.107;initial catalog=XiongDb;user id=sa; password=Nomoneynotalk88!"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "BCPlatform",
+            "connectString": "data source=47.254.229.107;initial catalog=BCPlatform;user id=sa; password=Nomoneynotalk88!"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "VtDashboard",
+            "connectString": "data source=47.254.229.107;initial catalog=DashboardDB;user id=sa; password=Nomoneynotalk88!"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "Sandbox_Yatu",
+            "connectString": "data source=47.254.229.107;initial catalog=Sandbox_Yatu;user id=sa; password=Nomoneynotalk88!"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "ParkingSystem",
+            "connectString": "data source=47.254.229.107;initial catalog=ParkingSystem;user id=sa; password=Nomoneynotalk88!"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "VTLive",
+            "connectString": "data source=47.254.229.107;initial catalog=VTLive;user id=sa; password=Nomoneynotalk88!"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "VMS",
+            "connectString": "data source=47.254.229.107;initial catalog=vms;user id=sa; password=Nomoneynotalk88!"
+        },
+    ],
+    "editor.unicodeHighlight.includeComments": true,
+    "prettier.tabWidth": 4,
+    "editor.unicodeHighlight.includeStrings": false,
+    "githubPullRequests.createOnPublishBranch": "never",
+    "git.autofetch": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "python.analysis.extraPaths": [
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.5-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.5-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.7-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.7-darwin-arm64",
+        "/home/neix/.vscode/extensions/continue.continue-0.6.8-linux-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.8-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.8-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.9-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.9-win32-x64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.10-win32-x64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.13-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.10-darwin-arm64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.13-darwin-arm64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.14-darwin-arm64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.15-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.15-win32-x64",
+        "/home/neix/.vscode-server/extensions/continue.continue-0.6.15-linux-x64",
+        "c:\\Users\\txen2\\.vscode-server\\extensions\\continue.continue-0.6.15-win32-x64",
+        "/home/neix/.vscode/extensions/continue.continue-0.6.15-linux-x64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.18-win32-x64"
+    ],
+    "python.autoComplete.extraPaths": [
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.5-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.5-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.7-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.7-darwin-arm64",
+        "/home/neix/.vscode/extensions/continue.continue-0.6.8-linux-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.8-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.8-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.9-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.9-win32-x64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.10-win32-x64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.13-win32-x64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.10-darwin-arm64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.13-darwin-arm64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.14-darwin-arm64",
+        "/Users/justin/.vscode/extensions/continue.continue-0.6.15-darwin-arm64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.15-win32-x64",
+        "/home/neix/.vscode-server/extensions/continue.continue-0.6.15-linux-x64",
+        "c:\\Users\\txen2\\.vscode-server\\extensions\\continue.continue-0.6.15-win32-x64",
+        "/home/neix/.vscode/extensions/continue.continue-0.6.15-linux-x64",
+        "c:\\Users\\txen2\\.vscode\\extensions\\continue.continue-0.6.18-win32-x64"
+    ],
+    "diffEditor.codeLens": true,
+    "todo-tree.general.tags": [
+        "[ ]",
+        "[x]",
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "ASSUME",
+        "bug",
+        "hack",
+        "fixme",
+        "todo",
+        "xxx",
+        "assume",
+    ],
+    "update.mode": "manual",
+    "npm.packageManager": "yarn",
+    "zenMode.centerLayout": false,
+    "editor.minimap.renderCharacters": false,
+    "resmon.show.cpufreq": false,
+    "clipboard-manager.saveTo": "",
+    "editor.find.globalFindClipboard": true,
+    "search.globalFindClipboard": true,
+    "window.title": "${dirty}${separator}${rootName}${separator}${activeRepositoryBranchName}${separator}${activeEditorShort}",
+    "files.watcherExclude": {
+        "*.log": true
+    },
+    "terminal.external.osxExec": "iTerm2.app",
+    "search.followSymlinks": false,
+    "clipboard-manager.snippet.enabled": false,
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass"
+            ]
+        },
+    },
+    // "terminal.integrated.defaultProfile.windows": "x86 zsh",
+    "terminal.integrated.profiles.osx": {
+        // Run With Rosetta
+        "x86 zsh": {
+            "path": "/usr/bin/arch",
+            "args": [
+                "-arch",
+                "x86_64",
+                "/bin/zsh"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "notebook.output.scrolling": true,
+    "clipboard-manager.onlyWindowFocused": false,
+    "peacock.favoriteColors": [
+        {
+            "name": "Blue",
+            "value": "#1D2B53"
+        },
+        {
+            "name": "Pink",
+            "value": "#7E2553"
+        },
+        {
+            "name": "Yellow",
+            "value": "#FFEC27"
+        },
+        {
+            "name": "Green",
+            "value": "#003923"
+        },
+        {
+            "name": "Brown",
+            "value": "#AB5236"
+        },
+        {
+            "name": "White",
+            "value": "#FFF1E8"
+        },
+        {
+            "name": "Red",
+            "value": "#FF004D"
+        },
+        {
+            "name": "Orange",
+            "value": "#FFA300"
+        },
+        {
+            "name": "Blue II",
+            "value": "#29ADFF"
+        },
+        {
+            "name": "Purple",
+            "value": "#83769C"
+        },
+        {
+            "name": "Pink II",
+            "value": "#FF77A8"
+        },
+        {
+            "name": "Peach",
+            "value": "#FFCCAA"
+        }
+    ],
+    "peacock.elementAdjustments": {
+        "activityBar": "lighten",
+        "statusBar": "none",
+        "titleBar": "none"
+    },
+    "peacock.surpriseMeFromFavoritesOnly": true,
+    "zenMode.showTabs": "none",
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "FiraCode Nerd Font",
+    "editor.fontSize": 13,
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+    // "vscodemacros.macroFilePath": "D:\\Github\\Dotfiles\\codeSnippet\\index.js",
+    "vscodemacros.macroFilePath": "/Users/justin/Documents/Github/Dotfiles/codeSnippet/index.js",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "settingsSync.ignoredExtensions": [
+        "exceedsystem.vscode-macros"
+    ],
+    "timing.hoverTimestamp.targetFormat": [
+        "dddd, DD MMM YYYY HH:mm:ss",
+        "YYYY-MM-DDTHH:mm:ss"
+    ],
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "bug",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "FIXME",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "unbderline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "HACK",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "unbderline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "[x]",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "[ ]",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "ASSUME",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+    "files.eol": "\r\n",
+    "jest.autoRun": {
+        "onStartup": []
+    },
+    "search.useGlobalIgnoreFiles": true,
+    "files.simpleDialog.enable": true,
+    "codeium.enableCodeLens": false,
+    "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "timing.clipboard.writingEnabled": true,
+    "timing.insertConvertedTime": false,
+    "autoalign.moveableItemsAdditional": [
+        "from",
+        "AS"
+    ],
+    "autoalign.minSeparationLeft": 2,
+    "sqltools.results.reuseTabs": "connection",
+    "codeium.enableConfig": {
+        "*": true
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.sideBar.location": "right",
+    "peacock.keepBadgeColor": true,
+    "peacock.surpriseMeOnStartup": true,
+    "peacock.affectSideBarBorder": true,
+    "peacock.affectEditorGroupBorder": true,
+    "peacock.affectPanelBorder": true,
+    "errorLens.enabled": false,
+    "sonarlint.rules": {
+        "javascript:S125": {
+            "level": "off"
+        },
+        "javascript:S3863": {
+            "level": "off"
+        },
+        "javascript:S1128": {
+            "level": "off"
+        },
+        "javascript:S1481": {
+            "level": "off"
+        },
+        "javascript:S1854": {
+            "level": "off"
+        },
+        "javascript:S6774": {
+            "level": "off"
+        },
+        "javascript:S6754": {
+            "level": "off"
+        },
+        "python:S1481": {
+            "level": "off"
+        },
+        "python:S1854": {
+            "level": "off"
+        },
+        "python:S125": {
+            "level": "off"
+        },
+        "javascript:S2737": {
+            "level": "off"
+        },
+        "csharpsquid:S3966": {
+            "level": "off"
+        },
+        "javascript:S1763": {
+            "level": "off"
+        },
+        "Web:TableHeaderHasIdOrScopeCheck": {
+            "level": "off"
+        }
+    },
+    "sonarlint.focusOnNewCode": true,
+    "workbench.editorAssociations": {},
+    "emmet.includeLanguages": {
+        "plaintext": "html",
+        "javascript": "javascriptreact",
+        "json": "html",
+        "jsonc": "html",
+        "csv": "html"
+    },
+    "errorLens.lintFilePaths": {
+        "eslint": [
+            "**/*.eslintrc.{js,cjs,yaml,yml,json}",
+            "**/*package.json"
+        ],
+        "Stylelint": [
+            "**/*.stylelintrc",
+            "**/*.stylelintrc.{cjs,js,json,yaml,yml}",
+            "**/*stylelint.config.{cjs,js}",
+            "**/*package.json"
+        ]
+    },
+    "python.defaultInterpreterPath": "/Users/justin/.pyenv/versions/3.11.0/bin/python",
+    "javascript.preferences.renameMatchingJsxTags": true,
+    "typescript.preferences.renameMatchingJsxTags": true,
+    // Formatter
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript][javascriptreact][typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[css][scss][less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[sql]": {
+        "editor.defaultFormatter": "mtxr.sqltools"
+    },
+    "[csharp]": {
+        "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    // The number of spaces a tab is equal to.
+    "editor.tabSize": 4,
+    
+    "editor.insertSpaces": true,
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+    "editor.detectIndentation": true,
+    
+    "prettier.useTabs": true,
+    "window.commandCenter": false,
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.activityBar.location": "bottom",
+    "files.autoSave": "afterDelay",
+    "cmake.configureOnOpen": true,
+    "editor.accessibilitySupport": "off",
+}
