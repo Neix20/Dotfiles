@@ -63,3 +63,48 @@ function title() {
 function git_export_version() {
   ~/BashScript/git_export_all_versions.sh "$1" "$2"
 }
+
+fortune_ls=(
+  "People aren't born ordinary but they choose to be ordinary; Unknown"
+  "We should not give up and we should not allow the problem to defeat us.; A.P.J. Abdul Kalam"
+  "Great dreams of great dreamers are always transcended; A.P.J. Abdul Kalam"
+  "If you don't build your dream, someone else will hire you to help them build theirs.; Dhirubhai Ambani"
+  "Our dreams have to be bigger. Our ambitions higher. Our commitment deeper. And our efforts greater.; Dhirubhai Ambani"
+  "Do or do not. There is no try.; Yoda"
+  "The most difficult thing is the decision to act, the rest is merely tenacity.; Amelia Earhart"
+  "What’s money? A man is a success if he gets up in the morning and goes to bed at night and in between does what he wants to do.; Bob Dylan"
+  "Certain things catch your eye, but pursue only those that capture the heart.; Ancient Indian Proverb"
+  "The only person you are destined to become is the person you decide to be.; Ralph Waldo Emerson"
+  "If you look at what you have in life, you’ll always have more. If you look at what you don’t have in life, you’ll never have enough.; Oprah Winfrey"
+  "I am not a product of my circumstances. I am a product of my decisions.; Steven Covey"
+  "The only way to do great work is to love what you do.; Steve Jobs"
+  "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.; Winston Churchill"
+  "Don’t let yesterday take up too much of today.; Will Rogers"
+  "Failure will never overtake me if my determination to succeed is strong enough.; Og Mandino"
+  "We may encounter many defeats but we must not be defeated.; Maya Angelou"
+  "To see what is right and not do it is a lack of courage.; Confucious"
+  "Today’s accomplishments were yesterday’s impossibilities.; Robert H. Schuller"
+  "There are no limits to what you can accomplish, except the limits you place on your own thinking.; Brian Tracy"
+)
+
+function fortune() {
+  # Generate Random Index
+  len="${#fortune_ls[@]}"
+  len=$((len-1))
+
+  random_ind=$(shuf -i1-$len -n1)
+
+  # Generate Quote and Author
+  quote=$(echo "${fortune_ls[$random_ind]}" | awk -F'; ' '{ print $1 }')
+  author=$(echo "${fortune_ls[$random_ind]}" | awk -F'; ' '{ print $2 }')
+
+  # Color Coding
+  NC="\033[1;m"
+
+  quote="\033[1;36m\"$quote\"$NC"
+  author="\033[1;35m--$author$NC"
+
+  output="$quote\\n\\t$author\x1b[0m"
+
+  echo -e $output
+}
