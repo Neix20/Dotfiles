@@ -59,33 +59,29 @@ HTTPS Setup with SSL Certificate
 
 ```nginx
 server {
-    listen 80;
-    listen [::]:80;
-    server_name www.neix-chs.tech;
-    return 302 https://$server_name$request_uri;
+  listen 80;
+  listen [::]:80;
+  server_name www.neix-chs.tech;
+  return 302 https://$server_name$request_uri;
 }
 
 server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
+  listen 443 ssl;
+  listen [::]:443 ssl;
 
-    ssl_certificate         /etc/letsencrypt/live/www.neix-chs.tech/fullchain.pem;
-    ssl_certificate_key     /etc/letsencrypt/live/www.neix-chs.tech/privkey.pem;
+  ssl_certificate         /etc/letsencrypt/live/www.neix-chs.tech/fullchain.pem;
+  ssl_certificate_key     /etc/letsencrypt/live/www.neix-chs.tech/privkey.pem;
 
-    server_name  www.neix-chs.tech;
+  server_name  www.neix-chs.tech;
 
-    location / {
-        proxy_pass http://localhost:51234;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_ssl_server_name on;
-    }
+  location / {
+    proxy_pass http://localhost:51234;
+    proxy_ssl_server_name on;
+  }
 
-    location /api/ {
-	    proxy_pass http://localhost:6969;
-    }
+  location /api/ {
+   proxy_pass http://localhost:6969;
+  }
 
 }
 ```
@@ -148,6 +144,18 @@ http {
 ```
 
 Content-Caching
+
+```nginx
+open_file_cache max=1000 inactive=20s;
+open_file_cache_valid 30s;
+open_file_cache_min_uses 2;
+open_file_cache_errors on;
+```
+
+```nginx
+ssl_session_cache shared:SSL:10m;
+ssl_session_timeout 10m;
+```
 
 CORS
 
