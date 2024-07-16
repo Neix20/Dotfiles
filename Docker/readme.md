@@ -146,7 +146,6 @@ my-service:
 ```yaml
 version: "3"
 services:
-
   redis:
     image: redis:alpine
     ports:
@@ -214,7 +213,6 @@ services:
         window: 120s
       placement:
         constraints: [node.role == manager]
-
   visualizer:
     image: dockersamples/visualizer
     ports:
@@ -225,11 +223,258 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
-
 networks:
   frontend:
   backend:
+volumes:
+  db-data:
+```
 
+## Docker Compose Commonly Used Snippets
+
+- [x] Build from Single Image
+
+```yaml
+version: '3.8'
+name: redis-kit
+services:
+  redis:
+    container_name: redis
+    image: redis:latest
+```
+
+```yaml
+version: '3.8'
+name: wordpress-kit
+services:
+  wordpress:
+    container_name: wordpress
+    image: wordpress:latest
+    volumes:
+      - ./wp_data:/var/www/html
+    ports:
+      - 8000:5000
+    restart: always
+    # restart: unless_stopped
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+    expose:
+      - 3306
+      - 33060
+    networks:
+      - frontend
+networks:
+  frontend:
+volume:
+  wp_data:
+```
+
+- [x] Build from Local Dockerfile
+
+```yaml
+build:
+  context: ./
+  dockerfile: ./Dockerfile
+```
+
+- [x] Build with Multiple Image & Network
+
+```yaml
+version: "3"
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - frontend
+  db:
+    image: postgres:9.4
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+  vote:
+    image: dockersamples/examplevotingapp_vote:before
+    ports:
+      - 5000:80
+    networks:
+      - frontend
+    depends_on:
+      - redis
+  result:
+    image: dockersamples/examplevotingapp_result:before
+    ports:
+      - 5001:80
+    networks:
+      - backend
+    depends_on:
+      - db
+  worker:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+networks:
+  frontend:
+  backend:
+volumes:
+  db-data:
+```
+
+- [x] Build with Portable Volume
+
+```yaml
+version: '3.8'
+name: wordpress-kit
+services:
+  wordpress:
+    container_name: wordpress
+    image: wordpress:latest
+    volumes:
+      - ./wp_data:/var/www/html
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+volume:
+  wp_data:
+```
+
+- [x] Build with Exposed Ports
+
+```yaml
+expose:
+  - 3306
+  - 33060
+```
+
+- [x] Build with Depends
+
+```yaml
+depends_on:
+  - ${service_name}
+```
+
+- [x] Build With Health Check
+
+```yaml
+healthcheck:
+  test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u$MYSQL_USER", "-p$MYSQL_PASSWORD"]
+  timeout: 20s
+  retries: 10
+command: --innodb-buffer-pool-size=1G --innodb-log-buffer-size=128M
+```
+
+- [x] Build with Environment Variables and .env
+
+```yaml
+environment:
+  - MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+  - MYSQL_DATABASE: "${MYSQL_DATABASE}"
+  - MYSQL_USER: "${MYSQL_USER}"
+  - MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+```
+
+```ini
+MYSQL_DATABASE=ccio
+MYSQL_USER=shinobi_user
+MYSQL_PASSWORD=password1234
+MYSQL_ROOT_PASSWORD=asldfjaksdjlk
+```
+
+- [x] Docker Swarm
+
+```yaml
+version: "3"
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379"
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+  db:
+    image: postgres:9.4
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+  vote:
+    image: dockersamples/examplevotingapp_vote:before
+    ports:
+      - 5000:80
+    networks:
+      - frontend
+    depends_on:
+      - redis
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+  result:
+    image: dockersamples/examplevotingapp_result:before
+    ports:
+      - 5001:80
+    networks:
+      - backend
+    depends_on:
+      - db
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+  worker:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels: [APP=VOTING]
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      placement:
+        constraints: [node.role == manager]
+  visualizer:
+    image: dockersamples/visualizer
+    ports:
+      - "8080:8080"
+    stop_grace_period: 1m30s
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+networks:
+  frontend:
+  backend:
 volumes:
   db-data:
 ```
