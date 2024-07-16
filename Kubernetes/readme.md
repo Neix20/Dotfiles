@@ -216,3 +216,4 @@ flowchart TD
 ## References
 
 [Kubernetes CheatSheet](https://www.bluematador.com/learn/kubectl-cheatsheet)
+[Docker Study Guide](https://kodekloud.com/kk-media/image/upload/v1702466862/course-resource-new/Docker-for-Beginners-Mumshad-Mannambeth.pdf)
