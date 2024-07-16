@@ -1,0 +1,79 @@
+---
+- name: Example Playbook
+  hosts: localhost
+  tasks:
+    - name: Copy a file
+      copy:
+        src: /path/to/source
+        dest: /path/to/destination
+
+    - name: Move a file
+      command: mv /path/to/source /path/to/destination
+
+    - name: List files in directory
+      command: ls /path/to/directory
+
+    - name: Remove a file
+      file:
+        path: /path/to/file
+        state: absent
+
+    - name: Create a directory
+      file:
+        path: /path/to/directory
+        state: directory
+
+    - name: Remove a directory
+      file:
+        path: /path/to/directory
+        state: absent
+
+    - name: Check processes
+      shell: ps aux | grep some_process
+      register: process_list
+    - debug:
+        var: process_list.stdout
+
+    - name: Kill a process
+      kill:
+        pid: 1234
+        signal: SIGKILL
+
+    - name: Install a package
+      apt:
+        name: some_package
+        state: present
+
+    - name: Print out a file
+      command: cat /path/to/file
+      register: file_content
+    - debug:
+        var: file_content.stdout
+
+    - name: Extract a tar file
+      unarchive:
+        src: /path/to/archive.tar.gz
+        dest: /path/to/destination
+
+    - name: Schedule a cron job
+      cron:
+        name: "My cron job"
+        minute: "0"
+        hour: "2"
+        job: "/path/to/command"
+
+    - name: Show current date
+      command: date
+      register: current_date
+    - debug:
+        var: current_date.stdout
+
+    - name: Update file permissions
+      file:
+        path: /path/to/file
+        mode: '0755'
+
+    - name: Check service status
+      service:
+        name: some_service
+        state: started
