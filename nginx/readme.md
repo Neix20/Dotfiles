@@ -15,7 +15,18 @@
 - [Nginx Configuration I](https://github.com/Neix20/nginx-conf-i)
 - [Nginx Configuration II](https://github.com/Neix20/nginx-conf-ii)
 
-Force WWW
+## Authentication
+
+### Basic
+
+- <https://github.com/beevelop/docker-nginx-basic-auth/tree/latest>
+- <https://github.com/xavijs/nginx-basic-auth>
+
+### API Key
+
+- <https://github.com/galvarado/nginx-api-gateway>
+
+### Force WWW
 
 ```nginx
 http {
@@ -32,7 +43,7 @@ http {
 }
 ```
 
-Force No-WWW
+### Force No-WWW
 
 ```nginx
 server {
@@ -47,7 +58,7 @@ server {
 }
 ```
 
-Basic Setup
+### Basic Setup
 
 ```nginx
 http {
@@ -63,7 +74,7 @@ http {
 }
 ```
 
-API Key Authentication
+### API Key Authentication
 
 ```nginx
 map $http_apikey $api_client_name {
@@ -93,7 +104,7 @@ location /api/warehouse/ {
 }
 ```
 
-HTTPS Setup with SSL Certificate
+### HTTPS Setup with SSL Certificate
 
 ```nginx
 server {
@@ -129,7 +140,7 @@ server {
 }
 ```
 
-Load Balancer Setup
+### Load Balancer Setup
 
 ```nginx
 events {}
@@ -151,7 +162,7 @@ http {
 }
 ```
 
-GZip Compression
+### GZip Compression
 
 ```nginx
 http {
@@ -175,7 +186,7 @@ http {
 }
 ```
 
-Basic Authentication with API-Key
+### Basic Authentication with API-Key
 
 ```nginx
 http {
@@ -186,7 +197,7 @@ http {
 }
 ```
 
-Content-Caching
+### Content-Caching
 
 ```nginx
 open_file_cache max=1000 inactive=20s;
@@ -200,15 +211,15 @@ ssl_session_cache shared:SSL:10m;
 ssl_session_timeout 10m;
 ```
 
-CORS
+### CORS
 
-```nginx
+```csharp
 location ~* \.(eot|ttf|woff) {
   add_header Access-Control-Allow-Origin *;
 }
 ```
 
-MIME Types
+### MIME Types
 
 ```nginx
 types {
@@ -218,7 +229,7 @@ types {
 }
 ```
 
-URL Rewrite
+### URL Rewrite
 
 ```nginx
 # 前缀匹配（Prefix Match）： `location /path/` 使用前缀匹配，匹配以 `/path/` 开头的请求路径。
@@ -253,7 +264,7 @@ location ~* \.png$ {
 
 ### Reverse Proxy
 
-Setup I Copied Online
+#### Setup I Copied Online
 
 ```nginx
 location / {
@@ -267,7 +278,7 @@ location / {
 }
 ```
 
-Basic Setup
+#### Basic NGINX Setup
 
 ```nginx
 location / {
@@ -275,7 +286,7 @@ location / {
 }
 ```
 
-Add Proxy Header
+#### Add Proxy Header
 
 ```nginx
 location / {
@@ -286,7 +297,7 @@ location / {
 }
 ```
 
-Different Routes
+#### Different Routes
 
 ```nginx
 location /app/ {
@@ -295,7 +306,7 @@ location /app/ {
 }
 ```
 
-Enable Proxy Buffering
+#### Enable Proxy Buffering
 
 ```nginx
 location / {
@@ -308,7 +319,7 @@ location / {
 }
 ```
 
-Web-Socket Connection
+#### Web-Socket Connection
 
 ```nginx
 location / {
@@ -320,7 +331,7 @@ location / {
 }
 ```
 
-Load Balancing
+#### Load Balancing
 
 ```nginx
 upstream backend_servers {
@@ -337,17 +348,18 @@ server {
 }
 ```
 
-Handle 404 Error
+#### Handle 404 Error
 
 ```nginx
 location / {
   proxy_pass http://backend_server;
   error_page 502 503 504 /error.html;
+  try_files /cart.html =404;
   # 其他代理相关配置...
 }
 ```
 
-Logging Practice
+#### Logging Practice
 
 ```nginx
 location / {
@@ -358,7 +370,7 @@ location / {
 }
 ```
 
-CORS
+#### CORS Check II
 
 ```nginx
 server {
