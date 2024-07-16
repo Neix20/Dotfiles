@@ -7,6 +7,7 @@
 cd        # Change Directory
 cp        # Copy Files
 mv        # Move Files
+ls        # List Files in Directory
 ps        # Check Process
 rm        # Remove Files
 apt       # Install Packages
