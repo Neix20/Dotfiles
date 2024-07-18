@@ -145,4 +145,45 @@ tar -xf archive.zip
 7z x archive.zip
 ```
 
-- AWK For Loop
+### Update Bashrc
+
+#### Windows
+
+```shell
+vi ./AppData/Local/Programs/Git/etc/bash.bashrc
+```
+
+#### MacOS
+
+```shell
+vi ~/.zshrc
+vi ~/.bashrc
+```
+
+#### Linux
+
+```shell
+vi ~/.bashrc
+```
+
+### SSH
+
+#### Generate Key Pair
+
+```shell
+ssh-keygen -t rsa -b 2048 -f <key-name>.pem
+```
+
+#### Copy Public Key to Remote Server
+
+```shell
+ssh-copy-id -i <key-name>.pem.pub ubuntu@54.173.100.10
+```
+
+#### SSH With Public Key Pair
+
+```shell
+ssh -i <key-name>.pem ubuntu@54.173.100.10
+```
+
+
