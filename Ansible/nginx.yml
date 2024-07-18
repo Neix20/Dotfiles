@@ -1,0 +1,35 @@
+---
+- name: Starter Playbook for Fresh Server
+  hosts: ubuntu
+  become: true
+  vars: []
+  tasks:
+    - name: Update & Upgrade APT Version
+      ansible.builtin.apt:
+        force: true
+        update_cache: true
+        upgrade: "yes"
+    - name: Install Required Packages
+      ansible.builtin.apt:
+        pkg:
+          - nginx
+        state: latest
+        update_cache: true
+    - name: Copy auth.htpasswd to Server
+      ansible.builtin.copy:
+        src: ./../assets/auth.htpasswd
+        dest: /etc/nginx
+    - name: Copy Nginx.Conf to Conf.d
+      ansible.builtin.copy:
+        src: ./../assets/nginx.conf
+        dest: /etc/nginx/conf.d
+    - name: Unzip public.zip There
+      # Comment
+      ansible.builtin.unarchive:
+        src: ./../assets/public.tar.gz
+        dest: /usr/share/nginx/html
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: restarted
+        enabled: true

@@ -3,6 +3,10 @@
 
 This directory is used for me to familiarize myself with Ansible Playbooks
 
+## Repositories
+
+- <https://github.com/leucos/ansible-tuto>
+
 ## Commonly Used Modules For Ansible
 
 ### File Operations
@@ -44,7 +48,7 @@ This directory is used for me to familiarize myself with Ansible Playbooks
 
 ```yaml
 - name: Create a new file
-  ansible.builtin.file:
+  file:
     path: /path/to/myfile.txt
     state: touch
 ```
@@ -55,7 +59,6 @@ This directory is used for me to familiarize myself with Ansible Playbooks
 - name: Make HTTP Get Request
   uri:
     url: https://swapi.dev/api/people/
-    return_content: yes
   register: swapi
 - debug:
   var: swapi
@@ -66,9 +69,17 @@ This directory is used for me to familiarize myself with Ansible Playbooks
 ```yaml
 - name: Unpackage deploy.tar.gz
   # Comment
-  ansible.builtin.unarchive:
+  unarchive:
     src: /opt/deploy.tar.gz
     dest: /opt/my-app
+```
+
+```yaml
+- name: Archive Files Together
+  archive:
+    path: /apps/tomcat/logs/catalina.2019-07-24.log
+    dest: /apps/tomcat/catalina.2019-07-24.log.zip
+    format: zip
 ```
 
 ### Shell Operations
@@ -103,9 +114,19 @@ This directory is used for me to familiarize myself with Ansible Playbooks
 
 ```yaml
 - name: "Install Nginx to version {{ nginx_version }}"
-  ansible.builtin.apt:
+  apt:
     name: "nginx={{ nginx_version }}"
     state: present
+```
+
+```yaml
+ - name: Install Required Packages
+  ansible.builtin.apt:
+    pkg:
+      - nginx
+      - p7zip-full
+    state: latest
+    update_cache: true
 ```
 
 ### Line In File

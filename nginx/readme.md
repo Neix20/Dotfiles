@@ -19,7 +19,7 @@
 
 ### Basic
 
-- <https://github.com/beevelop/docker-nginx-basic-auth/tree/latest>
+- <https://github.com/beevelop/docker-nginx-basic-auth>
 - <https://github.com/xavijs/nginx-basic-auth>
 
 ### API Key

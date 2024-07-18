@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: ReqRes Fake Crud
+  description: >
+    This API contains GET and POST methods which are the most commonly used HTTP methods.
+  contact:
+    name: Justin
+    email: Justin-T.XiEnExternal@aia.com
+  version: v3
+servers:
+  - url: https://reqres.in/api/
+    description: Reqres API„
+tags:
+  - name: User
+    description: Operations about user
+paths:
+  /users:
+    summary: /users
+    get:
+      tags:
+        - User
+      summary: Fetches a user list
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  per_page:
+                    type: integer
+                    format: int32
+                  total:
+                    type: integer
+                    format: int32
+                  data:
+                    type: array
+                    items:
+                      ref: '#/components/schemas/User'
+                  page:
+                    type: integer
+                    format: int32
+                  total_pages:
+                    type: integer
+                    format: int32
+    post:
+      tags:
+        - User
+      summary: Creates a User
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: morpheus
+                job:
+                  type: string
+                  example: leader
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdAt:
+                    type: string
+                    example: '2024-07-05T03:37:53.656Z'
+                  name:
+                    type: string
+                    example: morpheus
+                  id:
+                    type: string
+                    example: '586'
+                  job:
+                    type: string
+                    example: leader
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    parameters: []
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        last_name:
+          type: string
+        id:
+          type: integer
+          format: int32
+        avatar:
+          type: string
+        first_name:
+          type: string
+        email:
+          type: string

@@ -4,23 +4,24 @@
 ## Most Commonly Used Bash Commands
 
 ```shell
-cd        # Change Directory
-cp        # Copy Files
-mv        # Move Files
-ls        # List Files in Directory
-ps        # Check Process
-rm        # Remove Files
-apt       # Install Packages
-cat       # Print Out File
-tar       # Archive Files
-cron      # Schedule Tasks
-date      # Show Date
-grep      # Fine String
-kill      # Kill Process
-chmod     # Update Permission of File
-mkdir     # Create Directory
-rmdir     # Remove Directory
-systemctl # Check Service Status
+cd          # Change Directory
+cp          # Copy Files
+mv          # Move Files
+ls          # List Files in Directory
+ps          # Check Process
+rm          # Remove Files
+apt         # Install Packages
+cat         # Print Out File
+tar         # Archive Files
+cron        # Schedule Tasks
+date        # Show Date
+curl        # HTTP Request Method Wrapper
+grep        # Fine String
+kill        # Kill Process
+chmod       # Update Permission of File
+mkdir       # Create Directory
+rmdir       # Remove Directory
+systemctl   # Check Service Status
 ```
 
 ## Regex
@@ -54,7 +55,7 @@ awk -F'; ' '{ print $1 }'
 #### AWK For Loop
 
 ```shell
-cat ./temp/trash.txt | awk '{ res = ""; split($0, arr, "-"); for (i = 1; i <= 4; i++) res = res arr[i] "-"; res = res arr[i]; print res; }'
+cat ./temp/trash.txt | awk '{ split($0, arr, "-"); res = arr[1]; for (i = 2; i <= 5; i++) res = res "-" arr[i]; print res; }'
 ```
 
 ### Generate Cookie
