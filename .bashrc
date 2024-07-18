@@ -66,20 +66,20 @@ function git_export_version() {
 
 function fortune() {
   # Parameters
-  file_path="fortune.json"
+  file_path="/c/Users/E138807/Documents/fortune.json"
   url="https://raw.githubusercontent.com/Neix20/Dotfiles/master/fortunes/data.json"
 
   # Check if fortune file exists
   if [ ! -f "$file_path" ]; then
-    curl $url -os $file_path
+    curl -s $url -o $file_path
   fi
 
   # Return in format "${quote}; ${author}"
-  fortune_data=$(cat $file_path | python -c 'import sys, json, random; data = json.load(sys.stdin); id = random.randint(0, len(data)); print(data[id]["quote"] + "; " + data[id]["author"])')
+  fortune_data=$(cat $file_path | python -c 'import sys, json, random; data = json.load(sys.stdin); id = random.randint(0, len(data)); print(data[id]["quote"] + ";;; " + data[id]["author"])')
 
   # Generate Quote and Author
-  quote=$(echo "$fortune_data" | awk -F'; ' '{ print $1 }')
-  author=$(echo "$fortune_data" | awk -F'; ' '{ print $2 }')
+  quote=$(echo "$fortune_data" | awk -F';;; ' '{ print $1 }')
+  author=$(echo "$fortune_data" | awk -F';;; ' '{ print $2 }')
 
   # Color Coding
   NC="\033[1;m"
