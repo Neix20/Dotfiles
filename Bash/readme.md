@@ -166,3 +166,18 @@ vi ~/.bashrc
 vi ~/.bashrc
 ```
 
+### SSH
+
+#### Generate Key Pair
+
+```shell
+ssh-keygen -t rsa -b 2048 -f <key-name>
+```
+
+#### SSH With Key Pair
+
+```shell
+ssh -i <key-name> ubuntu@54.173.100.10
+```
+
+
