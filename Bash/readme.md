@@ -144,3 +144,25 @@ tar -tf archive.zip
 tar -xf archive.zip
 7z x archive.zip
 ```
+
+### Update Bashrc
+
+#### Windows
+
+```shell
+vi ./AppData/Local/Programs/Git/etc/bash.bashrc
+```
+
+#### MacOS
+
+```shell
+vi ~/.zshrc
+vi ~/.bashrc
+```
+
+#### Linux
+
+```shell
+vi ~/.bashrc
+```
+
