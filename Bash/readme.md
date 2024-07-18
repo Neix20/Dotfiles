@@ -14,6 +14,7 @@ apt       # Install Packages
 cat       # Print Out File
 tar       # Archive Files
 cron      # Schedule Tasks
+curl      # Grab From URL
 date      # Show Date
 grep      # Fine String
 kill      # Kill Process
@@ -143,5 +144,3 @@ tar -tf archive.zip
 tar -xf archive.zip
 7z x archive.zip
 ```
-
-- AWK For Loop
