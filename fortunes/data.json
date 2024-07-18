@@ -1,205 +1,4 @@
 [
-  // Inspirational Quotes from Celebrities
-  {
-    "quote": "The only people who never fail are those who never try.",
-    "author": "Ilka Chase"
-  },
-  {
-    "quote": "Failure is just another way to learn how to do something right.",
-    "author": "Marian Wright Edelman"
-  },
-  {
-    "quote": "I failed my way to success.",
-    "author": "Thomas Edison"
-  },
-  {
-    "quote": "Every failure brings with it the seed of an equivalent success.",
-    "author": "Napoleon Hill"
-  },
-  {
-    "quote": "Only those who dare to fail greatly can ever achieve greatly.",
-    "author": "John F. Kennedy"
-  },
-  {
-    "quote": "It is hard to fail, but it is worse never to have tried to succeed.",
-    "author": "Theodore Roosevelt"
-  },
-  {
-    "quote": "Imagination is more important than knowledge.",
-    "author": "Albert Einstein"
-  },
-  {
-    "quote": "Hold fast to dreams, for if dreams die, life is a broken winged bird that cannot fly.",
-    "author": "Langston Hughes"
-  },
-  {
-    "quote": "The future belongs to those who believe in the beauty of their dreams.",
-    "author": "Eleanor Roosevelt"
-  },
-  {
-    "quote": "Go confidently in the direction of your dreams. Live the life you have imagined.",
-    "author": "Henry David Thoreau"
-  },
-  {
-    "quote": "You cannot depend on your eyes when your imagination is out of focus.",
-    "author": "Mark Twain"
-  },
-  {
-    "quote": "Commitment leads to action. Action brings your dream closer.",
-    "author": "Marcia Wieder"
-  },
-  {
-    "quote": "I never think of the future",
-    "author": "it comes soon enough."
-  },
-  {
-    "quote": "Don't waste your life in doubts and fears: Spend yourself on the work before you, well assured that the right performance of this hour's duties will be the best preparation for the hours or ages that follow it.",
-    "author": "Ralph Waldo Emerson"
-  },
-  {
-    "quote": "Do not anticipate trouble or worry about what may never happen. Keep in the sunlight.",
-    "author": "Benjamin Franklin"
-  },
-  {
-    "quote": "Take time to deliberate; but when the time for action arrives, stop thinking and go in.",
-    "author": "Andrew Jackson"
-  },
-  {
-    "quote": "The mind that is anxious about future events is miserable.",
-    "author": "Seneca"
-  },
-  {
-    "quote": "Live in each season as it passes; breathe the air, drink the drink, taste the fruit, and resign yourself to the influences of each.",
-    "author": "Henry David Thoreau"
-  },
-  {
-    "quote": "The art of leadership is saying no, not yes. It is very easy to say yes.",
-    "author": "Tony Blair"
-  },
-  {
-    "quote": "A leader is a dealer in hope.",
-    "author": "Napoleon Bonaparte"
-  },
-  {
-    "quote": "While a good leader sustains momentum, a great leader increases it.",
-    "author": "John C. Maxwell"
-  },
-  {
-    "quote": "A general is just as good or just as bad as the troops under his command make him.",
-    "author": "General Douglas MacArthur"
-  },
-  {
-    "quote": "To do great things is difficult; but to command great things is more difficult.",
-    "author": "Friedrich Nietzsche"
-  },
-  {
-    "quote": "Leadership does not always wear the harness of compromise.",
-    "author": "Woodrow Wilson"
-  },
-  {
-    "quote": "Business opportunities are like buses",
-    "author": "there's always another one coming."
-  },
-  {
-    "quote": "I avoid looking forward or backward, and try to keep looking upward.",
-    "author": "Charlotte Bronte"
-  },
-  {
-    "quote": "The more difficulties one has to encounter, within and without, the more significant and the higher in inspiration his life will be.",
-    "author": "Horace Bushnell"
-  },
-  {
-    "quote": "Every artist was first an amateur.",
-    "author": "Ralph Waldo Emerson"
-  },
-  {
-    "quote": "I was always looking outside myself for strength and confidence, but it comes from within. It is there all of the time.",
-    "author": "Anna Freud"
-  },
-  {
-    "quote": "We can do anything we want to do if we stick to it long enough.",
-    "author": "Helen Keller"
-  },
-  {
-    "quote": "Our business in life is not to get ahead of others, but to get ahead of ourselves.",
-    "author": "E. Joseph Cossman"
-  },
-  {
-    "quote": "Insist on yourself. Never imitate.",
-    "author": "Ralph Waldo Emerson"
-  },
-  {
-    "quote": "Who looks outside, dreams. Who looks inside, awakes.",
-    "author": "Carl Jung"
-  },
-  {
-    "quote": "It is not easy to find happiness in ourselves, and it is not possible to find it elsewhere.",
-    "author": "Agnes Repplier"
-  },
-  {
-    "quote": "The only journey is the one within.",
-    "author": "Rainer Maria Rilke"
-  },
-  {
-    "quote": "Follow your honest convictions, and stay strong.",
-    "author": "William Thackeray"
-  },
-  {
-    "quote": "The happiness of your life depends upon the quality of your thoughts; therefore guard accordingly.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "quote": "Action may not always bring happiness; but there is no happiness without action.",
-    "author": "Benjamin Disraeli"
-  },
-  {
-    "quote": "Happiness depends more on the inward disposition of mind than on outward circumstances.",
-    "author": "Benjamin Franklin"
-  },
-  {
-    "quote": "There is no happiness except in the realization that we have accomplished something.",
-    "author": "Henry Ford"
-  },
-  {
-    "quote": "Happiness is not a goal, but a by-product.",
-    "author": "Eleanor Roosevelt"
-  },
-  {
-    "quote": "Happiness is not a state to arrive at, but a manner of traveling.",
-    "author": "Margaret Lee Runbeck"
-  },
-  {
-    "quote": "Purpose is what gives life a meaning.",
-    "author": "C. H. Parkhurst"
-  },
-  {
-    "quote": "The significance of a man is not in what he attains but in what he longs to attain.",
-    "author": "Kahlil Gibran"
-  },
-  {
-    "quote": "In all things that you do, consider the end.",
-    "author": "Solon"
-  },
-  {
-    "quote": "Life can be pulled by goals just as surely as it can be pushed by drives.",
-    "author": "Viktor Frankl"
-  },
-  {
-    "quote": "The virtue lies in the struggle, not in the prize.",
-    "author": "Richard Monckton Milnes"
-  },
-  {
-    "quote": "To reach a port, we must sail",
-    "author": "sail, not tie at anchor"
-  },
-  {
-    "quote": "Success is the child of audacity.",
-    "author": "Benjamin Disraeli"
-  },
-  {
-    "quote": "The difference between a successful person and others is not a lack of strength, not a lack of knowledge, but rather a lack in will.",
-    "author": "Vince Lombardi"
-  },
   {
     "quote": "The secret of success is to know something nobody else knows.",
     "author": "Aristotle Onassis"
@@ -399,8 +198,7 @@
   {
     "quote": "Example is not the main thing in influencing other people; it’s the only thing",
     "author": "Abraham Lincoln"
-  }
-  // Movie Quotes
+  },
   {
     "quote": "Not quite my tempo.",
     "author": "Whiplash"
@@ -596,5 +394,9 @@
   {
     "quote": "Love means never having to say you're sorry",
     "author": "Love Story"
+  },
+  {
+    "quote": "Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.",
+    "author": "The Matrix"
   }
 ]
