@@ -171,7 +171,13 @@ vi ~/.bashrc
 #### Generate Key Pair
 
 ```shell
-ssh-keygen -t rsa -b 2048 -f <key-name>
+ssh-keygen -t rsa -b 2048 -f <key-name>.pem
+```
+
+#### Copy SSH Key to Remote Server
+
+```shell
+ssh-copy-id -i <key-name>.pub ubuntu@54.173.100.10
 ```
 
 #### SSH With Key Pair
