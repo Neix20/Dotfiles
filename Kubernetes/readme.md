@@ -216,5 +216,6 @@ flowchart TD
 ## References
 
 [Kubernetes CheatSheet](https://www.bluematador.com/learn/kubectl-cheatsheet)
-[Docker Study Guide](https://kodekloud.com/kk-media/image/upload/v1702466862/course-resource-new/Docker-for-Beginners-Mumshad-Mannambeth.pdf)
-[Kubernetes](https://iamondemand.com/wp-content/uploads/2019/11/Kubernetes-eBook.pdf)
+[Kubernetes How to Expose Localhost](https://medium.com/digitalfrontiers/kubernetes-ingress-with-nginx-93bdc1ce5fa9)
+[Kubernetes Expose Localhost with Ingress Controller](https://platform9.com/learn/v1.0/tutorials/nginix-controller-via-yaml)
+[Kubernetes Do Localhost Nginx in BareMetal](https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/baremetal/deploy.yaml)
