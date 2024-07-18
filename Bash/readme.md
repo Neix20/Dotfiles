@@ -174,16 +174,16 @@ vi ~/.bashrc
 ssh-keygen -t rsa -b 2048 -f <key-name>.pem
 ```
 
-#### Copy SSH Key to Remote Server
+#### Copy Public Key to Remote Server
 
 ```shell
-ssh-copy-id -i <key-name>.pub ubuntu@54.173.100.10
+ssh-copy-id -i <key-name>.pem.pub ubuntu@54.173.100.10
 ```
 
-#### SSH With Key Pair
+#### SSH With Public Key Pair
 
 ```shell
-ssh -i <key-name> ubuntu@54.173.100.10
+ssh -i <key-name>.pem ubuntu@54.173.100.10
 ```
 
 
