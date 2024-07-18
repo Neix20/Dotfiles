@@ -1,0 +1,600 @@
+[
+  // Inspirational Quotes from Celebrities
+  {
+    "quote": "The only people who never fail are those who never try.",
+    "author": "Ilka Chase"
+  },
+  {
+    "quote": "Failure is just another way to learn how to do something right.",
+    "author": "Marian Wright Edelman"
+  },
+  {
+    "quote": "I failed my way to success.",
+    "author": "Thomas Edison"
+  },
+  {
+    "quote": "Every failure brings with it the seed of an equivalent success.",
+    "author": "Napoleon Hill"
+  },
+  {
+    "quote": "Only those who dare to fail greatly can ever achieve greatly.",
+    "author": "John F. Kennedy"
+  },
+  {
+    "quote": "It is hard to fail, but it is worse never to have tried to succeed.",
+    "author": "Theodore Roosevelt"
+  },
+  {
+    "quote": "Imagination is more important than knowledge.",
+    "author": "Albert Einstein"
+  },
+  {
+    "quote": "Hold fast to dreams, for if dreams die, life is a broken winged bird that cannot fly.",
+    "author": "Langston Hughes"
+  },
+  {
+    "quote": "The future belongs to those who believe in the beauty of their dreams.",
+    "author": "Eleanor Roosevelt"
+  },
+  {
+    "quote": "Go confidently in the direction of your dreams. Live the life you have imagined.",
+    "author": "Henry David Thoreau"
+  },
+  {
+    "quote": "You cannot depend on your eyes when your imagination is out of focus.",
+    "author": "Mark Twain"
+  },
+  {
+    "quote": "Commitment leads to action. Action brings your dream closer.",
+    "author": "Marcia Wieder"
+  },
+  {
+    "quote": "I never think of the future",
+    "author": "it comes soon enough."
+  },
+  {
+    "quote": "Don't waste your life in doubts and fears: Spend yourself on the work before you, well assured that the right performance of this hour's duties will be the best preparation for the hours or ages that follow it.",
+    "author": "Ralph Waldo Emerson"
+  },
+  {
+    "quote": "Do not anticipate trouble or worry about what may never happen. Keep in the sunlight.",
+    "author": "Benjamin Franklin"
+  },
+  {
+    "quote": "Take time to deliberate; but when the time for action arrives, stop thinking and go in.",
+    "author": "Andrew Jackson"
+  },
+  {
+    "quote": "The mind that is anxious about future events is miserable.",
+    "author": "Seneca"
+  },
+  {
+    "quote": "Live in each season as it passes; breathe the air, drink the drink, taste the fruit, and resign yourself to the influences of each.",
+    "author": "Henry David Thoreau"
+  },
+  {
+    "quote": "The art of leadership is saying no, not yes. It is very easy to say yes.",
+    "author": "Tony Blair"
+  },
+  {
+    "quote": "A leader is a dealer in hope.",
+    "author": "Napoleon Bonaparte"
+  },
+  {
+    "quote": "While a good leader sustains momentum, a great leader increases it.",
+    "author": "John C. Maxwell"
+  },
+  {
+    "quote": "A general is just as good or just as bad as the troops under his command make him.",
+    "author": "General Douglas MacArthur"
+  },
+  {
+    "quote": "To do great things is difficult; but to command great things is more difficult.",
+    "author": "Friedrich Nietzsche"
+  },
+  {
+    "quote": "Leadership does not always wear the harness of compromise.",
+    "author": "Woodrow Wilson"
+  },
+  {
+    "quote": "Business opportunities are like buses",
+    "author": "there's always another one coming."
+  },
+  {
+    "quote": "I avoid looking forward or backward, and try to keep looking upward.",
+    "author": "Charlotte Bronte"
+  },
+  {
+    "quote": "The more difficulties one has to encounter, within and without, the more significant and the higher in inspiration his life will be.",
+    "author": "Horace Bushnell"
+  },
+  {
+    "quote": "Every artist was first an amateur.",
+    "author": "Ralph Waldo Emerson"
+  },
+  {
+    "quote": "I was always looking outside myself for strength and confidence, but it comes from within. It is there all of the time.",
+    "author": "Anna Freud"
+  },
+  {
+    "quote": "We can do anything we want to do if we stick to it long enough.",
+    "author": "Helen Keller"
+  },
+  {
+    "quote": "Our business in life is not to get ahead of others, but to get ahead of ourselves.",
+    "author": "E. Joseph Cossman"
+  },
+  {
+    "quote": "Insist on yourself. Never imitate.",
+    "author": "Ralph Waldo Emerson"
+  },
+  {
+    "quote": "Who looks outside, dreams. Who looks inside, awakes.",
+    "author": "Carl Jung"
+  },
+  {
+    "quote": "It is not easy to find happiness in ourselves, and it is not possible to find it elsewhere.",
+    "author": "Agnes Repplier"
+  },
+  {
+    "quote": "The only journey is the one within.",
+    "author": "Rainer Maria Rilke"
+  },
+  {
+    "quote": "Follow your honest convictions, and stay strong.",
+    "author": "William Thackeray"
+  },
+  {
+    "quote": "The happiness of your life depends upon the quality of your thoughts; therefore guard accordingly.",
+    "author": "Marcus Aurelius"
+  },
+  {
+    "quote": "Action may not always bring happiness; but there is no happiness without action.",
+    "author": "Benjamin Disraeli"
+  },
+  {
+    "quote": "Happiness depends more on the inward disposition of mind than on outward circumstances.",
+    "author": "Benjamin Franklin"
+  },
+  {
+    "quote": "There is no happiness except in the realization that we have accomplished something.",
+    "author": "Henry Ford"
+  },
+  {
+    "quote": "Happiness is not a goal, but a by-product.",
+    "author": "Eleanor Roosevelt"
+  },
+  {
+    "quote": "Happiness is not a state to arrive at, but a manner of traveling.",
+    "author": "Margaret Lee Runbeck"
+  },
+  {
+    "quote": "Purpose is what gives life a meaning.",
+    "author": "C. H. Parkhurst"
+  },
+  {
+    "quote": "The significance of a man is not in what he attains but in what he longs to attain.",
+    "author": "Kahlil Gibran"
+  },
+  {
+    "quote": "In all things that you do, consider the end.",
+    "author": "Solon"
+  },
+  {
+    "quote": "Life can be pulled by goals just as surely as it can be pushed by drives.",
+    "author": "Viktor Frankl"
+  },
+  {
+    "quote": "The virtue lies in the struggle, not in the prize.",
+    "author": "Richard Monckton Milnes"
+  },
+  {
+    "quote": "To reach a port, we must sail",
+    "author": "sail, not tie at anchor"
+  },
+  {
+    "quote": "Success is the child of audacity.",
+    "author": "Benjamin Disraeli"
+  },
+  {
+    "quote": "The difference between a successful person and others is not a lack of strength, not a lack of knowledge, but rather a lack in will.",
+    "author": "Vince Lombardi"
+  },
+  {
+    "quote": "The secret of success is to know something nobody else knows.",
+    "author": "Aristotle Onassis"
+  },
+  {
+    "quote": "The surest way not to fail is to determine to succeed.",
+    "author": "Richard Brinsley Sheridan"
+  },
+  {
+    "quote": "I cannot give you the formula for success, but I can give you the formula for failure",
+    "author": "which is: Try to please everybody."
+  },
+  {
+    "quote": "Careful thinking and hard work will solve nearly all your problems. Try and see for yourself.",
+    "author": "Ullery"
+  },
+  {
+    "quote": "Years teach us more than books.",
+    "author": "Berthold Auerbach"
+  },
+  {
+    "quote": "The only medicine for suffering, crime, and all the other woes of mankind, is wisdom.",
+    "author": "Thomas Huxley"
+  },
+  {
+    "quote": "The art of being wise is knowing what to overlook.",
+    "author": "William James"
+  },
+  {
+    "quote": "The great lesson is that the sacred is in the ordinary, that it is to be found in one's daily life, in one's neighbors, friends and family, in one's backyard.",
+    "author": "Abraham Maslow"
+  },
+  {
+    "quote": "A wise man learns by the mistakes of others, a fool by his own.",
+    "author": "Latin proverb"
+  },
+  {
+    "quote": "No man was ever wise by chance.",
+    "author": "Seneca"
+  },
+  {
+    "quote": "In everything the ends well defined are the secret of durable success.",
+    "author": "Victor Cousins"
+  },
+  {
+    "quote": "Arriving at one goal is the starting point to another.",
+    "author": "John Dewey"
+  },
+  {
+    "quote": "A goal is a dream with a deadline.",
+    "author": "Napoleon Hill"
+  },
+  {
+    "quote": "Most 'impossible' goals can be met simply by breaking them down into bite-size chunks, writing them down, believing them, and then going full speed ahead as if they were routine.",
+    "author": "Don Lancaster"
+  },
+  {
+    "quote": "Goals are the fuel in the furnace of achievement.",
+    "author": "Brian Tracy"
+  },
+  {
+    "quote": "We are what we repeatedly do. Excellence, therefore, is not an act but a habit.",
+    "author": "Aristotle"
+  },
+  {
+    "quote": "Take risks and you'll get the payoffs. Learn from your mistakes until you succeed. It's that simple.",
+    "author": "Bobby Flay"
+  },
+  {
+    "quote": "The best way out is always through.",
+    "author": "Robert Frost"
+  },
+  {
+    "quote": "You miss 100 percent of the shots you don't take.",
+    "author": "Wayne Gretzky"
+  },
+  {
+    "quote": "Nothing will ever be attempted if all possible objections must first be overcome.",
+    "author": "Samuel Johnson"
+  },
+  {
+    "quote": "Don't bunt. Aim out of the ballpark.",
+    "author": "David Ogilvy"
+  },
+  {
+    "quote": "The critical ingredient is getting off your butt and doing something. It’s as simple as that. A lot of people have ideas, but there are few who decide to do something about them now. Not tomorrow. Not next week. But today. The true entrepreneur is a doer, not a dreamer.",
+    "author": "Nolan Bushnell, entrepreneur."
+  },
+  {
+    "quote": "Never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honour and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy.",
+    "author": "Winston Churchill, British Prime Minister."
+  },
+  {
+    "quote": "Your most unhappy customers are your greatest source of learning.",
+    "author": "Bill Gates, co-founder of Microsoft."
+  },
+  {
+    "quote": "I have not failed. I’ve just found 10,000 ways that won’t work.",
+    "author": "Thomas Edison, inventor."
+  },
+  {
+    "quote": "Entrepreneurship is neither a science nor an art. It is a practice.",
+    "author": "Peter Drucker, management consultant, educator, and author."
+  },
+  {
+    "quote": "In the modern world of business, it is useless to be a creative, original thinker unless you can also sell what you create.",
+    "author": "David Ogilvy, Co-founder of Ogilvy & Mather."
+  },
+  {
+    "quote": "Success is how high you bounce after you hit bottom.",
+    "author": "General George Patton."
+  },
+  {
+    "quote": "If you’re not embarrassed by the first version of your product, you’ve launched too late.",
+    "author": "Reid Hoffman, co-founder of LinkedIn."
+  },
+  {
+    "quote": "Positive thinking will let you do everything better than negative thinking will.",
+    "author": "Zig Ziglar, author, salesman, and motivational speaker."
+  },
+  {
+    "quote": "I’m not afraid of dying, I’m afraid of not trying.",
+    "author": "Jay Z, musician."
+  },
+  {
+    "quote": "Whatever the mind can conceive and believe, the mind can achieve.",
+    "author": "Dr. Napoleon Hill, author of Think and Grow Rich."
+  },
+  {
+    "quote": "The longer you’re not taking action the more money you’re losing",
+    "author": "Carrie Wilkerson"
+  },
+  {
+    "quote": "If you live for weekends or vacations, your shit is broken",
+    "author": "Gary Vaynerchuk"
+  },
+  {
+    "quote": "Go Big, or Go Home",
+    "author": "Eliza Dushku"
+  },
+  {
+    "quote": "Most great people have attained their greatest success just one step beyond their greatest failure",
+    "author": "Napoleon Hill"
+  },
+  {
+    "quote": "Opportunity is missed by most people because it is dressed in overalls and looks like work",
+    "author": "Thomas Edison"
+  },
+  {
+    "quote": "Have the end in mind and every day make sure your working towards it",
+    "author": "Ryan Allis"
+  },
+  {
+    "quote": "He who begins many things finishes but few",
+    "author": "German Proverb"
+  },
+  {
+    "quote": "The best use of life is to spend it for something that outlasts it",
+    "author": "William James"
+  },
+  {
+    "quote": "If you think education is expensive, try ignorance",
+    "author": "Derek Bok"
+  },
+  {
+    "quote": "Entrepreneurship is living a few years of your life like most people wont so you can spend the rest of your life like most people can’t",
+    "author": "A student in Warren G. Tracy’s class"
+  },
+  {
+    "quote": "Lend your friend $20, if he doesn’t pay you back then he’s not your friend. Money well spent",
+    "author": "Ted Nicolas"
+  },
+  {
+    "quote": "Be nice to geek’s, you’ll probably end up working for one",
+    "author": "Bill Gates"
+  },
+  {
+    "quote": "To never forget that the most important thing in life is the quality of life we lead",
+    "author": "Quoted by Tony Hsieh on Retireat21"
+  },
+  {
+    "quote": "Its better to own the racecourse then the race horse",
+    "author": "Unknown"
+  },
+  {
+    "quote": "When you go to buy, don’t show your silver",
+    "author": "Chinese Proverb"
+  },
+  {
+    "quote": "It’s easier to ask forgiveness than it is to get permission",
+    "author": "Grace Hopper"
+  },
+  {
+    "quote": "To win without risk is to triumph without glory",
+    "author": "Corneille"
+  },
+  {
+    "quote": "Example is not the main thing in influencing other people; it’s the only thing",
+    "author": "Abraham Lincoln"
+  }
+  // Movie Quotes
+  {
+    "quote": "Not quite my tempo.",
+    "author": "Whiplash"
+  },
+  {
+    "quote": "Men, you are about to embark on a great crusade to stamp out runaway decency in the west. Now you men will only be risking your lives, whilst I will be risking an almost certain Academy Award nomination for Best Supporting Actor.",
+    "author": "Blazing Saddles"
+  },
+  {
+    "quote": "When you're looking for a cancer kid, he should be hopeless. He should have a wheelchair, he should have trouble talking, he should have a little pet goldfish in a Zip-lock bag, hopeless.",
+    "author": "Thank You for Smoking"
+  },
+  {
+    "quote": "This is Sparta!",
+    "author": "300"
+  },
+  {
+    "quote": "There's no place like home.",
+    "author": "The Wizard of Oz"
+  },
+  {
+    "quote": "Once you meet someone, you never really forget them. It just takes a while for your memory to come back to you",
+    "author": "Spirited Away"
+  },
+  {
+    "quote": "People keeps secret computers don't",
+    "author": "Arrow"
+  },
+  {
+    "quote": "You make me want to be a better man.",
+    "author": "As Good as It Gets"
+  },
+  {
+    "quote": "I have nipples, Greg. Could you milk me?",
+    "author": "Meet the Parents"
+  },
+  {
+    "quote": "For Azeroth, for the Alliance!",
+    "author": "Warcraft"
+  },
+  {
+    "quote": "Bright day uh, Bright Boy?",
+    "author": "Django Unchained"
+  },
+  {
+    "quote": "Play it, Sam. Play 'As Time Goes By.",
+    "author": "Casablanca"
+  },
+  {
+    "quote": "It is only with the heart that one can see rightly; what is essential is invisible to the eye",
+    "author": "The Little Prince"
+  },
+  {
+    "quote": "It is within my power to drastically change his cirumstances, but I don't want to give that man a gift he doesn't deserve.",
+    "author": "Seven Pounds"
+  },
+  {
+    "quote": "The flower that blooms in adversity is the most rare and beautiful of all.",
+    "author": "Mulan"
+  },
+  {
+    "quote": "When I got tired, I slept. When I got hungry, I ate. When I had to go, you know, I went.",
+    "author": "Forrest Gump"
+  },
+  {
+    "quote": "I just want to escape. Dad always wanted me to travel the world. Someday.",
+    "author": "Abominable"
+  },
+  {
+    "quote": "You either die a hero or live long enough to see yourself become the villian.",
+    "author": "The Dark Knight"
+  },
+  {
+    "quote": "Gentlemen, you had my curiosity, but now you have my attention.",
+    "author": "Django Unchained"
+  },
+  {
+    "quote": "Even the smallest person can change the course of the future.",
+    "author": "The Lord of the Rings: The Fellowship of the Ring"
+  },
+  {
+    "quote": "These barbarians pretend to be submissive, but the…a sleeping beast down, before it can be awakened.",
+    "author": "Dragon Ball Super: Broly"
+  },
+  {
+    "quote": "Bond. James Bond",
+    "author": "Dr. No"
+  },
+  {
+    "quote": "The heart is not like a box that gets filled up; it expands in size the more you love. I'm different from you. This doesn't make me love you any less. It actually makes me love you more.",
+    "author": "Her"
+  },
+  {
+    "quote": "Mama always said life was like a box of chocolates. You never know what you're gonna get.",
+    "author": "Forrest Gump"
+  },
+  {
+    "quote": "Guns, lots of guns.",
+    "author": "John Wick 3: Parabellum"
+  },
+  {
+    "quote": "Chaos is a ladder!",
+    "author": "Game of Thrones"
+  },
+  {
+    "quote": "I will not say: do not weep; for not all tears are an evil.",
+    "author": "The Lord of the Rings: Return of the King"
+  },
+  {
+    "quote": "I have nothing to prove to you",
+    "author": "Captain Marvel"
+  },
+  {
+    "quote": "What you NEED to do is get me my chips!!! With dip!!! Cuz you're delinquent, motherfucker!",
+    "author": "The Wash"
+  },
+  {
+    "quote": "If you can only do one thing, hone it to perfection. Hone it to the utmost limit!",
+    "author": "Kimetsu no Yaiba"
+  },
+  {
+    "quote": "We are all different. However bad life may seem, there is always something you can do, and succeed at. While there's life, there is hope.",
+    "author": "The Theory of Everything"
+  },
+  {
+    "quote": "You had my curiosity. But now you have my attention.",
+    "author": "Django Unchained"
+  },
+  {
+    "quote": "I am Groot.",
+    "author": "Guardians of the Galaxy"
+  },
+  {
+    "quote": "Listen to them. Children of the night. What music they make.",
+    "author": "Dracula"
+  },
+  {
+    "quote": "Never let your wings be stolen for you",
+    "author": "Maleficent:The Mistress of Evil"
+  },
+  {
+    "quote": "Oh Fred. That's so sweet.",
+    "author": "Flintstones in Viva Rock Vegas"
+  },
+  {
+    "quote": "Do, or do not. There is no 'try'.",
+    "author": "Star Wars: Episode V - The Empire Strikes Back"
+  },
+  {
+    "quote": "Some people feel like they don't deserve love. They walk away quietly into empty spaces, trying to close the gaps of the past.",
+    "author": "Into the Wild"
+  },
+  {
+    "quote": " Spider-Pig, Spider-Pig. Does whatever a Spider-Pig does. Can he swing from a web? No he can't, he's a pig. Look out! He is a Spider-Pig!",
+    "author": "The Simpsons Movie"
+  },
+  {
+    "quote": "If you build it, he will come.",
+    "author": "Field of Dreams"
+  },
+  {
+    "quote": "No, I shot him. Bullets and the fall killed him.",
+    "author": "Collateral"
+  },
+  {
+    "quote": "I have burrowed underneath your brain. I am nested there. I am the scream in your mind. You will cooperate.",
+    "author": "Mr. Robot"
+  },
+  {
+    "quote": "They all deserve to die. Even you, Mrs. Lovett. Even I. Because the lives of the wicked should be made brief. For the rest of us death would be relief.",
+    "author": "Sweeney Todd: The Demon Barber of Fleet Street "
+  },
+  {
+    "quote": "They may take our lives, but they'll never take our freedom!",
+    "author": "Breaveheart"
+  },
+  {
+    "quote": "You expect me to talk? No, Mr Bond, I expect you to die!",
+    "author": "Goldfinger"
+  },
+  {
+    "quote": "You're right, Aurora. But the drowning man will always try and drag somebody down with him. It ain't right, but the man's drowning.",
+    "author": "Passengers"
+  },
+  {
+    "quote": "It's not magic, it's talent and sweat.",
+    "author": "Silicon Valley HBO"
+  },
+  {
+    "quote": "Is life always this hard, or is it just when you're a kid?",
+    "author": "Léon"
+  },
+  {
+    "quote": "Love means never having to say you're sorry",
+    "author": "Love Story"
+  }
+]
