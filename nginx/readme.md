@@ -398,3 +398,12 @@ server {
   }
 }
 ```
+
+## Helper
+
+### Generate htpasswd
+
+```shell
+htpasswd -c
+```
+
