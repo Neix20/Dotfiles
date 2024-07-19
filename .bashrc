@@ -84,8 +84,8 @@ function fortune() {
   # Color Coding
   NC="\033[1;m"
 
-  quote="\033[1;36m\"$quote\"$NC"
-  author="\033[1;35m--$author$NC"
+  quote="\033[1;36m$quote$NC"
+  author="\033[1;35m$author$NC"
 
   output="$quote\\n\\t$author\x1b[0m"
 
