@@ -215,7 +215,8 @@ flowchart TD
 
 ## References
 
-[Kubernetes CheatSheet](https://www.bluematador.com/learn/kubectl-cheatsheet)
-[Kubernetes How to Expose Localhost](https://medium.com/digitalfrontiers/kubernetes-ingress-with-nginx-93bdc1ce5fa9)
-[Kubernetes Expose Localhost with Ingress Controller](https://platform9.com/learn/v1.0/tutorials/nginix-controller-via-yaml)
-[Kubernetes Do Localhost Nginx in BareMetal](https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/baremetal/deploy.yaml)
+- [Kubernetes CheatSheet](https://www.bluematador.com/learn/kubectl-cheatsheet)
+- [Kubernetes How to Expose Localhost](https://medium.com/digitalfrontiers/kubernetes-ingress-with-nginx-93bdc1ce5fa9)
+- [Kubernetes Expose Localhost with Ingress Controller II](https://platform9.com/learn/v1.0/tutorials/nginix-controller-via-yaml)
+- [Kubernetes Expose Localhost with Ingress Controller](oursera.org/courseraplus?utm_source=gg&utm_medium=sem&utm_campaign=b2c_apac_coursera-plus_coursera_ftcof_subscription_arte_apr-24_dr_geo-set-3-multi_sem_rsa_gads_lg-all&utm_content=b2c&campaignid=21165289867&adgroupid=163685947107&device=c&keyword=coursera&matchtype=e&network=g&devicemodel=&adpostion=&creativeid=696974723648&hide_mobile_promo&gad_source=1&gclid=EAIaIQobChMIkbCasfLjhgMVbBGDAx0VCgB_EAAYASAAEgJBVfD_BwE)
+- [Kubernetes Do Localhost Nginx in BareMetal](https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/baremetal/deploy.yaml)
