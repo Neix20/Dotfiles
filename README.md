@@ -1,6 +1,7 @@
 
-# Dotfile
+# Dotfiles
 
-I Used to vim, until VsCode came up with remote SSH
+Collection of CLI Utilities that I used
 
-I'm now a vscode guy. I guess emacs won in the end...
+Collections of DevOps Snippets and tools that I've used
+
