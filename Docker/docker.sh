@@ -29,8 +29,8 @@ docker run --name=redis -d redis:alpine
 
 docker run --name=redis --network test-network -d redis:alpine
 
-docker run --name=clickcounter -p 8085:5000 --network test-network -d kodekloud/click-counter
-docker run --name=clickcounter -p 8085:5000 --link redis -d kodekloud/click-counter
+docker run --name clickcounter -p 8085:5000 --network test-network -d kodekloud/click-counter
+docker run --name clickcounter -p 8085:5000 --link redis -d kodekloud/click-counter
 
 docker network create test-network
 
@@ -48,6 +48,8 @@ docker run --name=mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 --network wp-mysql-
 docker run --name=webapp -e DB_Host=mysql-db -e DB_Password=db_pass123 --network wp-mysql-network -d kodekloud/simple-webapp-mysql
 
 docker run -d -p 5000:5000 --name my-registry -v /registry/data:/var/lib/registry --restart always registry:2
+
+docker run -p 4000:80 --name simple-react-app -d txe1/simple-react-app
 
 # Pull Image From Hub
 docker pull nginx:latest
