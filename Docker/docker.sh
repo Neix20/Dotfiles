@@ -70,3 +70,15 @@ curl -X GET localhost:5000/v2/_catalog
 
 docker pull localhost:5000/nginx
 docker pull localhost:5000/httpd
+
+# Docker Build Image
+docker build -t yourusername/example-node-app .
+docker build -t txe1/simple-react-app .
+
+# Tag Image
+docker tag yourusername/example-node-app yourdockerhubusername/example-node-app:v1
+docker tag txe1/simple-react-app txe1/simple-react-app:v1
+
+# Push To Server
+docker push yourusername/example-node-app:v1
+docker push txe1/simple-react-app:v1
