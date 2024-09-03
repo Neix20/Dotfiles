@@ -35,9 +35,6 @@
 " Enable type file detection. Vim will be able to try to detect the type of file is use.
 	filetype on
 
-" Enable spell check
-	set spell
-
 " Smart tab
 	set smarttab
 
