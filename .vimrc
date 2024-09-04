@@ -16,15 +16,25 @@
 "                                    |___/             
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
 
+"------------------DEFAULT SETTINGS------------------
+ru! defaults.vim                " Use Enhanced Vim defaults
+set mouse=                      " Reset the mouse setting from defaults
+aug vimStartup | au! | aug END  " Revert last positioned jump, as it is defined below
+let g:skip_defaults_vim = 1     " Do not source defaults.vim again (after loading this system vimrc)
 
 "------------------SETTINGS------------------
 
+" set auto-indenting on for programming
+  set ai
+
+" set clipboard to unnamed to access the system clipboard under windows
+  set clipboard=unnamed 
 
 " Disable compatibility with vi which can cause unexpected issues.
 	set nocompatible
 
 " Disable the vim bell
-	set visualbell
+	set vb
 
 " Disable auto commenting in a new line
 	autocmd Filetype * setlocal formatoptions-=c formatoptions-=r  formatoptions-=o
@@ -56,9 +66,6 @@
 " Mouse functionality
 	set mouse=a
 
-" Color scheme
-	colorscheme darkblue
-
 " Highlight cursor line underneath the cursor horizontally.
 	set cursorline
 
@@ -88,6 +95,9 @@
 " Show the mode you are on the last line.
 	set showmode
 
+" ColorScheme
+  colorscheme koehler
+
 " Show matching words during a search.
 	set showmatch
 
@@ -104,6 +114,9 @@
 " Wild menu will ignore files with these extensions.
 	set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" Better command line completion
+  set wildmode=list:longest,longest:full
+
 " If Vim version is equal to or greater than 7.3 enable undo file.
 " This allows you to undo changes to a file even after saving it.
 	if version >= 703
@@ -111,7 +124,6 @@
     	set undofile
     	set undoreload=10000
 	endif
-
 
 " File Browsing settings
 	let g:netrw_banner=0
@@ -189,6 +201,15 @@
 
 	endif
 
+"------------------XTerm 256 Color------------------
+
+if &term =~ 'xterm-256color'    " mintty identifies itself as xterm-compatible
+  if &t_Co == 8
+    set t_Co = 256              " Use at least 256 colors
+  endif
+  " set termguicolors           " Uncomment to allow truecolors on mintty
+endif
+
 "------------------Hex_Toggle_Functions------------------
 
 function! DoHex()
@@ -262,39 +283,37 @@ endfunction
 
 "------------------STATUS_LINE------------------
 
-
-"" statusline
+" statusline
 set laststatus=2
+
 set statusline=                          " left align
 set statusline+=%2*\                     " blank char
 set statusline+=%2*\%{StatuslineMode()}
-set statusline+=%2*\
+set statusline+=%2*\ 
 set statusline+=%1*\ <<
 set statusline+=%1*\ %f                  " short filename              
 set statusline+=%1*\ >>
 set statusline+=%=                       " right align
 set statusline+=%*
 set statusline+=%3*\%h%m%r               " file flags (help, read-only, modified)
-set statusline+=%4*\%{b:gitbranch}       " include git branch
-set statusline+=%3*\%.25F                " long filename (trimmed to 25 chars)
-set statusline+=%3*\::
-set statusline+=%3*\%l/%L\\|             " line count
+set statusline+=%3*\%{b:gitbranch}       " include git branch
+set statusline+=%3*\%l/%L\               " line count
 set statusline+=%3*\%y                   " file type
-hi User1 ctermbg=black ctermfg=grey guibg=black guifg=grey
+hi User1 ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
 hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
-hi User3 ctermbg=black ctermfg=lightgreen guibg=black guifg=lightgreen
+hi User3 ctermbg=darkblue ctermfg=black guibg=darkblue guifg=black
 
-"" statusline functions
+" statusline functions
 function! StatuslineMode()
     let l:mode=mode()
-    if l:mode==#"n"
+    if l:mode==?"n"
         return "NORMAL"
-    elseif l:mode==?"v"
+    elseif l:mode==#"v"
         return "VISUAL"
     elseif l:mode==#"i"
         return "INSERT"
-    elseif l:mode==#"R"
-        return "REPLACE"
+    elseif l:mode==#"c"
+        return "COMMAND"
     endif
 endfunction
 
