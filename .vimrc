@@ -285,51 +285,41 @@ endfunction
 
 "------------------STATUS_LINE------------------
 
-function! InsertStatuslineColor()
-	let l:mode=mode()
-
-	if l:mode==?"n"
-		hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
-    elseif l:mode==#"v"
-		hi User2 ctermbg=red ctermfg=black guibg=red guifg=black
-    elseif l:mode==#"i"
-        hi User2 ctermbg=blue ctermfg=black guibg=blue guifg=black
-    endif
-endfunction
-
-au ModeChanged * call InsertStatuslineColor()
-
 " default the statusline to green when entering Vim
-hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
+hi mainBar ctermbg=green ctermfg=black guibg=green guifg=black
 
 " statusline
 set laststatus=2
 
 set statusline=                          " left align
-set statusline+=%2*\                     " blank char
-set statusline+=%2*\%{StatuslineMode()}
-set statusline+=%2*\ 
-set statusline+=%1*\ <<
-set statusline+=%1*\ %f                  " short filename              
-set statusline+=%1*\ >>
+set statusline+=%#mainBar#\                     " blank char
+set statusline+=%#mainBar#\%{StatuslineMode()}
+set statusline+=%#mainBar#\ 
+set statusline+=%#secondaryBar#\ <<
+set statusline+=%#secondaryBar#\ %f                  " short filename              
+set statusline+=%#secondaryBar#\ >>
 set statusline+=%=                       " right align
 set statusline+=%{strftime(\"%H:%M\")}\ 
-set statusline+=%2*\ %h%m%r               " file flags (help, read-only, modified)
-set statusline+=%2*%{b:gitbranch}       " include git branch
-set statusline+=%2*%l/%L              " line count
-set statusline+=%2*\ %y\                    " file type
-hi User1 ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+set statusline+=%#mainBar#\ %h%m%r               " file flags (help, read-only, modified)
+set statusline+=%#mainBar#%{b:gitbranch}       " include git branch
+set statusline+=%#mainBar#%l/%L              " line count
+set statusline+=%#mainBar#\ %y\                    " file type
+hi secondaryBar ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
 
 " statusline functions
 function! StatuslineMode()
     let l:mode=mode()
     if l:mode==?"n"
+		hi mainBar ctermbg=green ctermfg=black guibg=green guifg=black
         return "NORMAL"
     elseif l:mode==#"v"
+		hi mainBar ctermbg=darkred ctermfg=white guibg=darkred guifg=white
         return "VISUAL"
     elseif l:mode==#"i"
+		hi mainBar ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white
         return "INSERT"
     elseif l:mode==#"c"
+		hi mainBar ctermbg=yellow ctermfg=black guibg=yellow guifg=black
         return "COMMAND"
     endif
 endfunction
