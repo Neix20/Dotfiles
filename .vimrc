@@ -98,6 +98,9 @@ let g:skip_defaults_vim = 1     " Do not source defaults.vim again (after loadin
 " Show the mode you are on the last line.
 	set showmode
 
+" ColorScheme
+  colorscheme koehler
+
 " Show matching words during a search.
 	set showmatch
 
