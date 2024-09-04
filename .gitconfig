@@ -1,0 +1,10 @@
+[pretty]
+	lo = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset
+[alias]
+	lg = log --graph --all --pretty=lo
+# Would not suggest adding this, cause just use vscode for everything
+# Only do this if you're in a server, connected using ssh
+[pager]
+	log = "vim -R -"
+	show = "vim -R -"
+	diff = "vimdiff"
