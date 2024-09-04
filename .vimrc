@@ -48,6 +48,9 @@ let g:skip_defaults_vim = 1     " Do not source defaults.vim again (after loadin
 " Smart tab
 	set smarttab
 
+" Fold Method
+	set foldmethod=indent
+
 " Search down to subfolders
 	set path+=**
 
@@ -70,8 +73,8 @@ let g:skip_defaults_vim = 1     " Do not source defaults.vim again (after loadin
 	set cursorline
 
 " Set shift width to 4 spaces.Set tab width to 4 columns.
-	set shiftwidth=4
-	set tabstop=4
+	set shiftwidth=2
+	set tabstop=2
 
 " If the current file type is HTML, set indentation to 2 spaces.
 	autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
@@ -94,9 +97,6 @@ let g:skip_defaults_vim = 1     " Do not source defaults.vim again (after loadin
 
 " Show the mode you are on the last line.
 	set showmode
-
-" ColorScheme
-  colorscheme koehler
 
 " Show matching words during a search.
 	set showmatch
@@ -265,7 +265,6 @@ endfunction
 
 "------------------Hebrew_Toggle_Function------------------
 
-
 function! ToggleHebrew()
 	if &rl
 		set norl
@@ -283,6 +282,23 @@ endfunction
 
 "------------------STATUS_LINE------------------
 
+function! InsertStatuslineColor()
+	let l:mode=mode()
+
+	if l:mode==?"n"
+		hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
+    elseif l:mode==#"v"
+		hi User2 ctermbg=red ctermfg=black guibg=red guifg=black
+    elseif l:mode==#"i"
+        hi User2 ctermbg=blue ctermfg=black guibg=blue guifg=black
+    endif
+endfunction
+
+au ModeChanged * call InsertStatuslineColor()
+
+" default the statusline to green when entering Vim
+hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
+
 " statusline
 set laststatus=2
 
@@ -294,14 +310,12 @@ set statusline+=%1*\ <<
 set statusline+=%1*\ %f                  " short filename              
 set statusline+=%1*\ >>
 set statusline+=%=                       " right align
-set statusline+=%*
-set statusline+=%3*\%h%m%r               " file flags (help, read-only, modified)
-set statusline+=%3*\%{b:gitbranch}       " include git branch
-set statusline+=%3*\%l/%L\               " line count
-set statusline+=%3*\%y                   " file type
+set statusline+=%{strftime(\"%H:%M\")}\ 
+set statusline+=%2*\ %h%m%r               " file flags (help, read-only, modified)
+set statusline+=%2*%{b:gitbranch}       " include git branch
+set statusline+=%2*%l/%L              " line count
+set statusline+=%2*\ %y\                    " file type
 hi User1 ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
-hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
-hi User3 ctermbg=darkblue ctermfg=black guibg=darkblue guifg=black
 
 " statusline functions
 function! StatuslineMode()
@@ -337,7 +351,6 @@ augroup GetGitBranch
   autocmd!
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
-
 "------------------KEY_BINDINGS------------------
 
 
