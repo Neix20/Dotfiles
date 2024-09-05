@@ -99,7 +99,7 @@ let g:skip_defaults_vim = 1     " Do not source defaults.vim again (after loadin
 	set showmode
 
 " ColorScheme
-  colorscheme sorbet
+  colorscheme evening
 
 " Show matching words during a search.
 	set showmatch
