@@ -99,7 +99,7 @@ let g:skip_defaults_vim = 1     " Do not source defaults.vim again (after loadin
 	set showmode
 
 " ColorScheme
-  colorscheme koehler
+  colorscheme sorbet
 
 " Show matching words during a search.
 	set showmatch
@@ -210,7 +210,7 @@ if &term =~ 'xterm-256color'    " mintty identifies itself as xterm-compatible
   if &t_Co == 8
     set t_Co = 256              " Use at least 256 colors
   endif
-  " set termguicolors           " Uncomment to allow truecolors on mintty
+  set termguicolors             " Uncomment to allow truecolors on mintty
 endif
 
 "------------------Hex_Toggle_Functions------------------
@@ -304,7 +304,7 @@ set statusline+=%#mainBar#\ %h%m%r               " file flags (help, read-only, 
 set statusline+=%#mainBar#%{b:gitbranch}       " include git branch
 set statusline+=%#mainBar#%l/%L              " line count
 set statusline+=%#mainBar#\ %y\                    " file type
-hi secondaryBar ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+hi secondaryBar ctermbg=black ctermfg=white guibg=black guifg=white
 
 " statusline functions
 function! StatuslineMode()
@@ -313,10 +313,10 @@ function! StatuslineMode()
 		hi mainBar ctermbg=green ctermfg=black guibg=green guifg=black
         return "NORMAL"
     elseif l:mode==#"v"
-		hi mainBar ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+		hi mainBar ctermbg=red ctermfg=white guibg=red guifg=white
         return "VISUAL"
     elseif l:mode==#"i"
-		hi mainBar ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white
+		hi mainBar ctermbg=blue ctermfg=white guibg=blue guifg=white
         return "INSERT"
     elseif l:mode==#"c"
 		hi mainBar ctermbg=yellow ctermfg=black guibg=yellow guifg=black
