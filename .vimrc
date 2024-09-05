@@ -434,21 +434,7 @@ augroup END
 	nnoremap <leader>hx <cmd>call HexState()<CR>
 
 
-" Map V-Block to not confuse with Past
-	noremap <leader>v <C-v>
-
-
-" For copy and past
-	map <C-V> "+P
-	vnoremap <C-C> "*y :let @+=@*<CR>
-" If not in Linux replace the keybinding in above line with: vnoremap <C-C> "+y
-
-
 " Seeing the registers
 	nnoremap <leader>r <cmd>registers<CR>
-
-" Moving lines in visual mode
-	vnoremap J :m '>+1<CR>gv=gv
-	vnoremap K :m '>-2<CR>gv=gv
 
 "------------------END_KEY------------------
