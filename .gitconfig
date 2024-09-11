@@ -7,4 +7,5 @@
 [pager]
 	log = "vim -R -"
 	show = "vim -R -"
+# DO NOT USE THIS: This Fucking Kills your PC
 	diff = "vimdiff"
