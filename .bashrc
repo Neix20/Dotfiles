@@ -1,5 +1,4 @@
 function fortune() {
-  
   # Parameters
   file_path="/c/Users/E138807/Documents/fortune.json"
   url="https://raw.githubusercontent.com/Neix20/Dotfiles/main/fortune/data.json"
@@ -29,6 +28,9 @@ function fortune() {
 
 alias cls="clear"
 alias dailyBackup="java -jar ~/Documents/daily-backup.jar"
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 
 NICKNAME="Neix"
 echo -ne "Good Morning, $NICKNAME! It's "; date '+%A, %B %-d %Y'
