@@ -29,9 +29,6 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Ctrl+Return exec i3-sensible-terminal
 
-# kill focused window
-bindsym $mod+Ctrl+q kill
-
 # start dmenu (a program launcher)
 bindsym $mod+space exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -128,6 +125,9 @@ mode "resize" {
 }
 
 bindsym $mod+Ctrl+r mode "resize"
+
+# kill focused window
+bindsym $mod+Shift+q kill
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
