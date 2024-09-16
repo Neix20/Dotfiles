@@ -54,7 +54,7 @@ bindsym $mod+Ctrl+l move right
 # Toggle Split Direction
 
 # Horizontal
-bindsym $mod+Ctrl+h split h
+bindsym $mod+Ctrl+s split h
 
 # Vertical
 bindsym $mod+Ctrl+v split v
@@ -64,7 +64,7 @@ bindsym $mod+Ctrl+m fullscreen
 
 # Toggle i3 Modes
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Ctrl+s layout stacking
+bindsym $mod+Ctrl+k layout stacking
 bindsym $mod+Ctrl+w layout tabbed
 bindsym $mod+Ctrl+e layout toggle split
 
