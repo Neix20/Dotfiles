@@ -1,0 +1,6 @@
+version: "3.3"
+services:
+  chatgpt-next-web:
+    image: yidadaa/chatgpt-next-web
+    ports:
+      - 1234:3000
