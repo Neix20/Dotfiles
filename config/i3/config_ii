@@ -1,0 +1,113 @@
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod1
+
+exec_always --no-startup-id killall polybar
+exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+
+exec_always feh --bg-scale ~/Documents/Background/dark_souls.jpg
+
+# Font for window titles. Will also be used by the bar unless a different font
+font pango:FiraCode Nerd Font Mono 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Ctrl+Return exec i3-sensible-terminal
+
+bindsym $mod+space exec rofi -show combi
+
+# Move Focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move Window (Split)
+bindsym $mod+Ctrl+h move left
+bindsym $mod+Ctrl+j move down
+bindsym $mod+Ctrl+k move up
+bindsym $mod+Ctrl+l move right
+
+# Toggle Split Direction
+
+# Horizontal
+bindsym $mod+Ctrl+s split h
+
+# Vertical
+bindsym $mod+Ctrl+v split v
+
+# Maximize Window
+bindsym $mod+Ctrl+m fullscreen
+
+# Toggle i3 Modes
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+Ctrl+b layout stacking
+# bindsym $mod+Ctrl+n layout tabbed
+bindsym $mod+Ctrl+e layout toggle split
+
+# Toggle Window
+bindsym $mod+Ctrl+t floating toggle
+
+# Change Workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move Window (Workspace)
+bindsym $mod+Ctrl+1 move container to workspace 1
+bindsym $mod+Ctrl+2 move container to workspace 2
+bindsym $mod+Ctrl+3 move container to workspace 3
+bindsym $mod+Ctrl+4 move container to workspace 4
+bindsym $mod+Ctrl+5 move container to workspace 5
+bindsym $mod+Ctrl+6 move container to workspace 6
+bindsym $mod+Ctrl+7 move container to workspace 7
+bindsym $mod+Ctrl+8 move container to workspace 8
+bindsym $mod+Ctrl+9 move container to workspace 9
+bindsym $mod+Ctrl+0 move container to workspace 10
+
+# Refresh i3 Config
+bindsym $mod+Shift+c reload
+
+# Restart i3
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Ctrl+r mode "resize"
+
+# kill focused window
+bindsym $mod+Shift+q kill
