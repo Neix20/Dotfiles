@@ -1,0 +1,26 @@
+FROM python:3.13-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl gnupg2 apt-transport-https unixodbc-dev \
+    gcc g++ libssl-dev libffi-dev \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add Microsoft package signing key and repo
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
+    curl https://packages.microsoft.com/config/debian/12/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
+
+# Install sqlcmd (optional)
+RUN ACCEPT_EULA=Y apt-get install -y mssql-tools18 && \
+    echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+
+# Install pyodbc for Python MSSQL access
+RUN pip install pyodbc
+
+# Copy your app code (assumes main.py in the same folder)
+COPY . /app
+WORKDIR /app
+
+CMD ["python", "main.py"]
