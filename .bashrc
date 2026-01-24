@@ -27,7 +27,6 @@ function fortune() {
 }
 
 alias cls="clear"
-alias dailyBackup="java -jar ~/Documents/daily-backup.jar"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
