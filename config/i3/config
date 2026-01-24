@@ -9,7 +9,7 @@ exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 exec_always feh --bg-scale ~/Documents/Background/dark_souls.jpg
 
 # Font for window titles. Will also be used by the bar unless a different font
-font pango:DejaVu Sans Mono 8
+font pango:FiraCode Nerd Font Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
