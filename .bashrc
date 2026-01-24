@@ -1,7 +1,7 @@
 function fortune() {
   # Parameters
   file_path="/home/neix/Documents/fortune.json"
-  url="https://raw.githubusercontent.com/Neix20/Dotfiles/main/fortune/data.json"
+  url="https://raw.githubusercontent.com/Neix20/Dotfiles/main/config/fortune/data.json"
 
   # Check if fortune file exists
   if [ ! -f "$file_path" ]; then
