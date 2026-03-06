@@ -1,0 +1,84 @@
+{
+  "patterns": {
+    "low": [
+      "\\b(what|explain|define|show|list|find|read|check|view)\\b",
+      "\\b(simple|quick|basic|easy|straightforward)\\b",
+      "\\?$",
+      "\\b(help.*understand|clarify|tell.*about)\\b",
+      "\\b(summarize|overview|introduction)\\b"
+    ],
+    "medium": [
+      "\\b(analyze|compare|implement|create|build|debug|fix)\\b",
+      "\\b(integrate|process|transform|generate|develop)\\b",
+      "\\b(help.*with|step.*by.*step|walk.*through)\\b",
+      "\\b(update|modify|change|improve|enhance)\\b",
+      "\\b(review|audit|test|validate)\\b"
+    ],
+    "high": [
+      "\\b(design|architect|orchestrate|optimize|refactor)\\b",
+      "\\b(complex|advanced|system|enterprise|scale|comprehensive)\\b",
+      "\\b(entire|full.*stack|end.*to.*end|complete.*system)\\b",
+      "\\b(from.*scratch|new.*project|bootstrap|scaffold)\\b",
+      "\\b(migration|deployment|infrastructure)\\b"
+    ]
+  },
+  "model_mapping": {
+    "low": "fast",
+    "medium": "balanced",
+    "high": "premium"
+  },
+  "token_estimates": {
+    "low": 800,
+    "medium": 3000,
+    "high": 8000
+  },
+  "timeouts": {
+    "low": 45,
+    "medium": 120,
+    "high": 300
+  },
+  "cost_multipliers": {
+    "fast": 1.0,
+    "balanced": 3.0,
+    "premium": 10.0
+  },
+  "project_type_adjustments": {
+    "enterprise": {
+      "min_tier": "balanced",
+      "effort_boost": 0.2
+    },
+    "production": {
+      "min_tier": "balanced",
+      "effort_boost": 0.1
+    },
+    "prototype": {
+      "cost_preference": "low"
+    }
+  },
+  "priority_adjustments": {
+    "urgent": {
+      "tier_upgrade": true,
+      "timeout_multiplier": 1.5
+    },
+    "low": {
+      "cost_preference": "low",
+      "timeout_multiplier": 0.8
+    }
+  },
+  "confidence_thresholds": {
+    "high": 0.8,
+    "medium": 0.6,
+    "low": 0.4
+  },
+  "fallback_behavior": {
+    "low_confidence": "upgrade_tier",
+    "unknown_patterns": "medium_effort",
+    "empty_description": "low_effort"
+  },
+  "feature_flags": {
+    "enable_project_type_boost": true,
+    "enable_priority_upgrades": true,
+    "enable_confidence_adjustments": true,
+    "enable_cost_optimization": false
+  }
+}

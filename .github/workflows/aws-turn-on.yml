@@ -1,0 +1,55 @@
+
+name: Turn On AWS EC2 Instance
+
+on:
+  schedule:
+    # Turn on at 8:00 AM Monday - Friday
+    # ((24 + 3) - 8) % 24 = 19, Runs at 3.00 AM
+    # ((24 + 8) - 8) % 24 = 0, Runs at 8.00 AM
+    - cron: '0 0 * * *'  # Every day at 08:00 UTC
+  workflow_dispatch:      # Optional: allows manual triggering
+
+env:
+  AWS_EC2_INSTANCE_ID: i-0e712035090ff39b2
+  AWS_REGION: ap-southeast-1
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Debug ENV
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID != '' }}"
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY != '' }}"
+
+      # Log in to AWS
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ env.AWS_REGION }}
+
+      # Turn on AWS Resource
+      - name: Turn on AWS Resource
+        run: |
+          aws ec2 start-instances --instance-ids ${{ env.AWS_EC2_INSTANCE_ID }} --region ${{ env.AWS_REGION }}
+
+      # Wait for the instance to be running
+      - name: Wait for Instance to be Running
+        run: |
+          aws ec2 wait instance-running --instance-ids ${{ env.AWS_EC2_INSTANCE_ID }} --region ${{ env.AWS_REGION }}
+
+      # Show Status
+      - name: Show AWS EC2 Status
+        run: |
+          status=$(aws ec2 describe-instances --instance-ids ${{ env.AWS_EC2_INSTANCE_ID }} --region ${{ env.AWS_REGION }} --query "Reservations[0].Instances[0].State.Name" --output text)
+          echo "Instance ${{ env.AWS_EC2_INSTANCE_ID }} is currently: $status"
