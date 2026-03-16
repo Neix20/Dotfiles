@@ -1,0 +1,82 @@
+[
+    { 
+      "key": "cmd+n",
+      "command": "explorer.newFile",
+      "when": "explorerViewletFocus" 
+    },
+    { 
+      "key": "cmd+shift+n",
+      "command": "explorer.newFolder",
+      "when": "explorerViewletFocus" 
+    },
+    {
+      "key": "cmd+shift+1",
+      "command": "workbench.action.openEditorAtIndex1",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+shift+9",
+      "command": "workbench.action.lastEditorInGroup",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+cmd+g",
+      "command": "-editor.action.previousMatchFindAction",
+      "when": "editorFocus"
+    },
+    {
+      "key": "shift+cmd+g",
+      "command": "workbench.view.scm",
+      "when": "workbench.scm.active"
+    },
+
+    {
+      "key": "ctrl+shift+cmd+b",
+      "command": "workbench.action.tasks.runTask"
+    },
+    {
+      "key": "cmd+shift+b",
+      "command": "-workbench.action.tasks.build",
+      "when": "taskCommandsRegistered"
+    },
+    {
+      "key": "alt+c",
+      "command": "markdown.extension.checkTaskList",
+      "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown' || editorTextFocus && !editorReadonly && editorLangId == 'rmd'"
+    },
+    {
+      "key": "alt+s",
+      "command": "markdown.extension.editing.toggleStrikethrough",
+      "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown' || editorTextFocus && !editorReadonly && editorLangId == 'rmd'"
+    },
+    {
+      "key": "ctrl+shift+cmd+[",
+      "command": "workbench.action.moveEditorLeftInGroup"
+    },
+    {
+      "key": "cmd+k shift+cmd+left",
+      "command": "-workbench.action.moveEditorLeftInGroup"
+    },
+    {
+      "key": "ctrl+shift+cmd+]",
+      "command": "workbench.action.moveEditorRightInGroup"
+    },
+    {
+      "key": "cmd+k shift+cmd+right",
+      "command": "-workbench.action.moveEditorRightInGroup"
+    },
+    {
+      "key": "cmd+k cmd+o",
+      "command": "workbench.action.files.openFolder"
+    },
+    {
+      "key": "ctrl+shift+space",
+      "command": "editor.action.triggerSuggest",
+      "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    },
+    {
+      "key": "ctrl+space",
+      "command": "-editor.action.triggerSuggest",
+      "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    }
+]

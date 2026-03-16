@@ -1,0 +1,231 @@
+{
+    "[csharp]": {
+        "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    },
+    "[css][scss][less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[dockercompose]": {
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": {
+            "comments": false,
+            "other": true,
+            "strings": true
+        },
+        "editor.tabSize": 2
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript][javascriptreact][typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "[nginx]": {
+        "editor.defaultFormatter": "raynigon.nginx-formatter"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[sql]": {
+        "editor.defaultFormatter": "mtxr.sqltools"
+    },
+    "accessibility.underlineLinks": true,
+    "autoalign.minSeparationLeft": 2,
+    "autoalign.moveableItemsAdditional": [
+        "#",
+        "AS",
+        "from"
+    ],
+    "chat.agentFilesLocations": {
+        ".agents/agents": true
+    },
+    "chat.instructionsFilesLocations": {
+        ".claude/rules": true,
+        ".github/instructions": true
+    },
+    "chat.mcp.gallery.enabled": true,
+    "chat.promptFilesLocations": {
+        ".agents/prompts": true
+    },
+    "chat.tools.terminal.enableAutoApprove": false,
+    "chat.viewSessions.orientation": "stacked",
+    "diffEditor.codeLens": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.accessibilitySupport": "off",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.detectIndentation": true,
+    "editor.fontFamily": "FiraCode Nerd Font Mono",
+    "editor.fontSize": 13,
+    "editor.insertSpaces": true,
+    "editor.minimap.enabled": false,
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 4,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "emmet.includeLanguages": {
+        "csv": "html",
+        "javascript": "javascriptreact",
+        "json": "html",
+        "jsonc": "html",
+        "plaintext": "html"
+    },
+    "explorer.fileNesting.patterns": {
+        "*.db": "${capture}.${extname}-*",
+        "*.db3": "${capture}.${extname}-*",
+        "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+        "*.jsx": "${capture}.js",
+        "*.s3db": "${capture}.${extname}-*",
+        "*.sdb": "${capture}.${extname}-*",
+        "*.sqlite": "${capture}.${extname}-*",
+        "*.sqlite3": "${capture}.${extname}-*",
+        "*.ts": "${capture}.js",
+        "*.tsx": "${capture}.ts",
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+        "tsconfig.json": "tsconfig.*.json"
+    },
+    "files.autoSave": "afterDelay",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.factorypath": true,
+        "**/.project": true,
+        "**/.settings": true
+    },
+    "files.simpleDialog.enable": true,
+    "files.watcherExclude": {
+        "*.log": true
+    },
+    "git.autofetch": true,
+    "git.openRepositoryInParentFolders": "never",
+    "git.replaceTagsWhenPull": true,
+    "github.copilot.chat.copilotMemory.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": false,
+        "plaintext": false,
+        "scminput": false
+    },
+    "javascript.preferences.renameMatchingJsxTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+    "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "markdownlint.config": {
+        "MD010": false,
+        "MD033": false,
+        "MD036": false
+    },
+    "peacock.affectEditorGroupBorder": true,
+    "peacock.affectPanelBorder": true,
+    "peacock.affectSideBarBorder": true,
+    "peacock.elementAdjustments": {
+        "activityBar": "lighten",
+        "statusBar": "none",
+        "titleBar": "none"
+    },
+    "peacock.favoriteColors": [
+        {
+            "name": "Blue II",
+            "value": "#29ADFF"
+        },
+        {
+            "name": "Blue",
+            "value": "#1D2B53"
+        },
+        {
+            "name": "Brown",
+            "value": "#AB5236"
+        },
+        {
+            "name": "Green",
+            "value": "#003923"
+        },
+        {
+            "name": "Orange",
+            "value": "#FFA300"
+        },
+        {
+            "name": "Peach",
+            "value": "#FFCCAA"
+        },
+        {
+            "name": "Pink II",
+            "value": "#FF77A8"
+        },
+        {
+            "name": "Pink",
+            "value": "#7E2553"
+        },
+        {
+            "name": "Purple",
+            "value": "#83769C"
+        },
+        {
+            "name": "Red",
+            "value": "#FF004D"
+        },
+        {
+            "name": "White",
+            "value": "#FFF1E8"
+        },
+        {
+            "name": "Yellow",
+            "value": "#FFEC27"
+        }
+    ],
+    "peacock.keepBadgeColor": true,
+    "peacock.surpriseMeFromFavoritesOnly": true,
+    "peacock.surpriseMeOnStartup": true,
+    "redhat.telemetry.enabled": false,
+    "search.useGlobalIgnoreFiles": true,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+    "timing.clipboard.writingEnabled": true,
+    "timing.hoverTimestamp.targetFormat": [
+        "YYYY-MM-DDTHH:mm:ss",
+        "dddd, DD MMM YYYY HH:mm:ss"
+    ],
+    "timing.insertConvertedTime": false,
+    "todo-tree.general.tags": [
+        "ASSUME",
+        "BUG",
+        "FEATURE",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]",
+        "assume",
+        "bug",
+        "fixme",
+        "hack",
+        "todo",
+        "xxx"
+    ],
+    "typescript.preferences.renameMatchingJsxTags": true,
+    "typescript.tsserver.log": "verbose",
+    "window.commandCenter": false,
+    "window.customTitleBarVisibility": "auto",
+    "window.newWindowProfile": "Default",
+    "workbench.activityBar.location": "bottom",
+    "workbench.browser.openLocalhostLinks": true,
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.preferredHighContrastColorTheme": "Default Dark Modern",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.sideBar.location": "right",
+    "zenMode.showTabs": "none"
+}

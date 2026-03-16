@@ -1,0 +1,67 @@
+{
+  "Snippet": {
+    "prefix": [
+      "snip"
+    ],
+    "body": [
+      "\"${1:Snippet Name}\": {\r",
+      "\t\"prefix\": [\"${2:Prefix}\"],\r",
+      "\t\"body\": [\r",
+      "\t\t\"${3:Content}\"\r",
+      "\t],\r",
+      "\t\"description\": \"${1:Snippet Name}\"\r",
+      "}"
+    ],
+    "description": "Description for Global Snippets"
+  },
+  "Current File Path": {
+    "prefix": "fp",
+    "body": [
+      "$TM_FILEPATH"
+    ],
+    "description": "Get Current File Path"
+  },
+  "File Header Date": {
+    "prefix": "date",
+    "body": [
+      "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"
+    ],
+    "description": "Output a file header with the file name and date"
+  },
+  "File Header DateTime": {
+    "prefix": "datetime",
+    "body": [
+      "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND"
+    ],
+    "description": "Output a file header with the file name and date"
+  },
+  "Replace Whitespaces": {
+    "prefix": [
+      "underscore"
+    ],
+    "body": [
+      "${TM_SELECTED_TEXT/[' ']/_/gi}"
+    ],
+    "description": "Replace all whitespaces of hightlighted text with underscores"
+  },
+  "Read in Medium": {
+    "prefix": [
+      "medium"
+    ],
+    "body": [
+      "https://archive.is?url=$TM_SELECTED_TEXT&run=1&referer=medium-parser",
+      "https://archive.ph?url=$TM_SELECTED_TEXT&run=1&referer=medium-parser"
+    ],
+    "description": "Read in Medium"
+  },
+  "VimGolf Docker": {
+    "prefix": [
+      "vimgolf"
+    ],
+    "body": [
+      "docker run --rm -it -e \"key=b96d45047bd6f6511f29c30b965a78a4\" ghcr.io/filbranden/vimgolf ${TM_SELECTED_TEXT}",
+      "https://www.vimgolf.com/challenges/${TM_SELECTED_TEXT}"
+    ],
+    "description": "VimGolf Docker"
+  }
+}
