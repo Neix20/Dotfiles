@@ -2,4 +2,4 @@
 # {{year}}
 
 
-[Back To Homepage](./../index.md)
+[Back](./../logs.md)

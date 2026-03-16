@@ -10,7 +10,7 @@ DAY=$(date '+%d')
 
 LOGS_DIR="./logs"
 TEMPLATE_DIR="./scripts/template"
-INDEX="./index.md"
+LOGS_INDEX="$LOGS_DIR/logs.md"
 
 YEAR_DIR="$LOGS_DIR/$YEAR"
 MONTH_DIR="$YEAR_DIR/$MONTH"
@@ -44,22 +44,33 @@ insert_before_last_2_lines() {
     sed -i "" "${insert_at}a\\"$'\n'"${line}"$'\n' "$file"
 }
 
+# ── Create logs ───────────────────────────────────────
+create_logs() {
+    [ -f "$LOGS_INDEX" ] && return
+
+    mkdir -p "$LOGS_DIR"
+
+    cp "$TEMPLATE_DIR/logs.md" "$LOGS_INDEX"
+
+    echo "Created logs index"
+}
+
 # ── Create year ───────────────────────────────────────
 create_year() {
-    [ -f "$LOGS_DIR/$YEAR.md" ] && return
+    [ -f "$YEAR_DIR/$YEAR.md" ] && return
 
     mkdir -p "$YEAR_DIR"
 
     sed "s/{{year}}/$YEAR/g" "$TEMPLATE_DIR/year.md" > "$YEAR_DIR/$YEAR.md"
 
-    insert_before_last_2_lines "$INDEX" "- [$YEAR]($LOGS_DIR/$YEAR/$YEAR.md)"
+    insert_before_last_2_lines "$LOGS_INDEX" "- [$YEAR](./$YEAR/$YEAR.md)"
 
     echo "Created year $YEAR"
 }
 
 # ── Create month ──────────────────────────────────────
 create_month() {
-    [ -f "$YEAR_DIR/$YEAR-$MONTH.md" ] && return
+    [ -f "$MONTH_DIR/$YEAR-$MONTH.md" ] && return
 
     mkdir -p "$MONTH_DIR"
 
@@ -87,6 +98,7 @@ create_day() {
 }
 
 # ── Main ──────────────────────────────────────────────
+create_logs
 create_year
 create_month
 create_day

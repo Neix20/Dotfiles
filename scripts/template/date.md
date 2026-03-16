@@ -1,4 +1,4 @@
 
 # {{year}}-{{month}}-{{date}}
 
-[Back To Homepage](./../index.md)
+[Back](./../{{year}}-{{month}}.md)
