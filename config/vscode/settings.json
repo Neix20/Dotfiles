@@ -199,22 +199,6 @@
         "dddd, DD MMM YYYY HH:mm:ss"
     ],
     "timing.insertConvertedTime": false,
-    "todo-tree.general.tags": [
-        "ASSUME",
-        "BUG",
-        "FEATURE",
-        "FIXME",
-        "TODO",
-        "XXX",
-        "[ ]",
-        "[x]",
-        "assume",
-        "bug",
-        "fixme",
-        "hack",
-        "todo",
-        "xxx"
-    ],
     "typescript.preferences.renameMatchingJsxTags": true,
     "typescript.tsserver.log": "verbose",
     "window.commandCenter": false,

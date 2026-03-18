@@ -68,15 +68,5 @@
     {
       "key": "cmd+k cmd+o",
       "command": "workbench.action.files.openFolder"
-    },
-    {
-      "key": "ctrl+shift+space",
-      "command": "editor.action.triggerSuggest",
-      "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
-    },
-    {
-      "key": "ctrl+space",
-      "command": "-editor.action.triggerSuggest",
-      "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
     }
 ]

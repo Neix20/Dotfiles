@@ -1,0 +1,68 @@
+
+# Check List
+
+- [ ] Learn Language Syntax
+  - [ ] Variables & Types
+    - [ ] Declaration and Data Types
+    - [ ] Constants
+    - [ ] Type inference/coercion
+    - [ ] Mutability (mutable vs immutable)
+  - [ ] Control Flow
+    - [ ] If-Else
+    - [ ] Switch/Case
+    - [ ] For/While Loops
+    - [ ] Exception Handling (try-catch, custom errors)
+  - [ ] Functions
+    - [ ] Declaration and parameters
+    - [ ] Return types
+    - [ ] Closures/Lambdas
+    - [ ] Variadic functions
+  - [ ] Data Structures
+    - [ ] Strings (methods, formatting)
+    - [ ] Arrays/Lists
+    - [ ] Maps/Dictionaries
+    - [ ] Sets
+    - [ ] Tuples
+  - [ ] OOP (if applicable)
+    - [ ] Classes and Objects
+    - [ ] Inheritance
+    - [ ] Interfaces/Traits
+    - [ ] Encapsulation (public/private/protected)
+    - [ ] Polymorphism
+  - [ ] Tests
+    - [ ] Unit Testing
+      - [ ] Test structure and organization
+      - [ ] Writing test cases
+      - [ ] Assertions/Test frameworks
+    - [ ] Mocking & Stubs
+      - [ ] Mocking objects/functions
+      - [ ] Stubbing dependencies
+      - [ ] Spy on function calls
+    - [ ] Test Coverage
+      - [ ] Running coverage reports
+      - [ ] Coverage thresholds
+  - [ ] Design Patterns
+    - [ ] Dependency Injection
+    - [ ] Abstract Factory
+    - [ ] Strategy Pattern
+    - [ ] Adapter Pattern
+  - [ ] Advanced Features
+    - [ ] Modules/Packages/Namespacing
+    - [ ] Concurrency (async, threads, channels)
+    - [ ] Iterators/Generators
+    - [ ] Generics/Templates
+    - [ ] Memory management (references, pointers, GC)
+  - [ ] Design Patterns
+    - [ ] Dependency Injection
+    - [ ] Abstract Factory
+    - [ ] Strategy Pattern
+    - [ ] Adapter Pattern
+  - [ ] Library
+    - [ ] How to install new Library
+    - [ ] How to convert Code into Library
+  - [ ] Debugger
+    - [ ] How to use Debugger Breakpoints
+  - [ ] Scope Management
+    - [ ] Global Management
+    - [ ] Local Management
+    - [ ] Function Closure
